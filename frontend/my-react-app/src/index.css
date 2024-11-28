@@ -1,0 +1,21 @@
+/* Add a dark mode theme to the entire page */
+body {
+  background-color: #121212;  /* Dark background for the whole app */
+  color: #ffffff;  /* Light text for high contrast */
+  font-family: 'Roboto', sans-serif;  /* Clean, modern font */
+  margin: 0;  /* Remove default browser margin */
+  padding: 0;  /* Remove default padding */
+}
+
+/* Style all input and button elements with consistent font */
+input, button {
+  font-family: inherit;  /* Use the same font as the body */
+}
+
+/* Add a universal box-sizing property for better layout consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+

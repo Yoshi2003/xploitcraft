@@ -1,0 +1,33 @@
+# Dockerfile for Backend
+FROM python:3.11.3
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Install necessary tools
+RUN apt-get update && apt-get install -y python3-venv python3-pip
+
+# Create a virtual environment outside of the application directory to avoid overwriting
+RUN python3 -m venv /venv
+
+# Upgrade pip and setuptools within the virtual environment
+RUN /venv/bin/pip install --upgrade pip setuptools
+
+# Copy the requirements file first, to leverage Docker's caching if requirements haven't changed
+COPY requirements.txt .
+
+# Install dependencies within the virtual environment
+RUN /venv/bin/pip install --no-cache-dir -r requirements.txt
+
+# Copy all application files into the container
+COPY . .
+
+# Set environment variables to use the virtual environment and Flask production mode
+ENV VIRTUAL_ENV="/venv"
+ENV PATH="/venv/bin:$PATH"
+ENV FLASK_ENV=production
+ENV FLASK_APP=app.py
+
+# Run the backend application using the Python virtual environment
+CMD ["/venv/bin/gunicorn", "-b", "0.0.0.0:5000", "app:app", "--timeout", "120"]
+

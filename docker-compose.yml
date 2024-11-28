@@ -1,0 +1,73 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: backend_service
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/app   # Bind-mount local backend to allow live changes without rebuilding
+    env_file:
+      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    networks:
+      - xploitcraft_network
+    restart: always
+    depends_on:
+      - redis
+    command: python app.py  # Updated to use SocketIO properly
+
+  frontend:
+    container_name: frontend_service
+    build:
+      context: ./frontend/my-react-app
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/my-react-app:/app  # Bind-mount local frontend for live changes
+    networks:
+      - xploitcraft_network
+    restart: always
+    command: npm start  # Run the development server with hot-reloading
+
+  mongodb:
+    container_name: mongodb_service
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - xploitcraft_network
+    restart: unless-stopped
+
+  redis:
+    container_name: redis_service
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - xploitcraft_network
+    restart: unless-stopped
+    sysctls:
+      - net.core.somaxconn=1024
+
+networks:
+  xploitcraft_network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+
+
+

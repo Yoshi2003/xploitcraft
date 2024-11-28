@@ -1,0 +1,60 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #121212;  /* Keep dark background */
+  color: #00ff00;
+  padding: 10px;
+  border: 3px solid #ffffff;  /* Add subtle white border to outline the sidebar */
+}
+
+.sidebar-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.7em;
+  margin-bottom: 30px;
+  color: #008000;  /* Change title color to dark green as requested */
+}
+
+.sidebar-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-list li {
+  margin-bottom: 35px;
+}
+
+.sidebar-list li a {
+  color: #ffffff; /* Purple color for links */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.1s ease;  /* Add transform to make items pop */
+}
+
+.sidebar-list li a:hover {
+  color: #ff0000;
+  transform: scale(1.03);  /* Slight enlargement on hover for an interactive feel */
+}
+
+.sidebar-list li a[href="/redblue"] {
+  background: linear-gradient(90deg, #FF0000 50%, #00BFFF 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.sidebar-list li a::before {
+  content: "~";  /* Adds a '~' before each link like a command line interface */
+  margin-right: 5px;
+  color: #00ff00;  /* Bright green for hacker style */
+}
+
+/* Animation for Sidebar Links */
+.sidebar-list li a:hover::before {
+  content: ">>";  /* Changes '~' to '>>' when hovered for that hacker CLI feel */
+}
+
+

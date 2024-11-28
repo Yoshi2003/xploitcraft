@@ -1,0 +1,165 @@
+/* General Application Styles */
+
+/* Header Styles */
+.App-header {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  /* Align towards the top */
+  padding-top: 20px;
+  text-align: center;
+  color: #00ff00;
+}
+
+/* Title Style with Outline */
+.header-title {
+  color: #FF0000;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+/* Syntax Highlighter Custom Style */
+.syntax-highlighter {
+  white-space: pre-wrap !important;
+  overflow-wrap: break-word !important;
+  word-break: break-all !important;
+  width: 100% !important;
+}
+
+/* Input Container Horizontal Style */
+.input-container-horizontal {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: flex-start;  /* Align items higher up */
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;  /* Use Roboto for input container texts */
+}
+
+/* Input Fields Style */
+.input-field {
+  width: 400px;
+  height: 45px;
+  padding: 10px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #333;
+  border: 2px solid #FF0000;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #00ff00;
+  box-shadow: 0 0 5px #00ff00;
+}
+
+/* Button Style with Border Outline */
+.generate-button {
+  background-color: #FF0000;
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: 3px solid #000000;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.generate-button:hover {
+  background-color: #00ff00;
+  transform: scale(1.03);
+}
+
+/* Generated Payload Title Style */
+.generated-payload-title {
+  color: #00ff00;  /* Neon green color to match the hacker theme */
+  font-family: 'Orbitron', sans-serif;  /* Cool techy font */
+  text-shadow: 2px 2px 4px #000000;  /* Black shadow for a cleaner look */
+  margin-bottom: 10px;  /* Space below the title */
+  font-weight: bold;
+  border-bottom: 2px solid #ff0000; /* Red border at the bottom to make it stand out */
+}
+
+/* Payload Wrapper Style */
+.payload-wrapper {
+  max-width: 1150px;
+
+  margin: 20px auto;  /* Center the container horizontally */
+  text-align: left;  /* Align text to the left inside the container */
+  background: linear-gradient(145deg, #282c34, #1e1e1e);  /* Gradient effect for the container */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 .10px rgba(0, 255, 0, 0.7);  /* Greenish glow */
+  border: 3px solid #ff0000;  /* Red border */
+  animation: border-glow 3s infinite alternate;
+}
+
+/* Keyframes for border glow */
+@keyframes border-glow {
+  0% { box-shadow: 0 0 4px #ff0000; }
+  100% { box-shadow: 0 0 4px #00ff00; }
+}
+
+/* Payload Content Style */
+.payload-content {
+  text-align: center;
+  border-radius: 8px;
+  overflow-y: auto;  /* Adds a vertical scrollbar if the content overflows */
+  max-height: 600px;  /* Sets a limit for height, allowing scrolling when it exceeds this height */
+  overflow-x: hidden;  /* Prevent horizontal scrolling */
+  word-wrap: break-word;  /* Break long words to avoid horizontal scrolling */
+  color: #00ff00;  /* Keep neon green for text color */
+}
+
+
+
+/* Link Styles */
+
+.App-link:hover {
+  color: #ff0055;
+  text-decoration: underline;
+}
+
+/* Logo Styles */
+.App-logo {
+  height: 15vmin;
+  pointer-events: none;
+  animation: App-logo-spin infinite 20s linear, App-logo-glow infinite 2s ease-in-out;
+  margin-bottom: 20px;
+}
+
+/* Keyframes for spinning */
+@keyframes App-logo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2880deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Keyframes for glowing effect */
+@keyframes App-logo-glow {
+  0%, 100% {
+    filter: drop-shadow(0px 0px 5px #00FF00);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 20px #00FF00);
+  }
+}
+
+/* Main App Content with Sidebar Space */
+.main-content {
+  margin-left: 220px; /* Leave space for sidebar */
+  padding: none;
+}
+
