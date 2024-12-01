@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Home from './components/Home';
 import ScenarioSphere from './components/ScenarioSphere';
-import Analogy from './components/Analogy';
+import AnalogyHub from './components/AnalogyHub';
 import Redblue from './components/Redblue';
 import Loganal from './components/Loganal';
 import Incident from './components/Incident';
@@ -23,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/scenariosphere" element={<ScenarioSphere />} />
-            <Route path="/analogy" element={<Analogy />} />
+            <Route path="/analogyhub" element={<AnalogyHub />} />
             <Route path="/redblue" element={<Redblue />} />
             <Route path="/loganal" element={<Loganal />} />
             <Route path="/incident" element={<Incident />} />

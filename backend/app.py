@@ -10,6 +10,8 @@ import os
 import logging
 from routes.payload_routes import payload_bp  #payload-related routes
 from routes.scenario_routes import scenario_bp #scenario routes
+from routes.analogy_routes import analogy_bp
+
 
 
 
@@ -43,6 +45,7 @@ Session(app)
 # Register blueprints
 app.register_blueprint(payload_bp, url_prefix='/api')
 app.register_blueprint(scenario_bp, url_prefix='/scenario')
+app.register_blueprint(analogy_bp, url_prefix='/analogy')
 
 # WebSocket for real-time updates
 @socketio.on('connect')

@@ -10,7 +10,7 @@ const Sidebar = () => {
       <ul className="sidebar-list">
         <li><Link to="/">/Home</Link></li>
         <li><Link to="/ScenarioSphere">/Scenario Sphere</Link></li>
-        <li><Link to="/analogy">/Analogy Hub</Link></li>
+        <li><Link to="/AnalogyHub">/Analogy Hub</Link></li>
         <li><Link to="/redblue">/Red vs Blue</Link></li>
         <li><Link to="/loganal">/Log Analysis</Link></li>
         <li><Link to="/incident">/Incident Command</Link></li>

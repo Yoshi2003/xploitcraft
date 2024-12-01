@@ -4,6 +4,7 @@ import socketIOClient from 'socket.io-client';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { gruvboxDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import logo from '../logo5.png';
+import loadingIcon from '../loading3.png';
 import '../App.css';
 
 const ENDPOINT = "http://localhost:5000/api";
@@ -12,26 +13,30 @@ function Home() {
   const [vulnerability, setVulnerability] = useState("");
   const [evasionTechnique, setEvasionTechnique] = useState("");
   const [payload, setPayload] = useState("");
-  const [socket] = useState(() => socketIOClient(ENDPOINT));
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    const socket = socketIOClient(ENDPOINT);
+
     socket.on('payload_response', (data) => {
       setPayload(data.payload);
+      setLoading(false);
     });
 
     socket.on('error', (data) => {
       alert(`Error: ${data.error}`);
+      setLoading(false);
     });
 
     return () => {
-      socket.off('payload_response');
-      socket.off('error');
       socket.disconnect();
     };
-  }, [socket]);
+  }, []);
 
   const handleGeneratePayload = () => {
     if (vulnerability && evasionTechnique) {
+      setLoading(true);
+
       fetch(`${ENDPOINT}/generate_payload`, {
         method: 'POST',
         headers: {
@@ -49,10 +54,12 @@ function Home() {
           } else if (data.error) {
             alert(`Error: ${data.error}`);
           }
+          setLoading(false);
         })
         .catch((error) => {
           console.error('Error:', error);
           alert('Failed to connect to the backend server. Please check the server connection.');
+          setLoading(false);
         });
     } else {
       alert("Please enter both vulnerability and evasion technique");
@@ -81,9 +88,14 @@ function Home() {
         />
       </div>
 
-      <button onClick={handleGeneratePayload} className="generate-button">
-        Generate Payload
-      </button>
+      <div className="button-container">
+        <button onClick={handleGeneratePayload} className="generate-button">
+          Generate Payload
+        </button>
+        {loading && (
+          <img src={loadingIcon} alt="Loading..." className="loading-icon" />
+        )}
+      </div>
 
       {payload && (
         <div className="payload-wrapper">

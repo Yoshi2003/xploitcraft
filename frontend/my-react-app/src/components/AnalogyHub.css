@@ -1,0 +1,134 @@
+body {
+  background-color: #0c0c0c; /* Set a dark background color */
+  color: #00ffea; /* Primary text color */
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+}
+
+
+.analogy-hub-container {
+  width: 99%;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  opacity: 0.9;
+  border: 2px solid #ff004d;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px #ff004d;
+  background-image: url('./backround1.jpg'); /* Set background image only for this container */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; /* Center the background */
+  min-height: 100vh;
+}
+.analogy-hub-title {
+  font-size: 3.7em;
+  color: #8B0000; /* Neon pink title */
+  text-shadow: 2px 2px #ffffff; /* Shadow effect for better readability */
+  margin-bottom: 20px;
+}
+
+.analogy-hub-tagline {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #8B0000; /* White for tagline */
+  margin-bottom: 30px;
+  text-shadow: 2.3px 2.3px #000000;
+}
+
+.analogy-hub-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.analogy-type-section, .analogy-category-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.analogy-type-section label,
+.analogy-category-section label {
+  font-size: 1.2em;
+  color: #ff004d; /* Neon pink labels */
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.analogy-input-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 60%;
+}
+
+.analogy-hub-input {
+  padding: 15px;
+  background-color: #222; /* Dark background for inputs */
+  color: #00ffea; /* Neon turquoise text */
+  border: 2px solid #8B0000; /* Neon pink border */
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.analogy-generate-button {
+  padding: 15px 30px;
+  background-color: #8B0000;
+  color: #000;
+  border-radius: 8px;
+  border: 3px solid #000000;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.analogy-generate-button:hover {
+  background-color: #00CED1; /* Change to turquoise when hovered */
+}
+
+.button-and-loader {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between button and loading icon */
+}
+
+.loading-icon {
+  width: 50px; /* Size of the loading icon */
+  height: 50px;
+  animation: spin 1s linear infinite; /* Adding rotation animation */
+}
+
+/* Keyframes for rotating animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.analogy-output-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(17, 17, 17, 0.95); /* Fade the background slightly to make it look softer */
+  border: 2px solid #8B0000;
+  border-radius: 10px;
+  max-height: 300px; /* Limit output container height */
+  overflow-y: auto;
+
+  background-position: center;
+}
+
+.generated-analogy {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  color: #00ffea;
+  padding: 15px;
+}
+

@@ -1,23 +1,37 @@
 /* General Application Styles */
+/* App.css */
 
-/* Header Styles */
+/* Header Styles with Background Image */
 .App-header {
-  background-color: #1e1e1e;
+  background-image: url('./backround2.jpg');
+  background-size: cover;
+  background-position: center;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;  /* Align towards the top */
-  padding-top: 20px;
+  padding-top: 0px;
   text-align: center;
   color: #00ff00;
+  position: relative; /* Required for loading icon positioning */
 }
+
+.loading-icon {
+  width: 40px;                /* Adjust size as needed */
+  height: 40px;               /* Adjust size as needed */
+  margin-top: -20px;           /* Space between button and loading icon */
+  object-fit: contain;        /* Retain the aspect ratio without distortion */
+  color: #660000;
+}
+
 
 /* Title Style with Outline */
 .header-title {
-  color: #FF0000;
+  color: #FFFFFF;
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 2.3px 2.3px 5px #660000;
+  font-size: 2.5em;
 }
 
 /* Syntax Highlighter Custom Style */
@@ -46,7 +60,7 @@
   font-size: 18px;
   color: #ffffff;
   background-color: #333;
-  border: 2px solid #FF0000;
+  border: 2px solid #660000;
   border-radius: 8px;
   outline: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -54,12 +68,19 @@
 
 .input-field:focus {
   border-color: #00ff00;
-  box-shadow: 0 0 5px #00ff00;
 }
+
+/* Container for Button and Loading Icon */
+.button-container {
+  display: flex;            /* Use flexbox to align items */
+  align-items: center;      /* Align vertically in the center */
+  margin-left: 10px;
+}
+
 
 /* Button Style with Border Outline */
 .generate-button {
-  background-color: #FF0000;
+  background-color: #660000;
   color: #ffffff;
   padding: 12px 30px;
   border-radius: 8px;
@@ -72,39 +93,32 @@
 }
 
 .generate-button:hover {
-  background-color: #00ff00;
-  transform: scale(1.03);
+  background-color: #8b0000;
+  transform: scale(1.02);
 }
 
 /* Generated Payload Title Style */
 .generated-payload-title {
-  color: #00ff00;  /* Neon green color to match the hacker theme */
+  color: #660000;  /* Neon green color to match the hacker theme */
   font-family: 'Orbitron', sans-serif;  /* Cool techy font */
   text-shadow: 2px 2px 4px #000000;  /* Black shadow for a cleaner look */
   margin-bottom: 10px;  /* Space below the title */
   font-weight: bold;
-  border-bottom: 2px solid #ff0000; /* Red border at the bottom to make it stand out */
+  border-bottom: 2px solid #ffffff; /* Red border at the bottom to make it stand out */
 }
 
 /* Payload Wrapper Style */
 .payload-wrapper {
   max-width: 1150px;
-
   margin: 20px auto;  /* Center the container horizontally */
   text-align: left;  /* Align text to the left inside the container */
   background: linear-gradient(145deg, #282c34, #1e1e1e);  /* Gradient effect for the container */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 .10px rgba(0, 255, 0, 0.7);  /* Greenish glow */
-  border: 3px solid #ff0000;  /* Red border */
-  animation: border-glow 3s infinite alternate;
+  border: 3px solid #660000;  /* Red border */
+  opacity: 0.97;
 }
 
-/* Keyframes for border glow */
-@keyframes border-glow {
-  0% { box-shadow: 0 0 4px #ff0000; }
-  100% { box-shadow: 0 0 4px #00ff00; }
-}
 
 /* Payload Content Style */
 .payload-content {
@@ -128,10 +142,11 @@
 
 /* Logo Styles */
 .App-logo {
-  height: 15vmin;
+  max-width: 250px;      /* Set the maximum width */
+  max-height: 250px;
   pointer-events: none;
-  animation: App-logo-spin infinite 20s linear, App-logo-glow infinite 2s ease-in-out;
-  margin-bottom: 20px;
+  animation: App-logo-spin infinite 20s linear;
+  margin-bottom: -30px;
 }
 
 /* Keyframes for spinning */
@@ -147,15 +162,6 @@
   }
 }
 
-/* Keyframes for glowing effect */
-@keyframes App-logo-glow {
-  0%, 100% {
-    filter: drop-shadow(0px 0px 5px #00FF00);
-  }
-  50% {
-    filter: drop-shadow(0px 0px 20px #00FF00);
-  }
-}
 
 /* Main App Content with Sidebar Space */
 .main-content {
