@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+.donate-container {
+    position: relative;
+    height: 100vh;
+    background-image: url('./backround3.jpg'); /* Ensure backround3.jpg is placed in the correct directory */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: -50px; /* Padding to bring the content towards the top */
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+
+.donate-box {
+    background-color: rgba(0, 0, 0, 0.85); /* Darken background for better contrast */
+    padding: 30px;
+    max-width: 1030px;
+    text-align: center;
+    position: relative;
+    top: 1px;
+    opacity: .95;
+}
+
+.donate-title {
+    font-family: 'Orbitron', sans-serif;
+    color: #ff0000;
+    font-size: 2.6em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #00FFFF;
+}
+
+.donate-description {
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+    color: #ffffff;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.bitcoin-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#bitcoinAddress {
+    width: 70%;
+    padding: 10px;
+    border: 2px solid #ff004d;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #00FFFF;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+}
+
+.copy-button {
+    padding: 10px 15px;
+    background-color: #ff004d;
+    color: #000000;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.copy-button:hover {
+    background-color: #00ff00;
+    color: #000000;
+}
+
+.thanks-message {
+    position: absolute;
+    bottom: 125px; /* Add a small margin from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 3em;
+    text-shadow: 2px 2px #00FFFF;
+    
+}
+
+
+

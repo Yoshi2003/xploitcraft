@@ -1,18 +1,19 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Home from './components/Home';
-import ScenarioSphere from './components/ScenarioSphere';
-import AnalogyHub from './components/AnalogyHub';
-import Redblue from './components/Redblue';
-import Loganal from './components/Loganal';
-import Incident from './components/Incident';
-import GRC from './components/GRC';
-import Daily from './components/Daily';
-import Connor from './components/Connor';
-import Donate from './components/Donate';
-import './App.css';
+import Sidebar from './components/Sidebar/Sidebar';
+
+
+import Home from './components/pages/HomePage/Home';
+import ScenarioSphere from './components/pages/ScenarioPage/ScenarioSphere';
+import AnalogyHub from './components/pages/AnalogyPage/AnalogyHub';
+import Loganal from './components/pages/LogPage/Loganal';
+import GRC from './components/pages/GRCpage/GRC';
+import DailyCyberBrief from './components/pages/DailyPage/DailyCyberBrief';
+import Resources from './components/pages/ResourcesPage/Resources';
+import Donate from './components/pages/DonatePage/Donate';
+
+import './components/pages/HomePage/App.css';
 
 function App() {
   return (
@@ -24,12 +25,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/scenariosphere" element={<ScenarioSphere />} />
             <Route path="/analogyhub" element={<AnalogyHub />} />
-            <Route path="/redblue" element={<Redblue />} />
             <Route path="/loganal" element={<Loganal />} />
-            <Route path="/incident" element={<Incident />} />
             <Route path="/grc" element={<GRC />} />
-            <Route path="/daily" element={<Daily />} />
-            <Route path="/connor" element={<Connor />} />
+            <Route path="/dailycyberbrief" element={<DailyCyberBrief />} />
+            <Route path="/resources" element={<Resources />} />
             <Route path="/donate" element={<Donate />} />
           </Routes>
         </div>
@@ -39,6 +38,9 @@ function App() {
 }
 
 export default App;
+
+
+
 
 
 

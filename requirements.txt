@@ -42,4 +42,6 @@ react-syntax-highlighter
 redis
 flask-session
 flask-cors
+celery
+sendgrid
 

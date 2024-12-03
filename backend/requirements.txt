@@ -29,4 +29,6 @@ Flask-Session
 redis
 eventlet
 openai
+celery
+sendgrid
 

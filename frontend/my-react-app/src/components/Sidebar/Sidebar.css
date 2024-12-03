@@ -1,0 +1,81 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #121212;  /* Keep dark background */
+  color: #cc0000;
+  padding: 10px;
+  border: 3px solid #ffffff;
+  border-radius: 20px;  /* Adds rounded corners */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Align elements properly */
+}
+
+.sidebar-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.9em;
+  margin-bottom: 28px;
+  color: #cc0000;  /* Change title color to dark green as requested */
+}
+
+.sidebar-list {
+  list-style-type: none;
+  padding: 0;
+  flex-grow: 1; /* Makes the list take up remaining space */
+}
+
+.sidebar-list li {
+  margin-bottom: 35px;
+}
+
+.sidebar-list li a {
+  color: #ffffff; 
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.1s ease;  
+}
+
+.sidebar-list li a:hover {
+  color: #cc0000;
+  transform: scale(1.03);  
+}
+
+.sidebar-list li a[href="/redblue"] {
+  background: linear-gradient(90deg, #FF0000 50%, #00BFFF 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.sidebar-list li a::before {
+  content: "~";  /* Adds a '~' before each link like a command line interface */
+  margin-right: 5px;
+  color: #cc0000;  /* Bright green for hacker style */
+}
+
+/* Animation for Sidebar Links */
+.sidebar-list li a:hover::before {
+  content: ">>";  /* Changes '~' to '>>' when hovered for that hacker CLI feel */
+  color: #ffffff;
+}
+
+/* Styles for the logo container at the bottom of the sidebar */
+.sidebar-logo-container {
+  text-align: center;
+  margin-top: -10px;
+  margin-right: 40px;
+  padding-bottom: 85px; /* Add some spacing at the bottom */
+}
+
+.sidebar-logo {
+  width: 100%;  /* Adjust the size of the logo */
+  max-width: 200px; /* Limit the max size */
+  border-radius: 5px; /* Add slight rounding to the logo */
+  filter: brightness(2.2);
+}
+
+

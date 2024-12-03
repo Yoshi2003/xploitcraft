@@ -5,12 +5,18 @@ from flask_socketio import SocketIO
 from dotenv import load_dotenv
 from flask_cors import CORS
 from flask_session import Session
+from pymongo import MongoClient
 import redis
 import os
 import logging
 from routes.payload_routes import payload_bp  #payload-related routes
 from routes.scenario_routes import scenario_bp #scenario routes
 from routes.analogy_routes import analogy_bp
+from routes.email_routes import email_bp
+from routes.subscribe_routes import subscribe_bp
+from routes.unsubscribe_routes import unsubscribe_bp
+from routes.update_routes import update_bp
+from database.models import create_user
 
 
 
@@ -19,6 +25,17 @@ from routes.analogy_routes import analogy_bp
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
+# Fetch MongoDB URI from environment variable
+mongo_uri = os.getenv("MONGO_URI")
+
+# Create a client to connect to MongoDB
+client = MongoClient(mongo_uri)
+
+# Access the database
+db = client.get_database()
+
+
+    
 # Configure logging
 logging.basicConfig(
     level=logging.DEBUG,
@@ -46,6 +63,18 @@ Session(app)
 app.register_blueprint(payload_bp, url_prefix='/api')
 app.register_blueprint(scenario_bp, url_prefix='/scenario')
 app.register_blueprint(analogy_bp, url_prefix='/analogy')
+app.register_blueprint(email_bp, url_prefix='/email')
+app.register_blueprint(subscribe_bp, url_prefix='/subscribe')
+app.register_blueprint(unsubscribe_bp, url_prefix='/unsubscribe')
+app.register_blueprint(update_bp, url_prefix='/update')
+
+@app.route('/register', methods=['POST'])
+def register():
+    user_data = request.json
+    user_id = create_user(user_data)
+    return jsonify({"message": "User created", "user_id": str(user_id)})
+    
+
 
 # WebSocket for real-time updates
 @socketio.on('connect')
