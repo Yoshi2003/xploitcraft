@@ -44,4 +44,6 @@ flask-session
 flask-cors
 celery
 sendgrid
+eventlet==0.33.3
+gevent==23.9.1
 

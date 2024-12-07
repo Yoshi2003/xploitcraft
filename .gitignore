@@ -4,3 +4,4 @@ __pycache__/
 .env
 node_modules/
 my-react-app/build/
+xploitcraft.pem

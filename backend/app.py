@@ -9,6 +9,7 @@ from pymongo import MongoClient
 import redis
 import os
 import logging
+from flask import request, jsonify
 from routes.payload_routes import payload_bp  #payload-related routes
 from routes.scenario_routes import scenario_bp #scenario routes
 from routes.analogy_routes import analogy_bp
@@ -60,13 +61,23 @@ app.config['SESSION_REDIS'] = redis.StrictRedis(host='redis', port=6379, db=0)
 Session(app)
 
 # Register blueprints
-app.register_blueprint(payload_bp, url_prefix='/api')
-app.register_blueprint(scenario_bp, url_prefix='/scenario')
-app.register_blueprint(analogy_bp, url_prefix='/analogy')
-app.register_blueprint(email_bp, url_prefix='/email')
-app.register_blueprint(subscribe_bp, url_prefix='/subscribe')
-app.register_blueprint(unsubscribe_bp, url_prefix='/unsubscribe')
-app.register_blueprint(update_bp, url_prefix='/update')
+@app.route('/')
+def home():
+    return 'Backend is running'
+
+# Log all incoming requests for debugging
+@app.before_request
+def log_request_info():
+    logger.info(f"Handling request to {request.path} with method {request.method}")
+    
+    
+app.register_blueprint(payload_bp, url_prefix='/api/payload')
+app.register_blueprint(scenario_bp, url_prefix='/api/scenario')
+app.register_blueprint(analogy_bp, url_prefix='/api/analogy')
+app.register_blueprint(email_bp, url_prefix='/api/email')
+app.register_blueprint(subscribe_bp, url_prefix='/api/subscribe')
+app.register_blueprint(unsubscribe_bp, url_prefix='/api/unsubscribe')
+app.register_blueprint(update_bp, url_prefix='/api/update')
 
 @app.route('/register', methods=['POST'])
 def register():

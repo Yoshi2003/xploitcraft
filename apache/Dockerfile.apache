@@ -1,0 +1,20 @@
+FROM httpd:2.4
+
+# Copy custom configurations
+COPY xploitcraft.conf /usr/local/apache2/conf/extra/
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+
+RUN sed -i '/#LoadModule unixd_module/s/^#//' /usr/local/apache2/conf/httpd.conf && \
+    sed -i '/#LoadModule proxy_module/s/^#//' /usr/local/apache2/conf/httpd.conf && \
+    sed -i '/#LoadModule proxy_http_module/s/^#//' /usr/local/apache2/conf/httpd.conf && \
+    sed -i '/#LoadModule authz_core_module/s/^#//' /usr/local/apache2/conf/httpd.conf
+
+# Ensure logs directory exists and is writable
+RUN mkdir -p /usr/local/apache2/logs && chmod -R 777 /usr/local/apache2/logs
+
+# Expose port 8080
+EXPOSE 8080
+
+# Start Apache in the foreground
+CMD ["httpd-foreground"]
+

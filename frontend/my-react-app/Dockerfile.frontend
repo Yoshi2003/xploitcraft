@@ -1,39 +1,14 @@
-# Use an official Node.js image that is compatible with npm@10.9.0
 FROM node:20-alpine
-
-# Install bash or other utilities if required (this is optional but helps avoid some issues)
 RUN apk add --no-cache bash curl
-
-# Upgrade npm to the latest version to avoid dependency issues
-RUN npm install -g npm@10.9.1
-
-# Set the working directory inside the container
+RUN npm install -g npm@10.9.2
 WORKDIR /app
-
-# Copy package.json and package-lock.json first, to leverage Docker layer caching
 COPY package*.json ./
-
-# Install dependencies (including react-scripts)
-RUN npm install 
-
-# Copy the rest of the application code into the container
+RUN npm install
 COPY . .
-
-# Build the production version of the React app
 RUN npm run build
-
-# Use a lightweight HTTP server to serve the static build files in production
 RUN npm install -g serve
-
-# Set proper permissions on the app directory (to avoid permission issues)
 RUN chown -R node:node /app
-
-# Set the user to non-root (optional, more secure to avoid running as root)
 USER node
-
-# Expose the port the app will run on (this is optional but useful for local development)
 EXPOSE 3000
-
-# Define the command to run the production build using serve
 CMD ["serve", "-s", "build", "-l", "3000"]
 

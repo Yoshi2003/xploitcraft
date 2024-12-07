@@ -9,17 +9,14 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./backend:/app   # Bind-mount local backend to allow live changes without rebuilding
+      - ./backend:/app
     env_file:
       - .env
-    environment:
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
     networks:
       - xploitcraft_network
     restart: always
     depends_on:
       - redis
-    command: python app.py  # Updated to use SocketIO properly
 
   frontend:
     container_name: frontend_service
@@ -28,12 +25,9 @@ services:
       dockerfile: Dockerfile.frontend
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend/my-react-app:/app  # Bind-mount local frontend for live changes
     networks:
       - xploitcraft_network
     restart: always
-    command: npm start  # Run the development server with hot-reloading
 
   mongodb:
     container_name: mongodb_service
@@ -50,14 +44,40 @@ services:
     container_name: redis_service
     image: redis:latest
     ports:
-      - "6379:6379"
+      - "6380:6379"
     volumes:
       - redis_data:/data
     networks:
       - xploitcraft_network
     restart: unless-stopped
-    sysctls:
-      - net.core.somaxconn=1024
+
+  apache:
+    container_name: apache_service
+    build:
+      context: ./apache
+      dockerfile: Dockerfile.apache
+    ports:
+      - "8080:8080"
+    networks:
+      - xploitcraft_network
+    volumes:
+    - ./apache/xploitcraft.conf:/usr/local/apache2/conf/extra/xploitcraft.conf
+    - ./apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+    restart: always
+    
+  nginx:
+    container_name: nginx_proxy
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./sites-enabled/:/etc/nginx/sites-enabled/
+    networks:
+      - xploitcraft_network
+    depends_on:
+      - apache
+    restart: unless-stopped
 
 networks:
   xploitcraft_network:
@@ -68,6 +88,9 @@ volumes:
     driver: local
   redis_data:
     driver: local
+
+
+
 
 
 
