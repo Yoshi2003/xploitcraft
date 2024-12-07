@@ -7,7 +7,7 @@ import logo from './logo5.png';
 import loadingIcon from './loading3.png';
 import './App.css';
 
-const ENDPOINT = "http://3.237.99.181/api";
+const ENDPOINT = "/api/";
 
 function Home() {
   const [vulnerability, setVulnerability] = useState("");
