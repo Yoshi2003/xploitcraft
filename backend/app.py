@@ -71,7 +71,7 @@ def log_request_info():
     logger.info(f"Handling request to {request.path} with method {request.method}")
     
     
-app.register_blueprint(payload_bp, url_prefix='/api/payload')
+app.register_blueprint(payload_bp, url_prefix='/payload')
 app.register_blueprint(scenario_bp, url_prefix='/api/scenario')
 app.register_blueprint(analogy_bp, url_prefix='/api/analogy')
 app.register_blueprint(email_bp, url_prefix='/api/email')
