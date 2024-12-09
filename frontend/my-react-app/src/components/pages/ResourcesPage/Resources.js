@@ -5,6 +5,9 @@ const redditSubreddits = [
   { name: 'r/CompTIA', url: 'https://www.reddit.com/r/CompTIA/' },
   { name: 'r/CyberSecurity', url: 'https://www.reddit.com/r/cybersecurity/' },
   { name: 'r/AskNetsec', url: 'https://www.reddit.com/r/AskNetsec/' },
+  { name: 'r/Casp', url: 'https://www.reddit.com/r/casp/' }
+  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
+  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
   { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
 ];
 
@@ -37,7 +40,8 @@ const linkedInPeople = [
 ];
 
 const otherResources = [
-  { name: 'Official CompTIA Website', url: 'https://www.comptia.org' },
+  {{ name: '*VERY IMPORTANT FOR CASP* -wyzguyscybersecurity blog', url: 'https://wyzguyscybersecurity.com/new-insights-for-the-casp-cas-004-exam/' }
+  { name: 'Official CompTIA Recources', url: 'https://www.comptia.org/resources' },
   { name: 'Cybrary', url: 'https://www.cybrary.it' },
   { name: 'OWASP Official Site', url: 'https://owasp.org' }
 ];
