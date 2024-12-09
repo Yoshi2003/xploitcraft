@@ -2,10 +2,10 @@ import React from 'react';
 import './Resources.css';
 
 const redditSubreddits = [
-  { name: 'r/CompTIA', url: '#' },
-  { name: 'r/CyberSecurity', url: '#' },
-  { name: 'r/AskNetsec', url: '#' },
-  { name: 'r/SecurityCareerAdvice', url: '#' }
+  { name: 'r/CompTIA', url: 'https://www.reddit.com/r/CompTIA/' },
+  { name: 'r/CyberSecurity', url: 'https://www.reddit.com/r/cybersecurity/' },
+  { name: 'r/AskNetsec', url: 'https://www.reddit.com/r/AskNetsec/' },
+  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
 ];
 
 const redditPosts = [
