@@ -1,65 +1,91 @@
+/* Global Container */
 .resources-container {
-  background-color: #000; /* black background */
-  color: #f00; /* red text */
-  padding: 20px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", monospace;
+  color: #fff;
+  background: #121212;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 800px;
 }
 
-.resources-title {
-  font-size: 2em;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  border-bottom: 1px solid #f00;
-  padding-bottom: 10px;
+h1 {
+  text-align: center;
+  color: #f54b64;
+  margin-bottom: 1rem;
 }
 
-.resources-section {
-  margin-bottom: 40px;
+/* Controls */
+.resources-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
-.resources-section h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
+.resources-controls input,
+.resources-controls select,
+.resources-controls button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.resources-controls input {
+  flex: 2;
+}
+
+.resources-controls select,
+.resources-controls button {
+  background: #f54b64;
+  color: white;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+}
+
+/* Random Resource Section */
+.random-resource {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.random-resource h2 {
+  color: #f54b64;
+}
+
+.random-resource a {
+  color: #48cae4;
+  font-size: 1.2rem;
+}
+
+/* Resource List */
+.resources-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.resources-list li {
+  padding: 0.5rem;
+  background: #252525;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+}
+
+.resources-list li a {
+  color: #48cae4;
+  text-decoration: none;
+}
+
+.resources-list li a:hover {
+  color: #f54b64;
   text-decoration: underline;
 }
 
-.resources-subsection {
-  margin-left: 20px;
-  margin-bottom: 20px;
+p {
+  text-align: center;
+  color: #888;
 }
 
-.resources-subsection h3 {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
-
-.resources-section ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.resources-section li {
-  margin-bottom: 5px;
-}
-
-.resources-section li a {
-  color: #f00;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.resources-section li a:hover {
-  color: #fff; /* white on hover */
-}
-
-.framework-list {
-  columns: 2; /* multi-column layout for frameworks */
-  column-gap: 40px;
-}
-
-.framework-list li {
-  break-inside: avoid;
-  margin-bottom: 5px;
-}
