@@ -50,6 +50,16 @@ const comptiaObjectives = [
   { cert: 'CASP+', url: '#' },
   { cert: 'PenTest+', url: '#' },
   { cert: 'Cloud+', url: '#' }
+  { cert: 'Cloud Essentials', url: '#' }
+  { cert: 'Linux+', url: '#' }
+  { cert: 'Data+', url: '#' }
+  { cert: 'DataSys+', url: '#' }
+  { cert: 'DataX+', url: '#' }
+  { cert: 'Server+', url: '#' }
+  { cert: 'Project+', url: '#' }
+  { cert: 'ITF', url: '#' }
+  { cert: 'Tech+', url: '#' }
+  { cert: 'SecurityX', url: '#' }
 ];
 
 // Extensive list of frameworks, standards, methodologies, and references:
