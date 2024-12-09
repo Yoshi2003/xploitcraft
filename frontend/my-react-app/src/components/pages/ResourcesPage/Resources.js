@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Resources.css';
 
 const redditSubreddits = [
@@ -49,16 +49,16 @@ const comptiaObjectives = [
   { cert: 'CySA+', url: '#' },
   { cert: 'CASP+', url: '#' },
   { cert: 'PenTest+', url: '#' },
-  { cert: 'Cloud+', url: '#' }
-  { cert: 'Cloud Essentials', url: '#' }
-  { cert: 'Linux+', url: '#' }
-  { cert: 'Data+', url: '#' }
-  { cert: 'DataSys+', url: '#' }
-  { cert: 'DataX+', url: '#' }
-  { cert: 'Server+', url: '#' }
-  { cert: 'Project+', url: '#' }
-  { cert: 'ITF', url: '#' }
-  { cert: 'Tech+', url: '#' }
+  { cert: 'Cloud+', url: '#' },
+  { cert: 'Cloud Essentials', url: '#' },
+  { cert: 'Linux+', url: '#' },
+  { cert: 'Data+', url: '#' },
+  { cert: 'DataSys+', url: '#' },
+  { cert: 'DataX+', url: '#' },
+  { cert: 'Server+', url: '#' },
+  { cert: 'Project+', url: '#' },
+  { cert: 'ITF', url: '#' },
+  { cert: 'Tech+', url: '#' },
   { cert: 'SecurityX', url: '#' }
 ];
 
@@ -80,114 +80,121 @@ const securityFrameworks = [
   { name: 'SANS Top 20 Critical Controls', url: '#' },
   { name: 'Cybersecurity Maturity Model Certification (CMMC)', url: 'https://www.acq.osd.mil/cmmc/' },
   { name: 'FISMA (Federal Information Security Management Act)', url: '#' },
-  { name: 'NERC CIP (North American Electric Reliability Corporation Critical Infrastructure Protection)', url: '#' },
+  { name: 'NERC CIP', url: '#' },
   { name: 'GDPR (General Data Protection Regulation)', url: 'https://gdpr.eu/' },
   { name: 'HITRUST CSF', url: 'https://hitrustalliance.net/' },
   { name: 'ISO/IEC 27002', url: 'https://www.iso.org/standard/73906.html' },
   { name: 'NIST 800-53 Security Controls', url: 'https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final' },
   { name: 'NIST 800-171', url: 'https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final' },
   { name: 'Cyber Kill Chain variations (e.g., Unified Kill Chain)', url: '#' },
-  { name: 'VERIS (Vocabulary for Event Recording and Incident Sharing)', url: 'http://veriscommunity.net/' },
+  { name: 'VERIS', url: 'http://veriscommunity.net/' },
   { name: 'MARION Framework', url: '#' },
   { name: 'Diamond Model of Intrusion Analysis', url: '#' },
-  { name: 'ATT&CK for ICS (Industrial Control Systems)', url: 'https://collaborate.mitre.org/attackics/index.php/Main_Page' },
-  { name: 'SOC2 (Service Organization Control 2)', url: '#' },
+  { name: 'ATT&CK for ICS', url: 'https://collaborate.mitre.org/attackics/index.php/Main_Page' },
+  { name: 'SOC2', url: '#' },
   { name: 'ISO 22301 (Business Continuity)', url: 'https://www.iso.org/iso-22301-business-continuity.html' }
 ];
 
+// Construct resourcesData from the arrays above:
+const resourcesData = {
+  // Combine redditSubreddits and redditPosts, mapping posts.title to name
+  reddit: [
+    ...redditSubreddits,
+    ...redditPosts.map((post) => ({ name: post.title, url: post.url }))
+  ],
+  // Combine youtubeChannels and youtubeVideos, mapping videos.title to name
+  youtube: [
+    ...youtubeChannels,
+    ...youtubeVideos.map((vid) => ({ name: vid.title, url: vid.url }))
+  ],
+  // udemyCourses using title to name
+  udemy: udemyCourses.map((course) => ({ name: course.title, url: course.url })),
+  // frameworks
+  frameworks: [...securityFrameworks],
+  // certifications from comptiaObjectives: map cert to name
+  certifications: comptiaObjectives.map((obj) => ({ name: obj.cert, url: obj.url })),
+  // otherResources already use name
+  other: [...otherResources],
+  // linkedIn as a separate category if desired
+  linkedin: [...linkedInPeople]
+};
+
 function Resources() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sorted, setSorted] = useState(false);
+  const [randomResource, setRandomResource] = useState(null);
+
+  const handleSearch = (event) => setSearchTerm(event.target.value.toLowerCase());
+  const handleCategoryChange = (event) => setSelectedCategory(event.target.value);
+
+  const filteredResources = Object.entries(resourcesData)
+    .filter(([category]) => selectedCategory === "all" || category === selectedCategory)
+    .flatMap(([, resources]) => resources)
+    .filter((resource) => resource.name.toLowerCase().includes(searchTerm))
+    .sort((a, b) => (sorted ? a.name.localeCompare(b.name) : 0));
+
+  const handleRandomResource = () => {
+    const allResources = Object.values(resourcesData).flat();
+    const random = allResources[Math.floor(Math.random() * allResources.length)];
+    setRandomResource(random);
+  };
+
   return (
     <div className="resources-container">
-      <h1 className="resources-title">Resources Hub</h1>
-      
-      <section className="resources-section">
-        <h2>Reddit Resources</h2>
-        <div className="resources-subsection">
-          <h3>Subreddits</h3>
-          <ul>
-            {redditSubreddits.map((sub, i) => (
-              <li key={i}><a href={sub.url} target="_blank" rel="noreferrer">{sub.name}</a></li>
-            ))}
-          </ul>
+      <h1>Cybersecurity Resources Hub</h1>
+
+      <div className="resources-controls">
+        <input
+          type="text"
+          placeholder="Search resources..."
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+
+        <select onChange={handleCategoryChange}>
+          <option value="all">All Categories</option>
+          {Object.keys(resourcesData).map((category) => (
+            <option key={category} value={category}>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </option>
+          ))}
+        </select>
+
+        <button onClick={() => setSorted(!sorted)}>
+          {sorted ? "Unsort" : "Sort A-Z"}
+        </button>
+
+        <button onClick={handleRandomResource}>Random Resource</button>
+      </div>
+
+      {randomResource && (
+        <div className="random-resource">
+          <h2>Explore This Resource:</h2>
+          <a href={randomResource.url} target="_blank" rel="noopener noreferrer">
+            {randomResource.name}
+          </a>
         </div>
-        <div className="resources-subsection">
-          <h3>Key Reddit Posts</h3>
-          <ul>
-            {redditPosts.map((post, i) => (
-              <li key={i}><a href={post.url} target="_blank" rel="noreferrer">{post.title}</a></li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      )}
 
-      <section className="resources-section">
-        <h2>YouTube Resources</h2>
-        <div className="resources-subsection">
-          <h3>Channels</h3>
-          <ul>
-            {youtubeChannels.map((ch, i) => (
-              <li key={i}><a href={ch.url} target="_blank" rel="noreferrer">{ch.name}</a></li>
-            ))}
-          </ul>
-        </div>
-        <div className="resources-subsection">
-          <h3>Videos</h3>
-          <ul>
-            {youtubeVideos.map((vid, i) => (
-              <li key={i}><a href={vid.url} target="_blank" rel="noreferrer">{vid.title}</a></li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="resources-section">
-        <h2>Udemy Courses</h2>
-        <ul>
-          {udemyCourses.map((course, i) => (
-            <li key={i}><a href={course.url} target="_blank" rel="noreferrer">{course.title}</a></li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="resources-section">
-        <h2>LinkedIn Professionals</h2>
-        <ul>
-          {linkedInPeople.map((person, i) => (
-            <li key={i}><a href={person.url} target="_blank" rel="noreferrer">{person.name}</a></li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="resources-section">
-        <h2>Other Resources</h2>
-        <ul>
-          {otherResources.map((res, i) => (
-            <li key={i}><a href={res.url} target="_blank" rel="noreferrer">{res.name}</a></li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="resources-section">
-        <h2>CompTIA Certification Objectives</h2>
-        <ul>
-          {comptiaObjectives.map((obj, i) => (
-            <li key={i}><a href={obj.url} target="_blank" rel="noreferrer">{obj.cert}</a></li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="resources-section">
-        <h2>Security Frameworks & Standards</h2>
-        <ul className="framework-list">
-          {securityFrameworks.map((fw, i) => (
-            <li key={i}><a href={fw.url} target="_blank" rel="noreferrer">{fw.name}</a></li>
-          ))}
-        </ul>
-      </section>
+      <ul className="resources-list">
+        {filteredResources.length ? (
+          filteredResources.map((resource, index) => (
+            <li key={index}>
+              <a href={resource.url} target="_blank" rel="noopener noreferrer">
+                {resource.name}
+              </a>
+            </li>
+          ))
+        ) : (
+          <p>No resources found.</p>
+        )}
+      </ul>
     </div>
   );
 }
 
 export default Resources;
+
 
 
