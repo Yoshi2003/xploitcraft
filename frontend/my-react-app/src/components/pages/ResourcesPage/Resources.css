@@ -1,0 +1,65 @@
+.resources-container {
+  background-color: #000; /* black background */
+  color: #f00; /* red text */
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.resources-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #f00;
+  padding-bottom: 10px;
+}
+
+.resources-section {
+  margin-bottom: 40px;
+}
+
+.resources-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.resources-subsection {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.resources-subsection h3 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.resources-section ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resources-section li {
+  margin-bottom: 5px;
+}
+
+.resources-section li a {
+  color: #f00;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.resources-section li a:hover {
+  color: #fff; /* white on hover */
+}
+
+.framework-list {
+  columns: 2; /* multi-column layout for frameworks */
+  column-gap: 40px;
+}
+
+.framework-list li {
+  break-inside: avoid;
+  margin-bottom: 5px;
+}
