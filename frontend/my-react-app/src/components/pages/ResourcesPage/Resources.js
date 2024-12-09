@@ -12,6 +12,7 @@ const redditSubreddits = [
 ];
 
 const redditPosts = [
+  { title: 'View my Reddit post- How I passed 9 CompTIA certs with no experience and key tips on how I got my job.', url: '#' }
   { title: 'Key Tips for Passing A+', url: '#' },
   { title: 'Network+ Study Notes Mega-Thread', url: '#' },
   { title: 'Security+ Cram Sheet Discussion', url: '#' }
