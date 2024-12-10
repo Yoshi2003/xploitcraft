@@ -5,14 +5,14 @@ const redditSubreddits = [
   { name: 'r/CompTIA', url: 'https://www.reddit.com/r/CompTIA/' },
   { name: 'r/CyberSecurity', url: 'https://www.reddit.com/r/cybersecurity/' },
   { name: 'r/AskNetsec', url: 'https://www.reddit.com/r/AskNetsec/' },
-  { name: 'r/Casp', url: 'https://www.reddit.com/r/casp/' }
-  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
-  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
+  { name: 'r/Casp', url: 'https://www.reddit.com/r/casp/' },
+  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' },
+  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' },
   { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
 ];
 
 const redditPosts = [
-  { title: 'View my Reddit post- How I passed 9 CompTIA certs with no experience and key tips on how I got my job.', url: '#' }
+  { title: 'View my Reddit post- How I passed 9 CompTIA certs with no experience and key tips on how I got my job.', url: '#' },
   { title: 'Key Tips for Passing A+', url: '#' },
   { title: 'Network+ Study Notes Mega-Thread', url: '#' },
   { title: 'Security+ Cram Sheet Discussion', url: '#' }
@@ -41,7 +41,7 @@ const linkedInPeople = [
 ];
 
 const otherResources = [
-  {{ name: '*VERY IMPORTANT FOR CASP* -wyzguyscybersecurity blog', url: 'https://wyzguyscybersecurity.com/new-insights-for-the-casp-cas-004-exam/' }
+  { name: '*VERY IMPORTANT FOR CASP* -wyzguyscybersecurity blog', url: 'https://wyzguyscybersecurity.com/new-insights-for-the-casp-cas-004-exam/' },
   { name: 'Official CompTIA Recources', url: 'https://www.comptia.org/resources' },
   { name: 'Cybrary', url: 'https://www.cybrary.it' },
   { name: 'OWASP Official Site', url: 'https://owasp.org' }
