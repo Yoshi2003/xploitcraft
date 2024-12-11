@@ -22,7 +22,7 @@ def send_email(to_email, subject, content):
 
     # Set up the email
     message = Mail(
-        from_email='dailycyberbrief@xploitcraft.com',  # Must be verified in SendGrid
+        from_email='dailycyberbrief@proxyauthrequired.com',  # Must be verified in SendGrid
         to_emails=to_email,
         subject=subject,
         html_content=content
