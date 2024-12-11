@@ -12,7 +12,7 @@ def generate_single_analogy(concept, category):
     """
     prompt = (
         f"Generate an analogy for the concept '{concept}' using the context of '{category}'. "
-        "Make it easy to understand, concise, and entertaining."
+        "Make it easy to understand but informative and in a teaching style, concise but in depth, and entertaining,  with one key info at the end to make sure the info is rememebered."
     )
 
     try:
@@ -34,7 +34,7 @@ def generate_comparison_analogy(concept1, concept2, category):
     """
     prompt = (
         f"Compare '{concept1}' and '{concept2}' using an analogy in the context of '{category}'. "
-        "Explain how they are similar and different."
+        "Explain how they are similar and different or how they might work in conjuction with each other, in a teaching style, informative, concise but in depth, and entertaining,  with one key info at the end to make sure the info is rememebered."
     )
 
     try:
@@ -56,7 +56,7 @@ def generate_triple_comparison_analogy(concept1, concept2, concept3, category):
     """
     prompt = (
         f"Compare '{concept1}', '{concept2}', and '{concept3}' using an analogy in the context of '{category}'. "
-        "Provide a fun and simple explanation that highlights the similarities and differences."
+        ""Explain how they are similar and different or how they might work in conjuction with each other, in a teaching style, informative, concise but in depth, and entertaining, with one key info at the end to make sure the info is rememebered."
     )
 
     try:
