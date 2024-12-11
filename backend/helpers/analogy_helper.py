@@ -73,3 +73,4 @@ def generate_triple_comparison_analogy(concept1, concept2, concept3, category):
         return "An error occurred while generating the analogy."
 
 
+
