@@ -20,7 +20,7 @@ const AnalogyHub = () => {
       case 'comparison':
         setInputValues(['', '']);
         break;
-      case 'triple-comparison':
+      case 'triple':
         setInputValues(['', '', '']);
         break;
       default:
