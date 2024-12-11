@@ -72,12 +72,12 @@ def log_request_info():
     
     
 app.register_blueprint(payload_bp, url_prefix='/payload')
-app.register_blueprint(scenario_bp, url_prefix='/api/scenario')
-app.register_blueprint(analogy_bp, url_prefix='/api/analogy')
-app.register_blueprint(email_bp, url_prefix='/api/email')
-app.register_blueprint(subscribe_bp, url_prefix='/api/subscribe')
-app.register_blueprint(unsubscribe_bp, url_prefix='/api/unsubscribe')
-app.register_blueprint(update_bp, url_prefix='/api/update')
+app.register_blueprint(scenario_bp, url_prefix='/scenario')
+app.register_blueprint(analogy_bp, url_prefix='/analogy')
+app.register_blueprint(email_bp, url_prefix='/email')
+app.register_blueprint(subscribe_bp, url_prefix='/subscribe')
+app.register_blueprint(unsubscribe_bp, url_prefix='/unsubscribe')
+app.register_blueprint(update_bp, url_prefix='/update')
 
 @app.route('/register', methods=['POST'])
 def register():
