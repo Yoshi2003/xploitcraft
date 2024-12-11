@@ -37,7 +37,7 @@ function Home() {
     if (vulnerability && evasionTechnique) {
       setLoading(true);
 
-      fetch(`${ENDPOINT}/generate_payload`, {
+      fetch(`${ENDPOINT}payload/generate_payload`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
