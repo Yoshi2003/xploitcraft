@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ScenarioSphere.css';
 
 // Define the endpoint for API requests
-const ENDPOINT = "api/";
+const ENDPOINT = "/api";
 
 const ScenarioSphere = () => {
   const [isGenerating, setIsGenerating] = useState(false);
