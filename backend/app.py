@@ -18,6 +18,7 @@ from routes.subscribe_routes import subscribe_bp
 from routes.unsubscribe_routes import unsubscribe_bp
 from routes.update_routes import update_bp
 from database.models import create_user
+from routes.grc_routes import grc_bp
 
 
 
@@ -61,7 +62,7 @@ app.config['SESSION_REDIS'] = redis.StrictRedis(host='redis', port=6379, db=0)
 Session(app)
 
 # Register blueprints
-@app.route('/')
+@app.route('/health')
 def home():
     return 'Backend is running'
 
@@ -78,6 +79,7 @@ app.register_blueprint(email_bp, url_prefix='/email')
 app.register_blueprint(subscribe_bp, url_prefix='/subscribe')
 app.register_blueprint(unsubscribe_bp, url_prefix='/unsubscribe')
 app.register_blueprint(update_bp, url_prefix='/update')
+app.register_blueprint(grc_bp, url_prefix='/grc')
 
 @app.route('/register', methods=['POST'])
 def register():
