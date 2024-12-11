@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './DailyCyberBrief.css';
 
-const ENDPOINT = "http://3.237.99.181/api";
+const ENDPOINT = "/api";
 
 const DailyCyberBrief = () => {
   const [email, setEmail] = useState('');
