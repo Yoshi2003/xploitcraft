@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Resources.css';
 
+// Existing Resource Arrays
 const redditSubreddits = [
   { name: 'r/CompTIA', url: 'https://www.reddit.com/r/CompTIA/' },
   { name: 'r/CyberSecurity', url: 'https://www.reddit.com/r/cybersecurity/' },
@@ -42,15 +43,15 @@ const linkedInPeople = [
 
 const otherResources = [
   { name: '*VERY IMPORTANT FOR CASP* -wyzguyscybersecurity blog', url: 'https://wyzguyscybersecurity.com/new-insights-for-the-casp-cas-004-exam/' },
-  { name: 'Official CompTIA Recources', url: 'https://www.comptia.org/resources' },
+  { name: 'Official CompTIA Resources', url: 'https://www.comptia.org/resources' },
   { name: 'Cybrary', url: 'https://www.cybrary.it' },
   { name: 'OWASP Official Site', url: 'https://owasp.org' }
 ];
 
-// Updated CompTIA Objectives array as requested
+// CompTIA Objectives Array
 const comptiaObjectives = [
   { cert: 'A+ Core 1', url: 'https://partners.comptia.org/docs/default-source/resources/comptia-a-new-core-objectives-(3-0)' },
-  { cert: 'A+ core 2', url: 'https://partners.comptia.org/docs/default-source/resources/comptia-a-220-1102-exam-objectives-(3-0)' },
+  { cert: 'A+ Core 2', url: 'https://partners.comptia.org/docs/default-source/resources/comptia-a-220-1102-exam-objectives-(3-0)' },
   { cert: 'Network+ (009)', url: 'https://partners.comptia.org/docs/default-source/resources/comptia-network-n10-009-exam-objectives-(4-0)' },
   { cert: 'Security+ (701)', url: 'https://certblaster.com/wp-content/uploads/2023/11/CompTIA-Security-SY0-701-Exam-Objectives-1.pdf' },
   { cert: 'CySA+ (003)', url: 'https://partners.comptia.org/docs/default-source/resources/comptia-cysa-cs0-003-exam-objectives-2-0.pdf' },
@@ -69,7 +70,7 @@ const comptiaObjectives = [
   { cert: 'SecurityX (CASP 005)', url: 'https://partners.comptia.org/docs/default-source/resources/comptia-securityx-cas-005-exam-objectives-(3-0)' }
 ];
 
-// Security frameworks as is:
+// Security Frameworks Array
 const securityFrameworks = [
   { name: 'NIST Cybersecurity Framework', url: 'https://www.nist.gov/cyberframework' },
   { name: 'ISO/IEC 27001', url: 'https://www.iso.org/isoiec-27001-information-security.html' },
@@ -102,49 +103,14 @@ const securityFrameworks = [
   { name: 'ISO 22301 (Business Continuity)', url: 'https://www.iso.org/iso-22301-business-continuity.html' }
 ];
 
-// Now let's create categories for each CompTIA cert as requested
-// Master Category: CompTIA Certification Objectives (all certs)
-const compTIAObjectivesCategory = comptiaObjectives.map(obj => ({ name: obj.cert, url: obj.url }));
+// Helper Function to Capitalize First Letter
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
-// Breakdowns for each cert group:
-
-// A+ (contains A+ Core 1 & A+ core 2)
-const aPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().includes('a+ core'));
-
-// Network+
-const networkPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('network+'));
-
-// Security+
-const securityPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('security+') && !obj.cert.toLowerCase().includes('x'));
-
-// CySA+
-const cysaPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('cysa+'));
-
-// SecurityX/CASP (contains CASP+ and SecurityX (CASP 005))
-const securityXCasp = comptiaObjectives.filter(obj => obj.cert.toLowerCase().includes('casp') || obj.cert.toLowerCase().includes('securityx'));
-
-// PenTest+
-const penTestPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('pentest+'));
-
-// Cloud+/Cloud Essentials (contains Cloud+ and Cloud Essentials)
-const cloudPlusEssentials = comptiaObjectives.filter(obj => obj.cert.toLowerCase().includes('cloud'));
-
-// Linux+
-const linuxPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('linux+'));
-
-// Data+ (contains Data+, DataSys+, DataX+)
-const dataPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('data'));
-
-// Server+
-const serverPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('server+'));
-
-// Project+
-const projectPlus = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('project+'));
-
-// ITF/TECH+ (contains ITF and Tech+)
-const itfTech = comptiaObjectives.filter(obj => obj.cert.toLowerCase().startsWith('itf') || obj.cert.toLowerCase().includes('tech+'));
-
+// Constructing Resources Data with Certification Categories
 const resourcesData = {
+  // Existing Categories
   reddit: [
     ...redditSubreddits,
     ...redditPosts.map((post) => ({ name: post.title, url: post.url }))
@@ -157,22 +123,155 @@ const resourcesData = {
   frameworks: [...securityFrameworks],
   other: [...otherResources],
   linkedin: [...linkedInPeople],
-  // Master category for all CompTIA cert objectives
-  'compTIA certification objectives': compTIAObjectivesCategory,
 
-  // Individual cert-based categories:
-  'A+': aPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'Network+': networkPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'Security+': securityPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'CySA+': cysaPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'SecurityX/CASP': securityXCasp.map(obj => ({ name: obj.cert, url: obj.url })),
-  'PenTest+': penTestPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'Cloud+/Cloud Essentials': cloudPlusEssentials.map(obj => ({ name: obj.cert, url: obj.url })),
-  'Linux+': linuxPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'Data+': dataPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'Server+': serverPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'Project+': projectPlus.map(obj => ({ name: obj.cert, url: obj.url })),
-  'ITF/TECH+': itfTech.map(obj => ({ name: obj.cert, url: obj.url }))
+  // Master Category: CompTIA Certification Objectives
+  'CompTIA Certification Objectives': comptiaObjectives.map((obj) => ({ name: obj.cert, url: obj.url })),
+
+  // Individual Certification Categories
+
+  // A+ Category
+  'A+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().includes('a+ core'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'A+ Study Guide', url: '#' },
+    { name: 'A+ Practice Exams', url: '#' },
+    // Add more A+ specific resources here
+  ],
+
+  // Network+ Category
+  'Network+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('network+'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'Network+ Study Guide', url: '#' },
+    { name: 'Network+ Labs', url: '#' },
+    // Add more Network+ specific resources here
+  ],
+
+  // Security+ Category
+  'Security+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('security+') && !obj.cert.toLowerCase().includes('x'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'Security+ Study Guide', url: '#' },
+    { name: 'Security+ Practice Labs', url: '#' },
+    // Add more Security+ specific resources here
+  ],
+
+  // CySA+ Category
+  'CySA+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('cysa+'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'CySA+ Study Guide', url: '#' },
+    { name: 'CySA+ Practice Exams', url: '#' },
+    // Add more CySA+ specific resources here
+  ],
+
+  // SecurityX/CASP Category
+  'SecurityX/CASP': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().includes('casp') || obj.cert.toLowerCase().includes('securityx'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'CASP+ Study Guide', url: '#' },
+    { name: 'SecurityX Practice Labs', url: '#' },
+    // Add more SecurityX/CASP specific resources here
+  ],
+
+  // PenTest+ Category
+  'PenTest+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('pentest+'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'PenTest+ Study Guide', url: '#' },
+    { name: 'PenTest+ Labs', url: '#' },
+    // Add more PenTest+ specific resources here
+  ],
+
+  // Cloud+/Cloud Essentials Category
+  'Cloud+/Cloud Essentials': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().includes('cloud'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'Cloud+ Study Guide', url: '#' },
+    { name: 'Cloud Essentials Training', url: '#' },
+    // Add more Cloud+/Cloud Essentials specific resources here
+  ],
+
+  // Linux+ Category
+  'Linux+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('linux+'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'Linux+ Study Guide', url: '#' },
+    { name: 'Linux+ Practice Labs', url: '#' },
+    // Add more Linux+ specific resources here
+  ],
+
+  // Data+ Category
+  'Data+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('data'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'Data+ Study Guide', url: '#' },
+    { name: 'Data+ Practice Exams', url: '#' },
+    // Add more Data+ specific resources here
+  ],
+
+  // Server+ Category
+  'Server+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('server+'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'Server+ Study Guide', url: '#' },
+    { name: 'Server+ Labs', url: '#' },
+    // Add more Server+ specific resources here
+  ],
+
+  // Project+ Category
+  'Project+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('project+'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'Project+ Study Guide', url: '#' },
+    { name: 'Project+ Practice Exams', url: '#' },
+    // Add more Project+ specific resources here
+  ],
+
+  // ITF/TECH+ Category
+  'ITF/TECH+': [
+    // Objective Links
+    ...comptiaObjectives
+      .filter(obj => obj.cert.toLowerCase().startsWith('itf') || obj.cert.toLowerCase().includes('tech+'))
+      .map(obj => ({ name: obj.cert, url: obj.url })),
+    // Additional Resources
+    { name: 'ITF Study Guide', url: '#' },
+    { name: 'Tech+ Training Videos', url: '#' },
+    // Add more ITF/TECH+ specific resources here
+  ]
 };
 
 function Resources() {
@@ -184,20 +283,24 @@ function Resources() {
   const handleSearch = (event) => setSearchTerm(event.target.value.toLowerCase());
   const handleCategoryChange = (event) => setSelectedCategory(event.target.value);
 
+  // Filtering Resources Based on Search and Category
   const filteredResources = Object.entries(resourcesData)
     .filter(([category]) => selectedCategory === "all" || category === selectedCategory)
     .flatMap(([, resources]) => resources)
     .filter((resource) => resource.name.toLowerCase().includes(searchTerm))
     .sort((a, b) => (sorted ? a.name.localeCompare(b.name) : 0));
 
+  // Handling Random Resource Selection
   const handleRandomResource = () => {
     const currentCategoryResources = selectedCategory === "all"
       ? Object.values(resourcesData).flat()
       : (resourcesData[selectedCategory] || []);
+    
     if (currentCategoryResources.length === 0) {
       setRandomResource(null);
       return;
     }
+    
     const random = currentCategoryResources[Math.floor(Math.random() * currentCategoryResources.length)];
     setRandomResource(random);
   };
@@ -214,11 +317,11 @@ function Resources() {
           onChange={handleSearch}
         />
 
-        <select onChange={handleCategoryChange}>
+        <select onChange={handleCategoryChange} value={selectedCategory}>
           <option value="all">All Categories</option>
           {Object.keys(resourcesData).map((category) => (
             <option key={category} value={category}>
-              {category.charAt(0).toUpperCase() + category.slice(1)}
+              {capitalizeFirstLetter(category)}
             </option>
           ))}
         </select>
@@ -257,4 +360,5 @@ function Resources() {
 }
 
 export default Resources;
+
 
