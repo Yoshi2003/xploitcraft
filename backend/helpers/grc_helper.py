@@ -46,13 +46,13 @@ Requirements:
 - Category: {category}
 - Difficulty: {difficulty}
 - Make the question related to GRC (Governance, Risk, Compliance) for CompTIA-style.
-- Provide detailed explanations.
+- Provide detailed explanation on why each answer is wrong adn why the correct answer is correct, with an exam tip at the end.
 - Return only the JSON object and nothing else.
 """
 
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",  # or "gpt-4o" if you trust that environment
+            model="gpt-4o",  # or "gpt-4o" if you trust that environment
             messages=[{"role": "user", "content": prompt}],
             max_tokens=500,
             temperature=0.7,
