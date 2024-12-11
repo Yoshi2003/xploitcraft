@@ -44,26 +44,26 @@ def delete_user(email):
 
 
 
-class GRCQuestion:
-    def __init__(self, question: str):
-        self.question = question
-        self.created_at = datetime.utcnow()
+# class GRCQuestion:
+  #  def __init__(self, question: str):
+   #     self.question = question
+    #    self.created_at = datetime.utcnow()
 
     @staticmethod
-    def collection():
-        return db.grc_questions
+   # def collection():
+   #     return db.grc_questions
 
-    def save(self):
+  #  def save(self):
         doc = {
-            "question": self.question,
-            "created_at": self.created_at
+     #       "question": self.question,
+     #       "created_at": self.created_at
         }
-        result = self.collection().insert_one(doc)
-        logger.debug(f"Inserted GRCQuestion with _id={result.inserted_id}")
-        return result.inserted_id
+     #   result = self.collection().insert_one(doc)
+     #   logger.debug(f"Inserted GRCQuestion with _id={result.inserted_id}")
+    #    return result.inserted_id
 
-    @staticmethod
-    def query_filter_by(question: str):
-        return GRCQuestion.collection().find_one({"question": question})
+  #  @staticmethod
+ #   def query_filter_by(question: str):
+ #     #  return GRCQuestion.collection().find_one({"question": question})
 
 
