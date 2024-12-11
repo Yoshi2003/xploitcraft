@@ -45,8 +45,8 @@ Example:
 Requirements:
 - Category: {category}
 - Difficulty: {difficulty}
-- Make the question related to GRC (Governance, Risk, Compliance) for CompTIA-style.
-- Provide detailed explanation on why each answer is wrong adn why the correct answer is correct, with an exam tip at the end.
+- Make the question related to GRC (Governance, Risk, Compliance) for CompTIA-style and in format like the example above.
+- Provide detailed explanation on why each answer is wrong adn why the correct answer is correct, with an exam tip at the end in format as the example above.
 - Return only the JSON object and nothing else.
 """
 
