@@ -7,23 +7,30 @@ const redditSubreddits = [
   { name: 'r/CyberSecurity', url: 'https://www.reddit.com/r/cybersecurity/' },
   { name: 'r/AskNetsec', url: 'https://www.reddit.com/r/AskNetsec/' },
   { name: 'r/Casp', url: 'https://www.reddit.com/r/casp/' },
-  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' },
-  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' },
-  { name: 'r/SecurityCareerAdvice', url: 'https://www.reddit.com/r/SecurityCareerAdvice/' }
+  { name: 'r/ITCareerQuestions', url: 'https://www.reddit.com/r/ITCareerQuestions/' },
+  { name: 'r/WGU', url: 'https://www.reddit.com/r/WGU/' },
+  { name: 'r/CCNA', url: 'https://www.reddit.com/r/ccna/' },
+  { name: 'r/sysadmin', url: 'https://www.reddit.com/r/sysadmin/' },
+  { name: 'r/linuxquestions/', url: 'https://www.reddit.com/r/linuxquestions/' },
 ];
 
 const redditPosts = [
   { title: 'View my Reddit post- How I passed 9 CompTIA certs with no experience and key tips on how I got my job.', url: '#' },
-  { title: 'Key Tips for Passing A+', url: '#' },
-  { title: 'Network+ Study Notes Mega-Thread', url: '#' },
-  { title: 'Security+ Cram Sheet Discussion', url: '#' }
+  { title: '##', url: '#' },
+  { title: '##', url: '#' },
+  { title: '##', url: '#' },
+  { title: 'How I passed COMPTIA A+ N+ S+', url: 'https://www.reddit.com/r/CompTIA/comments/1cra3cg/how_i_passed_comptia_a_n_s/' },
 ];
 
 const youtubeChannels = [
-  { name: 'Professor Messer', url: '#' },
-  { name: 'NetworkChuck', url: '#' },
-  { name: 'ITProTV', url: '#' },
-  { name: 'HackerSploit', url: '#' }
+  { name: 'Professor Messer', url: 'https://www.youtube.com/@professormesser' },
+  { name: 'NetworkChuck', url: 'https://www.youtube.com/@NetworkChuck' },
+  { name: 'PowerCertAnimatedVideos', url: 'https://www.youtube.com/@PowerCertAnimatedVideos' },
+  { name: 'HackerSploit', url: 'https://www.youtube.com/@HackerSploit' },
+  { name: 'Cyberkraft', url: 'https://www.youtube.com/@cyberkraft' },
+  { name: 'howtonetwork', url: 'https://www.youtube.com/@howtonetworkcom' },
+  { name: 'MyCS1', url: 'https://www.youtube.com/@MyCS1/videos' }
+  
 ];
 
 const youtubeVideos = [
