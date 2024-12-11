@@ -3,7 +3,7 @@ import './AnalogyHub.css';
 import backgroundImage from './backround1.jpg'; // Importing the background image
 import loadingImage from './loading2.png'; // Importing the loading image
 
-const ENDPOINT = "http://3.237.99.181/api"; 
+const ENDPOINT = "/api"; 
 
 const AnalogyHub = () => {
   const [analogyType, setAnalogyType] = useState('single');
