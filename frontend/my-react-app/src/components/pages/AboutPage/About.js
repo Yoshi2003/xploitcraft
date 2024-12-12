@@ -114,3 +114,13 @@ function About() {
   </p>
 </section>
       </div>
+
+      <footer className="about-footer">
+        <p>© 2025 ProxyAuthRequired. Developed and Designed by Carter Perez.</p>
+      </footer>
+    </div>
+  );
+}
+
+export default About;
+
