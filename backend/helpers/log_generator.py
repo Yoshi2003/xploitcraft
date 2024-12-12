@@ -52,7 +52,6 @@ def generate_logs(log_type=None, count=10):
             log = LOG_TYPES[log_type]()
         else:
             log = random.choice(list(LOG_TYPES.values()))()
-            log = log()  # Call the lambda function to generate the log
         logs.append(log)
     return logs
 
