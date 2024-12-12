@@ -144,6 +144,6 @@ const GRC = () => {
   );
 };
 
-export default GRCWizard;
+export default GRC;
 
 
