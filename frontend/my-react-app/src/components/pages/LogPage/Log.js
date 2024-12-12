@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./log.css";
 
-// API Base URL based on Apache proxy setup
-const API_BASE_URL = "/api/logs";
+// Corrected API Base URL for Apache proxy setup
+const ENDPOINT = "/api";  
 
 // Log Categories and Severities
 const LOG_CATEGORIES = ["security", "event", "error", "debug", "info"];
@@ -25,7 +25,7 @@ function Log() {
   const generateLogs = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`${API_BASE_URL}/generate`, {
+      const response = await axios.post(`${ENDPOINT}/logs/generate_logs`, {
         category,
         count,
       });
@@ -43,7 +43,7 @@ function Log() {
     setLoading(true);
     setSelectedLog(log);
     try {
-      const response = await axios.post(`${API_BASE_URL}/analyze`, {
+      const response = await axios.post(`${ENDPOINT}/logs/analyze_logs`, {
         logs: [log.log],
       });
       const result = response.data.logs[0].analysis || "No analysis available.";
@@ -94,6 +94,7 @@ function Log() {
     a.download = "logs_export.json";
     a.click();
   };
+
 
   return (
     <div className="log-page-container">
