@@ -1,3 +1,5 @@
+#global requirements (this txt file is only informational and not needed for the app)
+
 annotated-types==0.7.0
 anyio==4.6.2.post1
 bidict==0.23.1
@@ -46,4 +48,4 @@ celery
 sendgrid
 eventlet==0.33.3
 gevent==23.9.1
-
+faker
