@@ -1,7 +1,7 @@
 import logging
 import os
 from openai import OpenAI
-from log_models import (
+from models.log_models import (
     SecurityLog, FirewallLog, VulnerabilityLog, IntrusionLog, AccessControlLog,
     EventLog, SystemEvent, ApplicationEvent, AuthenticationEvent, NetworkEvent,
     ErrorLog, DatabaseErrorLog, FileSystemErrorLog, NetworkErrorLog, ApplicationErrorLog,
