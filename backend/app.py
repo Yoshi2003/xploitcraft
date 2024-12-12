@@ -20,7 +20,7 @@ from routes.update_routes import update_bp
 from database.models import create_user
 from routes.grc_routes import grc_bp
 from routes.log_routes import log_bp
-from routes.log_routes import log_history_bp
+
 
 
 
