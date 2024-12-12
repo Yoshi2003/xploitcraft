@@ -29,13 +29,13 @@ const youtubeChannels = [
   { name: 'HackerSploit', url: 'https://www.youtube.com/@HackerSploit' },
   { name: 'Cyberkraft', url: 'https://www.youtube.com/@cyberkraft' },
   { name: 'howtonetwork', url: 'https://www.youtube.com/@howtonetworkcom' },
-  { name: 'MyCS1', url: 'https://www.youtube.com/@MyCS1/videos' }
+  { name: 'MyCS1', url: 'https://www.youtube.com/@MyCS1/videos' },
   
 ];
 
 const youtubeVideos = [
   { title: 'A+ Core 1 Overview', url: '#' },
-  { title: 'Security+ Latest Objectives Walkthrough', url: '#' }
+  { title: 'Security+ Latest Objectives Walkthrough', url: '#' },
   { title: '#', url: '#' },
   { title: '#', url: '#' },
   { title: '#', url: '#' },
@@ -68,12 +68,12 @@ const youtubeVideos = [
 
 const udemyCourses = [
   { title: 'CompTIA A+ Complete Course', url: '#' },
-  { title: 'CompTIA Security+ (SY0-601) Bootcamp', url: '#' }
+  { title: 'CompTIA Security+ (SY0-601) Bootcamp', url: '#' },
 ];
 
 const linkedInPeople = [
   { name: 'John Doe (Cybersecurity Analyst)', url: '#' },
-  { name: 'Jane Smith (SOC Lead)', url: '#' }
+  { name: 'Jane Smith (SOC Lead)', url: '#' },
 ];
 
 const otherResources = [
