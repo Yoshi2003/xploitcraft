@@ -19,7 +19,7 @@ def generate_single_analogy(concept, category):
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
             model="gpt-4o",
-            max_tokens=300,
+            max_tokens=375,
             temperature=0.7,
         )
         return response.choices[0].message.content.strip()
@@ -41,7 +41,7 @@ def generate_comparison_analogy(concept1, concept2, category):
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
             model="gpt-4o",
-            max_tokens=150,
+            max_tokens=450,
             temperature=0.7,
         )
         return response.choices[0].message.content.strip()
@@ -63,7 +63,7 @@ def generate_triple_comparison_analogy(concept1, concept2, concept3, category):
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
             model="gpt-4o",
-            max_tokens=200,
+            max_tokens=600,
             temperature=0.7,
         )
         return response.choices[0].message.content.strip()
