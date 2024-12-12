@@ -36,6 +36,34 @@ const youtubeChannels = [
 const youtubeVideos = [
   { title: 'A+ Core 1 Overview', url: '#' },
   { title: 'Security+ Latest Objectives Walkthrough', url: '#' }
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
+  { title: '#', url: '#' },
 ];
 
 const udemyCourses = [
@@ -52,7 +80,10 @@ const otherResources = [
   { name: '*VERY IMPORTANT FOR CASP* -wyzguyscybersecurity blog', url: 'https://wyzguyscybersecurity.com/new-insights-for-the-casp-cas-004-exam/' },
   { name: 'Official CompTIA Resources', url: 'https://www.comptia.org/resources' },
   { name: 'Cybrary', url: 'https://www.cybrary.it' },
-  { name: 'OWASP Official Site', url: 'https://owasp.org' }
+  { name: 'OWASP Official Site', url: 'https://owasp.org' },
+  { name: 'Pluralsight', url: 'https://www.pluralsight.com/' },
+  
+  
 ];
 
 // CompTIA Objectives Array
@@ -92,7 +123,7 @@ const securityFrameworks = [
   { name: 'FedRAMP', url: 'https://www.fedramp.gov/' },
   { name: 'CIS Controls', url: 'https://www.cisecurity.org/controls' },
   { name: 'ENISA (European Union Agency for Cybersecurity) Guidelines', url: 'https://www.enisa.europa.eu/' },
-  { name: 'SANS Top 20 Critical Controls', url: '#' },
+  { name: 'SANS Top 20 Critical Controls', url: 'https://www.cm-alliance.com/consultancy/compliance-gap-analysis/sans-top-20-controls/' },
   { name: 'Cybersecurity Maturity Model Certification (CMMC)', url: 'https://www.acq.osd.mil/cmmc/' },
   { name: 'FISMA (Federal Information Security Management Act)', url: 'https://www.cisa.gov/topics/cyber-threats-and-advisories/federal-information-security-modernization-act' },
   { name: 'NERC CIP', url: 'https://www.nerc.com/pa/CI/tpv5impmntnstdy/CIPV5_FAQs_Consolidated_Oct2015_Oct_13_2015.pdf' },
@@ -101,7 +132,7 @@ const securityFrameworks = [
   { name: 'ISO/IEC 27002', url: 'https://www.iso.org/standard/73906.html' },
   { name: 'NIST 800-53 Security Controls', url: 'https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final' },
   { name: 'NIST 800-171', url: 'https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final' },
-  { name: 'Cyber Kill Chain variations (e.g., Unified Kill Chain)', url: '#' },
+  { name: 'Unified Kill Chain', url: 'https://www.unifiedkillchain.com/assets/The-Unified-Kill-Chain.pdf' },
   { name: 'VERIS', url: 'http://veriscommunity.net/' },
   { name: 'MARION Framework', url: '#' },
   { name: 'Diamond Model of Intrusion Analysis', url: '#' },
