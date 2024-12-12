@@ -1,18 +1,12 @@
 FROM httpd:2.4
 
-# Copy your custom configuration into the container
 COPY xploitcraft.conf /usr/local/apache2/conf/extra/
 
-
-# Copy the main Apache configuration file
 COPY httpd.conf /usr/local/apache2/conf/httpd.conf
 
-# Ensure logs directory exists and is writable
 RUN mkdir -p /usr/local/apache2/logs && chmod -R 777 /usr/local/apache2/logs
 
-# Expose port 8080
 EXPOSE 8080
 
-# Start Apache in the foreground
 CMD ["httpd-foreground"]
 
