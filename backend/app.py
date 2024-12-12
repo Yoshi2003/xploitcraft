@@ -19,6 +19,7 @@ from routes.unsubscribe_routes import unsubscribe_bp
 from routes.update_routes import update_bp
 from database.models import create_user
 from routes.grc_routes import grc_bp
+from routes.log_routes import log_bp
 
 
 
@@ -80,6 +81,7 @@ app.register_blueprint(subscribe_bp, url_prefix='/subscribe')
 app.register_blueprint(unsubscribe_bp, url_prefix='/unsubscribe')
 app.register_blueprint(update_bp, url_prefix='/update')
 app.register_blueprint(grc_bp, url_prefix='/grc')
+app.register_blueprint(log_bp, url_prefix='/log')
 
 @app.route('/register', methods=['POST'])
 def register():
