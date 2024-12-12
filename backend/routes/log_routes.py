@@ -2,6 +2,9 @@ from flask import Blueprint, request, jsonify
 from log_generator import generate_logs
 from log_helper import analyze_logs_bulk
 import logging
+from database import db
+from models.log_history import LogHistory
+
 
 # Initialize Flask Blueprint
 log_bp = Blueprint("logs", __name__)
@@ -121,3 +124,28 @@ def health_check():
     Health check endpoint to ensure the service is running.
     """
     return jsonify({"status": "running", "service": "Log Analysis API"}), 200
+
+
+log_history_bp = Blueprint("log_history", __name__)
+
+@log_history_bp.route("/logs/history/save", methods=["POST"])
+def save_log_history():
+    try:
+        data = request.get_json()
+        history_entry = LogHistory(**data)
+        db.log_history.insert_one(history_entry.dict())
+
+        return jsonify({"status": "success", "message": "History saved."}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@log_history_bp.route("/logs/history/fetch", methods=["GET"])
+def fetch_log_history():
+    try:
+        history = list(db.log_history.find().sort("timestamp", -1))
+        return jsonify({"status": "success", "history": history}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
