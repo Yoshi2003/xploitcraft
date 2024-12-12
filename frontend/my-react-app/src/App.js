@@ -30,7 +30,6 @@ function App() {
             <Route path="/dailycyberbrief" element={<DailyCyberBrief />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/donate" element={<Donate />} />
-            <Route path="*" element={<About />} />
           </Routes>
         </div>
       </div>
