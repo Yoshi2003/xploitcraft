@@ -3,7 +3,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from helpers.log_generator import generate_logs
 from helpers.log_helper import explain_log
-from models import log_models  # Import the Log model
+from models.log_models import Log  # Import the Log model
 import logging
 import os
 
