@@ -9,10 +9,10 @@ const Sidebar = () => {
     <div className="sidebar">
       <h2 className="sidebar-title">root@</h2>
       <ul className="sidebar-list">
-        <li><Link to="/home">/Home</Link></li>
+        <li><Link to="/xploitcraft">/Xploitcraft</Link></li>
         <li><Link to="/scenariosphere">/Scenario Sphere</Link></li>
         <li><Link to="/analogyhub">/Analogy Hub</Link></li>
-        <li><Link to="/loganal">/Log Analysis</Link></li>
+        <li><Link to="/log">/Log Analysis</Link></li>
         <li><Link to="/grc">/GRC Wizard</Link></li>
         <li><Link to="/dailycyberbrief">/Daily CyberBrief</Link></li>
         <li><Link to="/resources">/Study Resources</Link></li>
