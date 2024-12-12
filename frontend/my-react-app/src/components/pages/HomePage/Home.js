@@ -1,4 +1,4 @@
-// components/Home.js
+// components/xploitcraft.js
 import React, { useState, useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
