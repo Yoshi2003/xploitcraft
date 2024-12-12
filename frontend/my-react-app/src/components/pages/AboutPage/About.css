@@ -4,7 +4,7 @@
   position: relative;
   padding: 20px;
   color: #f5f5f5;
-  background: url('./AboutpageBackground.jpg') center no-repeat;
+  background: url('./AboutBackground.jpg') center no-repeat;
   background-size: 100% 100%; /* Stretch the image to fill the page */
   background-attachment: fixed;
   border: 2px solid #ff0000; /* Red border */
