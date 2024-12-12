@@ -112,11 +112,11 @@ const comptiaObjectives = [
 const securityFrameworks = [
   { name: 'NIST Cybersecurity Framework', url: 'https://www.nist.gov/cyberframework' },
   { name: 'ISO/IEC 27001', url: 'https://www.iso.org/isoiec-27001-information-security.html' },
-  { name: 'Lockheed Martin Cyber Kill Chain', url: '#' },
+  { name: 'Lockheed Martin Cyber Kill Chain', url: 'https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html' },
   { name: 'MITRE ATT&CK Framework', url: 'https://attack.mitre.org/' },
   { name: 'OWASP Top 10', url: 'https://owasp.org/www-project-top-ten/' },
   { name: 'COBIT', url: 'https://www.isaca.org/resources/cobit' },
-  { name: 'ITIL (Information Technology Infrastructure Library)', url: '#' },
+  { name: 'ITIL (Information Technology Infrastructure Library)', url: 'https://www.itlibrary.org/' },
   { name: 'PCI-DSS (Payment Card Industry Data Security Standard)', url: 'https://www.pcisecuritystandards.org/' },
   { name: 'HIPAA Security Rule', url: 'https://www.hhs.gov/hipaa/for-professionals/security/index.html' },
   { name: 'Sarbanes-Oxley (SOX) IT Controls', url: 'https://www.sarbanes-oxley-101.com/sarbanes-oxley-compliance.htm' },
@@ -134,10 +134,10 @@ const securityFrameworks = [
   { name: 'NIST 800-171', url: 'https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final' },
   { name: 'Unified Kill Chain', url: 'https://www.unifiedkillchain.com/assets/The-Unified-Kill-Chain.pdf' },
   { name: 'VERIS', url: 'http://veriscommunity.net/' },
-  { name: 'MARION Framework', url: '#' },
-  { name: 'Diamond Model of Intrusion Analysis', url: '#' },
+  { name: '#', url: '#' },
+  { name: 'Diamond Model of Intrusion Analysis', url: 'https://www.threatintel.academy/wp-content/uploads/2020/07/diamond-model.pdf' },
   { name: 'ATT&CK for ICS', url: 'https://collaborate.mitre.org/attackics/index.php/Main_Page' },
-  { name: 'SOC2', url: '#' },
+  { name: 'SOC2', url: 'https://www.vanta.com/products/soc-2' },
   { name: 'ISO 22301 (Business Continuity)', url: 'https://www.iso.org/iso-22301-business-continuity.html' }
 ];
 
