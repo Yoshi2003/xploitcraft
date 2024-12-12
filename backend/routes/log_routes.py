@@ -125,7 +125,6 @@ def health_check():
     return jsonify({"status": "running", "service": "Log Analysis API"}), 200
 
 
-log_bp = Blueprint("logs", __name__)
 
 # Inject Database Reference
 def init_log_routes(db):
