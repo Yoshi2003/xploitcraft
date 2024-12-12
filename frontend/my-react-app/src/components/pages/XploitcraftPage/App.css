@@ -1,0 +1,171 @@
+/* General Application Styles */
+/* App.css */
+
+/* Header Styles with Background Image */
+.App-header {
+  background-image: url('./backround2.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  /* Align towards the top */
+  padding-top: 0px;
+  text-align: center;
+  color: #00ff00;
+  position: relative; /* Required for loading icon positioning */
+}
+
+.loading-icon {
+  width: 40px;                /* Adjust size as needed */
+  height: 40px;               /* Adjust size as needed */
+  margin-top: -20px;           /* Space between button and loading icon */
+  object-fit: contain;        /* Retain the aspect ratio without distortion */
+  color: #660000;
+}
+
+
+/* Title Style with Outline */
+.header-title {
+  color: #FFFFFF;
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 2.3px 2.3px 5px #660000;
+  font-size: 2.5em;
+}
+
+/* Syntax Highlighter Custom Style */
+.syntax-highlighter {
+  white-space: pre-wrap !important;
+  overflow-wrap: break-word !important;
+  word-break: break-all !important;
+  width: 100% !important;
+}
+
+/* Input Container Horizontal Style */
+.input-container-horizontal {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: flex-start;  /* Align items higher up */
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;  /* Use Roboto for input container texts */
+}
+
+/* Input Fields Style */
+.input-field {
+  width: 400px;
+  height: 45px;
+  padding: 10px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #333;
+  border: 2px solid #660000;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #fff;
+}
+
+/* Container for Button and Loading Icon */
+.button-container {
+  display: flex;            /* Use flexbox to align items */
+  align-items: center;      /* Align vertically in the center */
+  margin-left: 10px;
+}
+
+
+/* Button Style with Border Outline */
+.generate-button {
+  background-color: #660000;
+  color: #ffffff;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: 3px solid #000000;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.generate-button:hover {
+  background-color: #8b0000;
+  transform: scale(1.02);
+}
+
+/* Generated Payload Title Style */
+.generated-payload-title {
+  color: #660000;  /* Neon green color to match the hacker theme */
+  font-family: 'Orbitron', sans-serif;  /* Cool techy font */
+  text-shadow: 2px 2px 4px #000000;  /* Black shadow for a cleaner look */
+  margin-bottom: 10px;  /* Space below the title */
+  font-weight: bold;
+  border-bottom: 2px solid #ffffff; /* Red border at the bottom to make it stand out */
+}
+
+/* Payload Wrapper Style */
+.payload-wrapper {
+  max-width: 1150px;
+  margin: 20px auto;  /* Center the container horizontally */
+  text-align: left;  /* Align text to the left inside the container */
+  background: linear-gradient(145deg, #282c34, #1e1e1e);  /* Gradient effect for the container */
+  padding: 20px;
+  border-radius: 8px;
+  border: 3px solid #660000;  /* Red border */
+  opacity: 0.97;
+}
+
+
+/* Payload Content Style */
+.payload-content {
+  text-align: center;
+  border-radius: 8px;
+  overflow-y: auto;  /* Adds a vertical scrollbar if the content overflows */
+  max-height: 600px;  /* Sets a limit for height, allowing scrolling when it exceeds this height */
+  overflow-x: hidden;  /* Prevent horizontal scrolling */
+  word-wrap: break-word;  /* Break long words to avoid horizontal scrolling */
+  color: #00ff00;  /* Keep neon green for text color */
+}
+
+
+
+/* Link Styles */
+
+.App-link:hover {
+  color: #ff0055;
+  text-decoration: underline;
+}
+
+/* Logo Styles */
+.App-logo {
+  max-width: 250px;      /* Set the maximum width */
+  max-height: 250px;
+  pointer-events: none;
+  animation: App-logo-spin infinite 20s linear;
+  margin-bottom: -30px;
+}
+
+/* Keyframes for spinning */
+@keyframes App-logo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2880deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+/* Main App Content with Sidebar Space */
+.main-content {
+  margin-left: 220px; /* Leave space for sidebar */
+  padding: none;
+}
+
