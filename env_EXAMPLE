@@ -4,11 +4,11 @@ OPENAI_API_KEY=your_openai_key
 SMTP_SERVER=smtp.sendgrid.net
 SMTP_PORT=587
 SMTP_USER=apikey
-SMTP_PASSWORD= your sendgrid api key
-EMAIL_FROM=dailycyberbrief@proxyauthrequired.com
-SENDGRID_API_KEY= Sendgrid api key
+SMTP_PASSWORD= your_sendgrid_api_key
+EMAIL_FROM=your_email
+SENDGRID_API_KEY= Sendgrid_api_key
 
-MONGO_URI=mongodb://mongodb:<port>/directory
+MONGO_URI=mongodb://mongodb:<port>/name
 
 
 
