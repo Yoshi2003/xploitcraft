@@ -2,11 +2,10 @@ from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
 
-# Existing Models
-#class User(BaseModel):
-  #  id: str
-  #  username: str
- #   email: str
+class User(BaseModel):
+     id: str
+     username: str
+     email: str
     # Add other fields as necessary
 
 # Add other existing models here
