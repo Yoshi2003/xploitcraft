@@ -80,7 +80,7 @@ const AnalogyHub = () => {
           <select value={analogyType} onChange={handleTypeChange} className="analogy-hub-input">
             <option value="single">Single</option>
             <option value="comparison">Comparison</option>
-            <option value="triple-comparison">Triple Comparison</option>
+            <option value="triple">Triple Comparison</option>
           </select>
         </div>
 
