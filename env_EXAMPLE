@@ -1,4 +1,4 @@
-#Please keep .env in your gitignore- this is an example of the API keys this webiste needs in order to run
+#Please keep .env in your .gitignore- this is an example of my .env for this app.
 OPENAI_API_KEY=your_openai_key
 
 SMTP_SERVER=smtp.sendgrid.net
