@@ -1,27 +1,57 @@
+/* Background Container */
+.resources-background {
+  background-image: url('Resourcebackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
 /* Global Container */
 .resources-container {
   font-family: "Courier New", monospace;
   color: #fff;
-  background: #121212;
+  background: rgba(18, 18, 18, 0.85); /* Slight transparency for background image */
   padding: 2rem;
   border-radius: 8px;
   margin: 2rem auto;
   width: 90%;
   max-width: 800px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+/* Header */
+.resources-header {
   text-align: center;
   color: #f54b64;
   margin-bottom: 1rem;
 }
 
-/* Controls */
+.resources-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Controls Section */
 .resources-controls {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 1rem;
+}
+
+.resources-controls .search-input {
+  flex: 2;
+}
+
+.resources-controls .category-select,
+.resources-controls .sort-button,
+.resources-controls .random-button {
+  flex: 1;
 }
 
 .resources-controls input,
@@ -31,10 +61,12 @@ h1 {
   padding: 0.5rem;
   border: none;
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .resources-controls input {
-  flex: 2;
+  background: #1e1e1e;
+  color: #fff;
 }
 
 .resources-controls select,
@@ -42,41 +74,65 @@ h1 {
   background: #f54b64;
   color: white;
   cursor: pointer;
-  flex: 1;
   text-align: center;
+  transition: background 0.3s ease;
+}
+
+.resources-controls select:hover,
+.resources-controls button:hover {
+  background: #e63950;
 }
 
 /* Random Resource Section */
-.random-resource {
+.resources-random-resource {
   text-align: center;
   margin: 1rem 0;
+  padding: 1rem;
+  background: #1e1e1e;
+  border-radius: 5px;
 }
 
-.random-resource h2 {
+.resources-random-resource h2 {
   color: #f54b64;
+  margin-bottom: 0.5rem;
 }
 
-.random-resource a {
+.resources-random-resource a {
   color: #48cae4;
   font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.resources-random-resource a:hover {
+  color: #f54b64;
+  text-decoration: underline;
 }
 
 /* Resource List */
 .resources-list {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 .resources-list li {
-  padding: 0.5rem;
+  padding: 0.75rem;
   background: #252525;
   margin: 0.5rem 0;
   border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.resources-list li:hover {
+  background: #333333;
 }
 
 .resources-list li a {
   color: #48cae4;
   text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
 .resources-list li a:hover {
@@ -84,8 +140,54 @@ h1 {
   text-decoration: underline;
 }
 
-p {
+/* Footer Message */
+.resources-footer {
   text-align: center;
   color: #888;
+  margin-top: 1rem;
+  font-size: 0.9rem;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .resources-controls {
+    flex-direction: column;
+  }
+
+  .resources-controls .search-input,
+  .resources-controls .category-select,
+  .resources-controls .sort-button,
+  .resources-controls .random-button {
+    flex: none;
+    width: 100%;
+  }
+
+  .resources-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .resources-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .resources-controls input,
+  .resources-controls select,
+  .resources-controls button {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+
+  .resources-random-resource h2 {
+    font-size: 1.1rem;
+  }
+
+  .resources-random-resource a {
+    font-size: 1rem;
+  }
+
+  .resources-list li {
+    padding: 0.6rem;
+  }
