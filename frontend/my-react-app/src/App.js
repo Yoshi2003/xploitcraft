@@ -25,7 +25,7 @@ function App() {
             <Route path="/xploitcraft" element={<Xploitcraft />} />
             <Route path="/scenariosphere" element={<ScenarioSphere />} />
             <Route path="/analogyhub" element={<AnalogyHub />} />
-            <Route path="/loganal" element={<Loganal />} />
+            <Route path="/log" element={<Loganal />} />
             <Route path="/grc" element={<GRC />} />
             <Route path="/dailycyberbrief" element={<DailyCyberBrief />} />
             <Route path="/resources" element={<Resources />} />
