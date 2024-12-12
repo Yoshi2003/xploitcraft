@@ -2,7 +2,7 @@ import random
 from faker import Faker
 from datetime import datetime
 from typing import List, Union
-from log_models import (
+from models.log_models import (
     SecurityLog, FirewallLog, VulnerabilityLog, IntrusionLog, AccessControlLog,
     EventLog, SystemEvent, ApplicationEvent, AuthenticationEvent, NetworkEvent,
     ErrorLog, DatabaseErrorLog, FileSystemErrorLog, NetworkErrorLog, ApplicationErrorLog,
