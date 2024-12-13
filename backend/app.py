@@ -81,7 +81,7 @@ app.register_blueprint(subscribe_bp, url_prefix='/subscribe')
 app.register_blueprint(unsubscribe_bp, url_prefix='/unsubscribe')
 app.register_blueprint(update_bp, url_prefix='/update')
 app.register_blueprint(grc_bp, url_prefix='/grc')
-app.register_blueprint(log_bp, url_prefix='/log')
+app.register_blueprint(log_bp, url_prefix='/logs')
 
 @app.route('/register', methods=['POST'])
 def register():
