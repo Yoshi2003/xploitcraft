@@ -6,21 +6,11 @@ from helpers.openai_helper import client
 logger = logging.getLogger(__name__)
 
 def generate_grc_question(category, difficulty):
-    """
-    Generates a GRC-related multiple-choice question in JSON format.
-    The model returns a JSON object with keys:
-      question (string)
-      options (array of 4 strings)
-      correct_answer_index (int)
-      explanations (dict of strings for "0","1","2","3")
-      exam_tip (string)
-    """
-
-    prompt = f"""
+   prompt = f"""
 You are an expert in GRC-related topics.
 
 INSTRUCTIONS:
-- Return ONLY valid JSON. No extra text outside the JSON.
+- Return ONLY valid JSON. No extra text outside the JSON except for the Requirements.
 - The JSON must have:
   "question": string
   "options": ["Option A","Option B","Option C","Option D"]
@@ -46,13 +36,14 @@ Requirements:
 - Category: {category}
 - Difficulty: {difficulty}
 - Make the question related to GRC (Governance, Risk, Compliance) for CompTIA-style and in format like the example above.
-- Provide detailed explanation on why each answer is wrong adn why the correct answer is correct, with an exam tip at the end in format as the example above.
+- Provide detailed explanation on why each answer is wrong and why the correct answer is correct, with an exam tip at the end in format as the example above.
 - Return only the JSON object and nothing else.
 """
 
+
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",  # or "gpt-4o" if you trust that environment
+            model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": prompt}],
             max_tokens=500,
             temperature=0.7,
