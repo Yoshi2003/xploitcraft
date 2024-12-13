@@ -31,6 +31,10 @@ def generate_security_logs(count: int) -> List[Union[SecurityLog]]:
                 action=random.choice(["Allowed", "Blocked"]),
                 protocol=random.choice(["TCP", "UDP", "ICMP"]),
                 port=random.randint(1, 65535),
+                ip_address=fake.ipv4(),
+                username=fake.user_name(),
+                attack_vector=random.choice(["Brute-force", "Phishing", "SQL Injection"]),
+                status=random.choice(["Successful", "Failed"]),
             ),
             VulnerabilityLog(
                 type="security",
