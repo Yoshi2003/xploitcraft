@@ -1,6 +1,6 @@
 /* Background Container */
 .resources-background {
-  background-image: url('Resourcebackground.jpg');
+  background-image: url('./Resourcebackground.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
