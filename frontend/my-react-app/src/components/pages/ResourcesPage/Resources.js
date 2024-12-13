@@ -36,7 +36,7 @@ const youtubeChannels = [
 const youtubeVideos = [
   { title: 'A+ Core 1 Overview', url: '#' },
   { title: 'Security+ Latest Objectives Walkthrough', url: '#' },
-  { title: 'How to Pass Your SY0-701 Security+ Exam', url: 'https://www.youtube.com/watch?v=CvaYb7GlpwA' },
+  { title: '#', url: '#' },
   { title: '#', url: '#' },
   { title: '#', url: '#' },
   { title: '#', url: '#' },
@@ -343,59 +343,86 @@ function Resources() {
     setRandomResource(random);
   };
 
-  return (
-    <div className="resources-container">
-      <h1>Cybersecurity Resources Hub</h1>
+return (
+    // Apply the resources-background class to wrap the entire component
+    <div className="resources-background">
+      <div className="resources-container">
+        <h1 className="resources-header">Cybersecurity Resources Hub</h1>
 
-      <div className="resources-controls">
-        <input
-          type="text"
-          placeholder="Search resources..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+        {/* Controls Section */}
+        <div className="resources-controls">
+          <input
+            type="text"
+            placeholder="Search resources..."
+            value={searchTerm}
+            onChange={handleSearch}
+            className="search-input"
+          />
 
-        <select onChange={handleCategoryChange} value={selectedCategory}>
-          <option value="all">All Categories</option>
-          {Object.keys(resourcesData).map((category) => (
-            <option key={category} value={category}>
-              {capitalizeFirstLetter(category)}
-            </option>
-          ))}
-        </select>
+          <select
+            onChange={handleCategoryChange}
+            value={selectedCategory}
+            className="category-select"
+          >
+            <option value="all">All Categories</option>
+            {Object.keys(resourcesData).map((category) => (
+              <option key={category} value={category}>
+                {capitalizeFirstLetter(category)}
+              </option>
+            ))}
+          </select>
 
-        <button onClick={() => setSorted(!sorted)}>
-          {sorted ? "Unsort" : "Sort A-Z"}
-        </button>
+          <button
+            onClick={() => setSorted(!sorted)}
+            className="sort-button"
+          >
+            {sorted ? "Unsort" : "Sort A-Z"}
+          </button>
 
-        <button onClick={handleRandomResource}>Random Resource</button>
-      </div>
-
-      {randomResource && (
-        <div className="random-resource">
-          <h2>Explore This Resource:</h2>
-          <a href={randomResource.url} target="_blank" rel="noopener noreferrer">
-            {randomResource.name}
-          </a>
+          <button
+            onClick={handleRandomResource}
+            className="random-button"
+          >
+            Random Resource
+          </button>
         </div>
-      )}
 
-      <ul className="resources-list">
-        {filteredResources.length ? (
-          filteredResources.map((resource, index) => (
-            <li key={index}>
-              <a href={resource.url} target="_blank" rel="noopener noreferrer">
-                {resource.name}
-              </a>
-            </li>
-          ))
-        ) : (
-          <p>No resources found.</p>
+        {/* Random Resource Section */}
+        {randomResource && (
+          <div className="resources-random-resource">
+            <h2>Explore This Resource:</h2>
+            <a
+              href={randomResource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {randomResource.name}
+            </a>
+          </div>
         )}
-      </ul>
+
+        {/* Resources List */}
+        <ul className="resources-list">
+          {filteredResources.length ? (
+            filteredResources.map((resource, index) => (
+              <li key={index}>
+                <a
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {resource.name}
+                </a>
+              </li>
+            ))
+          ) : (
+            <p>No resources found.</p>
+          )}
+        </ul>
+      </div>
     </div>
   );
-}
+};
 
 export default Resources;
 
