@@ -45,6 +45,10 @@ def generate_security_logs(count: int) -> List[Union[SecurityLog]]:
                 tool=random.choice(["Burp Suite", "Nessus", "Qualys"]),
                 vulnerability_name=fake.catch_phrase(),
                 cve_id=f"CVE-{random.randint(1999, 2024)}-{random.randint(1000, 9999)}",
+                ip_address=fake.ipv4(),  # Added Missing Fields
+                username=fake.user_name(),
+                attack_vector=random.choice(["Brute-force", "Phishing", "SQL Injection"]),
+                status=random.choice(["Successful", "Failed"]),
             ),
             IntrusionLog(
                 type="security",
@@ -95,6 +99,9 @@ def generate_event_logs(count: int) -> List[EventLog]:
                 application_name=fake.company(),
                 version=fake.numerify("#.#.#"),
                 action_details=fake.sentence(),
+                system_component=fake.bs(),  # Fixed Missing Fields
+                action_performed="Application Terminated",
+                result="Failure",
             ),
             AuthenticationEvent(
                 type="event",
@@ -145,7 +152,9 @@ def generate_error_logs(count: int) -> List[ErrorLog]:
                 message=f"File {fake.file_path()} not found.",
                 file_path=fake.file_path(),
                 file_operation=random.choice(["Read", "Write", "Delete"]),
-                error_details=fake.sentence(),
+                error_code=f"FS-{random.randint(1000, 9999)}",  # Corrected Missing Field
+                error_message="File access error occurred.",  # Corrected Missing Field
+                module="File Manager",  # Corrected Missing Field
             ),
             NetworkErrorLog(
                 type="error",
