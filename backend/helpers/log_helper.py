@@ -1,5 +1,6 @@
 import logging
 import os
+import json
 from openai import OpenAI
 from models.log_models import (
     SecurityLog, FirewallLog, VulnerabilityLog, IntrusionLog, AccessControlLog,
@@ -30,22 +31,22 @@ PROMPTS = {
     VulnerabilityLog: "Explain the vulnerability reported in this log, its risk level, and recommended mitigation steps:",
     IntrusionLog: "Explain this intrusion detection log, its possible impact, and what action should be taken to prevent further intrusion:",
     AccessControlLog: "Analyze this access control log and determine if the access attempt was legitimate. Suggest security measures if necessary:",
-    
+
     SystemEvent: "Analyze this system event and describe the implications on overall system performance:",
     ApplicationEvent: "Describe this application event, including what may have caused the reported issue and how to resolve it:",
     AuthenticationEvent: "Analyze this authentication event and explain potential reasons for login failures:",
     NetworkEvent: "Explain this network event, including the impact of detected anomalies and suggested countermeasures:",
-    
+
     DatabaseErrorLog: "Explain this database error log entry and suggest how to fix the reported issue:",
     FileSystemErrorLog: "Describe this filesystem error log and recommend actions to fix the reported issue:",
     NetworkErrorLog: "Explain this network error log and describe its potential impact on connected services:",
     ApplicationErrorLog: "Analyze this application error log and describe steps to prevent similar issues:",
-    
+
     QueryDebugLog: "Analyze this query debug log and explain if the query execution performance can be improved:",
     ApiDebugLog: "Analyze this API debug log and suggest improvements for reducing response time:",
     ConfigDebugLog: "Explain this configuration change log and describe its effect on system behavior:",
     ProcessDebugLog: "Describe this process management log and explain how process execution can be optimized:",
-    
+
     SystemInfoLog: "Analyze this system info log and describe the current system status, performance, and health:",
     UserActivityLog: "Explain this user activity log, highlighting potential security or compliance issues:",
     DeploymentLog: "Describe this deployment log and suggest steps for improving future deployment processes:",
@@ -61,8 +62,8 @@ def analyze_log(log_record):
     Analyzes a log record using OpenAI API.
     """
     prompt = PROMPTS.get(type(log_record), "Analyze this log entry and explain its significance:")
-    formatted_prompt = f"{prompt}\n\nLog Details:\n{log_record.json(indent=4)}"
-    
+    formatted_prompt = f"{prompt}\n\nLog Details:\n{json.dumps(log_record.dict(), indent=4)}"
+
     try:
         response = client.chat.create(
             model="gpt-4",
@@ -101,12 +102,14 @@ def analyze_logs_bulk(log_records):
 
 if __name__ == "__main__":
     from log_generator import generate_logs
-    
+
     # Example usage
     logs = generate_logs("security", 3)
     analyzed_logs = analyze_logs_bulk(logs)
-    
+
     for entry in analyzed_logs:
         print(f"Log Record:\n{entry['log']}\n")
         print(f"Analysis Result:\n{entry['analysis']}\n")
         print("="*80)
+
+
