@@ -25,7 +25,7 @@ function Log() {
   const generateLogs = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`${ENDPOINT}/logs/generate_logs`, {
+      const response = await axios.post(`${ENDPOINT}/logs/generate`, {
         category,
         count,
       });
@@ -43,7 +43,7 @@ function Log() {
     setLoading(true);
     setSelectedLog(log);
     try {
-      const response = await axios.post(`${ENDPOINT}/logs/analyze_logs`, {
+      const response = await axios.post(`${ENDPOINT}/logs/analyze`, {
         logs: [log.log],
       });
       const result = response.data.logs[0].analysis || "No analysis available.";
