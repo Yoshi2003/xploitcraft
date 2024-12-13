@@ -36,7 +36,7 @@ const youtubeChannels = [
 const youtubeVideos = [
   { title: 'A+ Core 1 Overview', url: '#' },
   { title: 'Security+ Latest Objectives Walkthrough', url: '#' },
-  { title: '#', url: '#' },
+  { title: 'How to Pass Your SY0-701 Security+ Exam', url: 'https://www.youtube.com/watch?v=CvaYb7GlpwA' },
   { title: '#', url: '#' },
   { title: '#', url: '#' },
   { title: '#', url: '#' },
