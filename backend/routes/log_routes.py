@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 # Unified Log Generation & Analysis Route
 # ---------------------------------
 
-@log_bp.route("/logs/generate", methods=["POST"])
+@log_bp.route("/generate", methods=["POST"])
 def generate_and_analyze_logs():
     """
     Endpoint to generate logs based on category and count,
@@ -51,7 +51,7 @@ def generate_and_analyze_logs():
 # Fetch Specific Logs Route (Optional Feature)
 # ---------------------------------
 
-@log_bp.route("/logs/fetch", methods=["GET"])
+@log_bp.route("/fetch", methods=["GET"])
 def fetch_logs():
     """
     Fetch logs based on query parameters like category and severity.
@@ -84,7 +84,7 @@ def fetch_logs():
 # Analyze Existing Logs Route (Manual Analysis)
 # ---------------------------------
 
-@log_bp.route("/logs/analyze", methods=["POST"])
+@log_bp.route("/analyze", methods=["POST"])
 def analyze_existing_logs():
     """
     Endpoint to analyze manually provided logs.
