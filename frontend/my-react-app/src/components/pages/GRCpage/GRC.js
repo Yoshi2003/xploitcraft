@@ -134,7 +134,7 @@ const GRC = () => {
                   )
                 }
               >
-                Copy Explanation
+                Copy
               </button>
             )}
           </div>
