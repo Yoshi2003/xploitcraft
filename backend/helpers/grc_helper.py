@@ -1,16 +1,27 @@
 import os
 import json
 import logging
+import re  
 from helpers.openai_helper import client
 
 logger = logging.getLogger(__name__)
 
 def generate_grc_question(category, difficulty):
-   prompt = f"""
+    """
+    Generates a GRC-related multiple-choice question in JSON format.
+    The model returns a JSON object with keys:
+      question (string)
+      options (array of 4 strings)
+      correct_answer_index (int)
+      explanations (dict of strings for "0","1","2","3")
+      exam_tip (string)
+    """
+
+    prompt = f"""
 You are an expert in GRC-related topics.
 
 INSTRUCTIONS:
-- Return ONLY valid JSON. No extra text outside the JSON except for the Requirements.
+- Return ONLY a JSON object. Do not include any Markdown, code fences, or additional explanations.
 - The JSON must have:
   "question": string
   "options": ["Option A","Option B","Option C","Option D"]
@@ -40,16 +51,20 @@ Requirements:
 - Return only the JSON object and nothing else.
 """
 
-
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo",  # Corrected model name
             messages=[{"role": "user", "content": prompt}],
             max_tokens=500,
             temperature=0.7,
         )
 
         content = response.choices[0].message.content.strip()
+
+        # Remove code fences if present
+        content = re.sub(r'^```.*\n', '', content)
+        content = re.sub(r'\n```$', '', content)
+
         try:
             generated_question = json.loads(content)
         except json.JSONDecodeError as e:
