@@ -82,6 +82,10 @@ def generate_event_logs(count: int) -> List[EventLog]:
                 message=f"System rebooted at {datetime.utcnow()}",
                 os_version=fake.windows_platform_token(),
                 hardware_id=fake.uuid4(),
+                system_component=fake.bs(),
+                action_performed="System Rebooted",
+                result="Success",
+                kernel_version=fake.mac_platform_token(),
             ),
             ApplicationEvent(
                 type="event",
@@ -127,6 +131,8 @@ def generate_error_logs(count: int) -> List[ErrorLog]:
                 source="Database",
                 event="Query Failure",
                 message="Database query failed during operation.",
+                error_message="Query could not execute due to missing field.",
+                module="Query Executor",
                 error_code=f"DB-{random.randint(1000, 9999)}",
                 database_name=fake.company(),
                 db_engine=random.choice(["PostgreSQL", "MySQL", "MongoDB"]),
@@ -200,7 +206,7 @@ def generate_debug_logs(count: int) -> List[DebugLog]:
                 debug_message="Settings applied successfully.",
                 module_name="SystemConfigurator",
                 config_file=fake.file_path(),
-                settings_applied=[fake.word() for _ in range(5)],
+                settings_applied=[fake.word() for _ in range(3)],
             ),
             ProcessDebugLog(
                 type="debug",
