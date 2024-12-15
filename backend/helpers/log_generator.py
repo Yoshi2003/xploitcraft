@@ -41,7 +41,7 @@ def generate_security_logs(count: int) -> List[Union[SecurityLog]]:
                 source="Vulnerability Scanner",
                 event="Scan Result",
                 message=f"{fake.catch_phrase()} found on {fake.hostname()}",
-                severity_level=random.choice(["critical", "high", "medium", "low"]),
+                severity=random.choice(["critical", "high", "medium", "low"]),  # Renamed from severity_level to severity
                 tool=random.choice(["Burp Suite", "Nessus", "Qualys"]),
                 vulnerability_name=fake.catch_phrase(),
                 cve_id=f"CVE-{random.randint(1999, 2024)}-{random.randint(1000, 9999)}",
@@ -54,19 +54,29 @@ def generate_security_logs(count: int) -> List[Union[SecurityLog]]:
                 type="security",
                 source="IDS",
                 event="Unauthorized Access Attempt",
-                message=f"Detected malicious access attempt from {fake.ipv4()}",
+                message=f"Detected unauthorized access attempt from {fake.ipv4()}",
+                severity=random.choice(["critical", "high", "medium", "low"]),
+                ip_address=fake.ipv4(),  # Add missing field
+                username=fake.user_name(),  # Add missing field
+                attack_vector=random.choice(["Phishing", "Brute Force", "SQL Injection"]),  
+                status=random.choice(["Blocked", "Failed", "Successful"]),  
                 detection_system="Snort",
-                intrusion_method=random.choice(["Brute-force", "Phishing", "SQL Injection"]),
-                risk_level=random.choice(["Low", "Medium", "High", "Critical"]),
+                intrusion_method=random.choice(["Exploit", "Privilege Escalation"]),
+                risk_level=random.choice(["Low", "Medium", "High", "Critical"])
             ),
             AccessControlLog(
                 type="security",
                 source="Access Control",
-                event="Access Denied",
+                event="Access Attempt",
                 message=f"Access denied to {fake.user_name()} for {fake.file_path()}",
+                severity=random.choice(["critical", "high", "medium", "low"]),
+                ip_address=fake.ipv4(),  # Add missing field
+                username=fake.user_name(),  # Add missing field
+                attack_vector=random.choice(["Brute-force", "Privilege Escalation"]),  # Add missing field
+                status=random.choice(["Failed", "Successful"]),  # Add missing field
                 access_type="Denied",
                 resource=fake.file_path(),
-                access_reason=random.choice(["Unauthorized user", "Incorrect credentials"]),
+                access_reason=random.choice(["Unauthorized user", "Incorrect credentials"])
             ),
         ])
     return logs
@@ -84,6 +94,7 @@ def generate_event_logs(count: int) -> List[EventLog]:
                 source="System Monitor",
                 event="System Reboot",
                 message=f"System rebooted at {datetime.utcnow()}",
+                severity="info",  # Added severity field
                 os_version=fake.windows_platform_token(),
                 hardware_id=fake.uuid4(),
                 system_component=fake.bs(),
@@ -96,6 +107,7 @@ def generate_event_logs(count: int) -> List[EventLog]:
                 source="AppManager",
                 event="App Crash",
                 message=f"{fake.company()} application crashed.",
+                severity="error",  # Added severity field
                 application_name=fake.company(),
                 version=fake.numerify("#.#.#"),
                 action_details=fake.sentence(),
@@ -107,20 +119,28 @@ def generate_event_logs(count: int) -> List[EventLog]:
                 type="event",
                 source="AuthService",
                 event="Login Attempt",
-                message=f"User {fake.user_name()} attempted to login.",
+                message=f"User {fake.user_name()} attempted to log in.",
+                severity=random.choice(["info", "warning", "critical"]),
                 auth_method=random.choice(["OAuth", "SAML", "LDAP"]),
                 auth_status=random.choice(["Success", "Failure"]),
-                user_role=random.choice(["Admin", "User", "Moderator"]),
+                user_role=random.choice(["Admin", "User", "Guest"]),
+                system_component=fake.word(),  # Add missing field
+                action_performed=random.choice(["Login", "Logout", "Password Change"]),  
+                result=random.choice(["Success", "Failure"])  
             ),
             NetworkEvent(
                 type="event",
                 source="Network Manager",
-                event="Network Alert",
+                event="Traffic Anomaly Detected",
                 message=f"Traffic anomaly detected between {fake.ipv4()} and {fake.ipv4()}",
+                severity=random.choice(["info", "warning", "critical"]),
+                system_component="Network Interface",  # Add missing field
+                action_performed="Traffic Analysis",  # Add missing field
+                result=random.choice(["Monitored", "Blocked"]),  # Add missing field
                 src_ip=fake.ipv4(),
                 dest_ip=fake.ipv4(),
                 protocol=random.choice(["TCP", "UDP", "ICMP"]),
-                action_taken=random.choice(["Monitored", "Blocked"]),
+                action_taken="Monitored"
             ),
         ])
     return logs
@@ -138,6 +158,7 @@ def generate_error_logs(count: int) -> List[ErrorLog]:
                 source="Database",
                 event="Query Failure",
                 message="Database query failed during operation.",
+                severity="critical",  # Added severity field
                 error_message="Query could not execute due to missing field.",
                 module="Query Executor",
                 error_code=f"DB-{random.randint(1000, 9999)}",
@@ -150,33 +171,40 @@ def generate_error_logs(count: int) -> List[ErrorLog]:
                 source="FileSystem",
                 event="File Not Found",
                 message=f"File {fake.file_path()} not found.",
+                severity=random.choice(["critical", "high", "medium", "low"]),
                 file_path=fake.file_path(),
                 file_operation=random.choice(["Read", "Write", "Delete"]),
-                error_code=f"FS-{random.randint(1000, 9999)}",  # Corrected Missing Field
-                error_message="File access error occurred.",  # Corrected Missing Field
-                module="File Manager",  # Corrected Missing Field
+                error_code=f"FS-{random.randint(1000, 9999)}",
+                error_message=f"Unable to access file at {fake.file_path()}",
+                error_details=f"Details: Permission issue with {fake.file_path()}", 
+                module="File Manager"
             ),
             NetworkErrorLog(
                 type="error",
                 source="Network Interface",
                 event="Connection Timeout",
-                message=f"Network interface {fake.word()} experienced timeout.",
+                message="Network interface experienced timeout.",
+                severity=random.choice(["critical", "high", "medium", "low"]),
                 interface=f"eth{random.randint(0, 3)}",
                 affected_service=fake.word(),
                 error_cause="Connection Timeout",
+                error_code=f"NET-{random.randint(1000, 9999)}",  
+                error_message=f"Service timeout on interface {fake.word()}",  
+                module="Network Manager",  
             ),
             ApplicationErrorLog(
                 type="error",
-                source="AppService",
-                event="Service Failure",
-                message=f"{fake.company()} app service crashed unexpectedly.",
-                app_name=fake.company(),
-                version=fake.numerify("#.#.#"),
+                source="Application Service",
+                event="Service Crash",
+                message=f"Application {fake.company()} crashed unexpectedly.",
+                severity=random.choice(["critical", "high", "medium", "low"]),
+                error_code=f"APP-{random.randint(1000, 9999)}",  
+                error_message="Unexpected service termination",  
+                module=fake.word(),  
                 crash_report=fake.text(),
             ),
         ])
     return logs
-
 
 # -------------------------------
 # Debug Logs Generators
@@ -191,6 +219,7 @@ def generate_debug_logs(count: int) -> List[DebugLog]:
                 source="Query Executor",
                 event="Query Execution",
                 message="SQL query executed successfully.",
+                severity="debug",  # Added severity field
                 debug_message="Execution time: 23ms",
                 module_name="DatabaseManager",
                 sql_query="SELECT * FROM products WHERE active=True",
@@ -201,6 +230,7 @@ def generate_debug_logs(count: int) -> List[DebugLog]:
                 source="API Gateway",
                 event="API Request",
                 message=f"API request to {fake.uri()}",
+                severity="debug",  # Added severity field
                 debug_message=f"Response time: {random.uniform(100.0, 500.0)}ms",
                 module_name="APIService",
                 api_endpoint=fake.uri(),
@@ -212,6 +242,7 @@ def generate_debug_logs(count: int) -> List[DebugLog]:
                 source="Config Manager",
                 event="Config Update",
                 message="Configuration file updated.",
+                severity="debug",  # Added severity field
                 debug_message="Settings applied successfully.",
                 module_name="SystemConfigurator",
                 config_file=fake.file_path(),
@@ -222,6 +253,7 @@ def generate_debug_logs(count: int) -> List[DebugLog]:
                 source="Process Manager",
                 event="Process Monitoring",
                 message=f"Process {fake.word()} running smoothly.",
+                severity="debug",  # Added severity field
                 debug_message="Execution status: Running",
                 module_name="ProcessMonitor",
                 process_id=random.randint(1000, 9999),
@@ -244,6 +276,7 @@ def generate_info_logs(count: int) -> List[InfoLog]:
                 source="System Monitor",
                 event="System Check",
                 message="System operational with optimal performance.",
+                severity="info",  # Added severity field
                 summary="System check completed.",
                 details="Uptime: 48 hours | Memory usage: 65%",
                 os_version=fake.windows_platform_token(),
@@ -255,6 +288,7 @@ def generate_info_logs(count: int) -> List[InfoLog]:
                 source="Activity Tracker",
                 event="User Login",
                 message=f"User {fake.user_name()} logged in successfully.",
+                severity="info",  # Added severity field
                 summary="User Activity Detected",
                 details=f"User performed {random.randint(1, 10)} actions.",
                 user_id=fake.uuid4(),
@@ -266,6 +300,7 @@ def generate_info_logs(count: int) -> List[InfoLog]:
                 source="Deployment Manager",
                 event="Deployment Successful",
                 message="New deployment completed successfully.",
+                severity="info",  # Added severity field
                 summary="Deployment Process Completed",
                 details="Version 2.3.4 deployed to production.",
                 environment="Production",
@@ -277,6 +312,7 @@ def generate_info_logs(count: int) -> List[InfoLog]:
                 source="Service Monitor",
                 event="Service Running",
                 message=f"Service {fake.word()} is running normally.",
+                severity="info",  # Added severity field
                 summary="Service Health Check Passed",
                 details="No issues detected.",
                 service_name=fake.word(),
@@ -299,3 +335,4 @@ def generate_logs(category: str, count: int):
         "info": generate_info_logs,
     }
     return generators.get(category, lambda x: [])(count)
+

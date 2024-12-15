@@ -1,23 +1,40 @@
+# log_routes.py
+
 from flask import Blueprint, request, jsonify
 from helpers.log_generator import generate_logs
-from helpers.log_helper import analyze_logs_bulk
+from helpers.log_helper import analyze_log, serialize_log  # Use analyze_log instead of analyze_logs_bulk
 import logging
-from models.log_history import LogHistory
-
+from models.log_models import (
+    Log, SecurityLog, FirewallLog, VulnerabilityLog, IntrusionLog, AccessControlLog,
+    EventLog, SystemEvent, ApplicationEvent, AuthenticationEvent, NetworkEvent,
+    ErrorLog, DatabaseErrorLog, FileSystemErrorLog, NetworkErrorLog, ApplicationErrorLog,
+    DebugLog, QueryDebugLog, ApiDebugLog, ConfigDebugLog, ProcessDebugLog,
+    InfoLog, SystemInfoLog, UserActivityLog, DeploymentLog, ServiceStatusLog
+)
+from datetime import datetime
 
 # Initialize Flask Blueprint
 log_bp = Blueprint("logs", __name__)
 logger = logging.getLogger(__name__)
 
+# Configure logger if not already configured
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter(
+        '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.setLevel(logging.DEBUG)
+
 # ---------------------------------
-# Unified Log Generation & Analysis Route
+# Unified Log Generation Route (Only Generate)
 # ---------------------------------
 
 @log_bp.route("/generate", methods=["POST"])
-def generate_and_analyze_logs():
+def generate_logs_route():
     """
-    Endpoint to generate logs based on category and count,
-    then analyze them using OpenAI's API.
+    Endpoint to generate logs based on category and count.
     """
     try:
         # Extract request data
@@ -31,87 +48,122 @@ def generate_and_analyze_logs():
             logger.warning(f"No logs generated for category: {category}")
             return jsonify({"error": "Invalid log category."}), 400
         
-        # Analyze logs
-        analyzed_logs = analyze_logs_bulk(logs)
-        
-        logger.info(f"Generated and analyzed {count} logs for category: {category}")
+        # Serialize logs
+        serialized_logs = [serialize_log(log) for log in logs]
+
+        logger.info(f"Generated {count} logs for category: {category}")
         return jsonify({
             "status": "success",
             "category": category,
-            "logs": analyzed_logs,
-            "count": len(analyzed_logs),
+            "logs": serialized_logs,
+            "count": len(serialized_logs),
         }), 200
 
     except Exception as e:
-        logger.error(f"Error generating and analyzing logs: {e}")
+        logger.error(f"Error generating logs: {e}")
         return jsonify({"error": str(e)}), 500
 
-
 # ---------------------------------
-# Fetch Specific Logs Route (Optional Feature)
-# ---------------------------------
-
-@log_bp.route("/fetch", methods=["GET"])
-def fetch_logs():
-    """
-    Fetch logs based on query parameters like category and severity.
-    """
-    try:
-        category = request.args.get("category", "all").lower()
-        severity = request.args.get("severity", None)
-        limit = int(request.args.get("limit", 10))
-        
-        # Simulate fetching logs (use a real database or log storage service)
-        logs = generate_logs(category, limit)
-
-        # Filter by severity if provided
-        if severity:
-            logs = [log for log in logs if log.severity.lower() == severity.lower()]
-
-        logger.info(f"Fetched {len(logs)} logs with category: {category}, severity: {severity}")
-        return jsonify({
-            "status": "success",
-            "logs": [log.dict() for log in logs],
-            "count": len(logs),
-        }), 200
-
-    except Exception as e:
-        logger.error(f"Error fetching logs: {e}")
-        return jsonify({"error": str(e)}), 500
-
-
-# ---------------------------------
-# Analyze Existing Logs Route (Manual Analysis)
+# Analyze Existing Log Route (Only Analyze Single Log)
 # ---------------------------------
 
 @log_bp.route("/analyze", methods=["POST"])
-def analyze_existing_logs():
+def analyze_log_route():
     """
-    Endpoint to analyze manually provided logs.
+    Endpoint to analyze a manually provided single log.
     """
     try:
         # Extract request data
         data = request.get_json()
-        logs = data.get("logs", [])
+        log = data.get("log", None)
         
-        if not logs:
-            logger.warning("No logs provided for analysis.")
-            return jsonify({"error": "No logs provided."}), 400
+        if not log:
+            logger.warning("No log provided for analysis.")
+            return jsonify({"error": "No log provided."}), 400
         
-        # Analyze the logs
-        analyzed_logs = analyze_logs_bulk(logs)
+        # Deserialize log back into model object
+        log_type = log.get("type")
+        source = log.get("source", "").lower()
+        log_obj = None
+
+        if log_type == "security":
+            if source == "firewall":
+                log_obj = FirewallLog(**log)
+            elif source == "vulnerability scanner":
+                log_obj = VulnerabilityLog(**log)
+            elif source == "ids":
+                log_obj = IntrusionLog(**log)
+            elif source == "access control":
+                log_obj = AccessControlLog(**log)
+            else:
+                logger.warning(f"Unknown security log source: {source}")
+        elif log_type == "event":
+            if source == "system monitor":
+                log_obj = SystemEvent(**log)
+            elif source == "appmanager":
+                log_obj = ApplicationEvent(**log)
+            elif source == "authservice":
+                log_obj = AuthenticationEvent(**log)
+            elif source == "network manager":
+                log_obj = NetworkEvent(**log)
+            else:
+                logger.warning(f"Unknown event log source: {source}")
+        elif log_type == "error":
+            if source == "database":
+                log_obj = DatabaseErrorLog(**log)
+            elif source == "filesystem":
+                log_obj = FileSystemErrorLog(**log)
+            elif source == "network interface":
+                log_obj = NetworkErrorLog(**log)
+            elif source == "application service":
+                log_obj = ApplicationErrorLog(**log)
+            else:
+                logger.warning(f"Unknown error log source: {source}")
+        elif log_type == "debug":
+            if source == "query executor":
+                log_obj = QueryDebugLog(**log)
+            elif source == "api gateway":
+                log_obj = ApiDebugLog(**log)
+            elif source == "config manager":
+                log_obj = ConfigDebugLog(**log)
+            elif source == "process manager":
+                log_obj = ProcessDebugLog(**log)
+            else:
+                logger.warning(f"Unknown debug log source: {source}")
+        elif log_type == "info":
+            if source == "system monitor":
+                log_obj = SystemInfoLog(**log)
+            elif source == "activity tracker":
+                log_obj = UserActivityLog(**log)
+            elif source == "deployment manager":
+                log_obj = DeploymentLog(**log)
+            elif source == "service monitor":
+                log_obj = ServiceStatusLog(**log)
+            else:
+                logger.warning(f"Unknown info log source: {source}")
+        else:
+            logger.warning(f"Unknown log type: {log_type}")
         
-        logger.info(f"Analyzed {len(analyzed_logs)} provided logs.")
+        if not log_obj:
+            logger.warning("Invalid log data provided.")
+            return jsonify({"error": "Invalid log data provided."}), 400
+
+        # Analyze the log
+        analysis = analyze_log(log_obj)
+
+        # Serialize the log
+        serialized_log = serialize_log(log_obj)
+
+        logger.info(f"Analyzed log: {serialized_log.get('id', 'N/A')}")
         return jsonify({
             "status": "success",
-            "logs": analyzed_logs,
-            "count": len(analyzed_logs),
+            "log": serialized_log,
+            "analysis": analysis
         }), 200
 
     except Exception as e:
-        logger.error(f"Error analyzing provided logs: {e}")
+        logger.error(f"Error analyzing log: {e}")
         return jsonify({"error": str(e)}), 500
-
 
 # ---------------------------------
 # Health Check Route
@@ -124,28 +176,36 @@ def health_check():
     """
     return jsonify({"status": "running", "service": "Log Analysis API"}), 200
 
+# ---------------------------------
+# Database History Routes (If Needed)
+# ---------------------------------
 
-
-# Inject Database Reference
 def init_log_routes(db):
+    """
+    Initialize routes with database integration for log history.
+    """
     @log_bp.route("/history/save", methods=["POST"])
     def save_log_history():
         try:
             data = request.get_json()
+            # Assuming LogHistory is a Pydantic model or a compatible dict
             db.log_history.insert_one(data)
             return jsonify({"status": "success", "message": "Log history saved."}), 200
         except Exception as e:
+            logger.error(f"Error saving log history: {e}")
             return jsonify({"error": str(e)}), 500
 
     @log_bp.route("/history/fetch", methods=["GET"])
     def fetch_log_history():
         try:
             history = list(db.log_history.find().sort("timestamp", -1))
+            serialized_history = [serialize_log(entry) for entry in history]
             return jsonify({
                 "status": "success",
-                "history": history,
-                "count": len(history)
+                "history": serialized_history,
+                "count": len(serialized_history),
             }), 200
         except Exception as e:
+            logger.error(f"Error fetching log history: {e}")
             return jsonify({"error": str(e)}), 500
 

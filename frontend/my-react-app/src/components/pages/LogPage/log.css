@@ -1,210 +1,491 @@
-/* General Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* src/components/log.css */
+
+/* CSS Variables for Theming */
+:root {
+  /* Primary Colors (Even Distribution) */
+  --color-1: #000000; /* Black */
+  --color-2: #0a0b0d; /* Dark Grey-Black */
+  --color-3: #010101; /* Near-Black */
+  --color-4: #031c46; /* Deep Navy Blue */
+  --color-5: #000001; /* Almost Black */
+  --color-6: #010000; /* Very Dark Grey */
+  --color-7: #010307; /* Very Dark Blue-Grey */
+  --color-8: #093b46; /* Dark Cyan Blue */
+  --color-9: #171d46; /* Dark Indigo */
+  --color-10: #001746; /* Deep Midnight Blue */
+  --color-11: #031946; /* Deep Ocean Blue */
+  --color-12: #021946; /* Very Dark Blue */
+  --color-13: #011346; /* Near Midnight Blue */
+  --color-14: #001647; /* Very Deep Blue */
+  --color-15: #072746; /* Dark Slate Blue */
+  --color-16: #041d46; /* Deep Blue */
+  --color-17: #000103; /* Very Dark Grey-Blue */
+  --color-18: #010001; /* Almost Black */
+  --color-19: #000203; /* Slight Blue-Tinted Black */
+  --color-20: #020504; /* Very Dark Charcoal Grey */
+  --color-21: #ffffff; /* Very Dark Charcoal Grey */
+
+  /* Backgrounds */
+  --background-color: var(--color-1); /* Black */
+  --log-page-bg: var(--color-2); /* Dark Grey-Black */
+
+  /* Primary and Secondary Colors */
+  --primary-color: var(--color-21); /* Deep Navy Blue */
+  --secondary-color: var(--color-3); /* Near-Black */
+
+  /* Accent Colors */
+  --accent-color-1: var(--color-8); /* Dark Cyan Blue */
+  --accent-color-2: var(--color-9); /* Dark Indigo */
+  --accent-color-3: var(--color-10); /* Deep Midnight Blue */
+
+  /* Button Colors */
+  --button-bg: var(--color-11); /* Deep Ocean Blue */
+  --button-hover-bg: var(--color-12); /* Very Dark Blue on Hover */
+  --button-active-bg: var(--color-13); /* Near Midnight Blue on Active */
+
+  /* Input Styles */
+  --input-bg: var(--color-14); /* Very Deep Blue Inputs */
+  --input-border: var(--color-15); /* Dark Slate Blue Borders */
+
+  /* Progress Bar Colors */
+  --progress-bar-bg: var(--color-16); /* Deep Blue Progress Bar Background */
+  --progress-bar-fill: var(--color-17); /* Very Dark Grey-Blue Fill */
+
+  /* Shadows and Effects */
+  --card-shadow: rgba(7, 39, 70, 0.5) 0px 0px 10px 0px; /* Dark Slate Blue Shadow */
+  --history-bg: var(--color-18); /* Almost Black for History Entries */
+  --tooltip-bg: rgba(7, 39, 70, 0.9); /* Dark Slate Blue Tooltips */
+  --tooltip-text: #ffffff; /* White Text in Tooltips */
+
+  /* Log Entry Backgrounds */
+  --log-entry-bg: var(--color-19); /* Slight Blue-Tinted Black */
+
+  /* Additional Colors */
+  --dark-purple: var(--color-5); /* Almost Black */
+  --grey-color: var(--color-6); /* Very Dark Grey */
+  --light-grey: var(--color-20); /* Very Dark Charcoal Grey */
 }
 
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #121212;
-  color: #ffffff;
-}
+
 
 .log-page-container {
+  padding: 40px;
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #1e1e2f;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
+  
+  /* Added Background Image and Adjusted Border Radius */
+  background-image: url('./Logbackground.jpg'); /* Ensure the path is correct */
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  background-color: var(--log-page-bg); /* Fallback color if image fails to load */
 }
 
+/* Log Page Title */
 .log-page-title {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  color: #f44336;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px var(--primary-color);
 }
 
 /* Controls Section */
-.log-controls, .log-filter {
+.log-controls {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: var(--grey-color);
+  padding: 20px;
+  border-radius: 20px; /* Updated Border Radius */
+  box-shadow: var(--card-shadow);
 }
 
-.log-controls label, 
-.log-filter label {
-  font-size: 1.1rem;
-  margin-right: 0.5rem;
+.control-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  flex: 1 1 200px;
+  margin-right: 20px;
 }
 
-.log-controls select, 
-.log-controls input,
-.log-filter select, 
-.log-filter input {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #444;
-  border-radius: 5px;
-  background: #2e2e38;
-  color: #fff;
-}
-
-.generate-btn, .export-btn {
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
+.control-group label {
+  margin-bottom: 5px;
   font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: var(--primary-color);
 }
 
-.generate-btn {
-  background: #f44336;
-  color: white;
+.control-group select,
+.control-group input[type="number"],
+.control-group input[type="text"] {
+  padding: 10px;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--secondary-color);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
-.export-btn {
-  background: #2196f3;
-  color: white;
+.control-group select:focus,
+.control-group input[type="number"]:focus,
+.control-group input[type="text"]:focus {
+  border-color: var(--primary-color);
 }
 
-.generate-btn:hover, .export-btn:hover {
-  background: #ff7961;
+.max-count {
+  margin-left: 5px;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  align-self: flex-end;
 }
 
-/* Logs Display Section */
+/* Filter Section */
+.log-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: var(--grey-color);
+  padding: 20px;
+  border-radius: 20px; /* Updated Border Radius */
+  box-shadow: var(--card-shadow);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  flex: 1 1 200px;
+  margin-right: 20px;
+}
+
+.filter-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.filter-group select,
+.filter-group input[type="text"] {
+  padding: 10px;
+  border: 2px solid var(--input-border);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--secondary-color);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.filter-group select:focus,
+.filter-group input[type="text"]:focus {
+  border-color: var(--primary-color);
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  position: relative;
+  width: 100%;
+  height: 25px;
+  background-color: var(--progress-bar-bg);
+  border-radius: 12.5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--progress-bar-fill);
+  transition: width 0.3s ease;
+}
+
+.progress-percentage {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--secondary-color);
+  font-weight: bold;
+  line-height: 25px;
+}
+
+/* Logs Display */
 .log-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 .log-entry {
-  background: #252535;
-  padding: 1.5rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  background-color: var(--log-entry-bg);
+  padding: 20px;
+  border-radius: 20px; /* Updated Border Radius */
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
 }
 
 .log-entry:hover {
   transform: translateY(-5px);
-  border: 2px solid #f44336;
+  box-shadow: var(--card-shadow), 0 0 20px var(--primary-color);
 }
 
-.log-entry h3 {
-  font-size: 1.5rem;
-  color: #ff7961;
-  margin-bottom: 0.5rem;
+.log-event {
+  margin-top: 0;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color);
 }
 
 .log-entry p {
-  font-size: 1rem;
-  margin-bottom: 0.3rem;
+  margin: 5px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
-.log-entry strong {
-  color: #ff7961;
+.log-entry p strong {
+  color: var(--primary-color);
 }
 
-/* Severity-Based Highlighting */
+/* Severity-Based Styling */
 .severity-critical {
-  background: #b71c1c;
+  border-left: 5px solid var(--color-1); /* Black */
 }
 
 .severity-high {
-  background: #c62828;
+  border-left: 5px solid var(--color-2); /* Dark Grey-Black */
 }
 
 .severity-medium {
-  background: #ff9800;
+  border-left: 5px solid var(--color-3); /* Near-Black */
 }
 
 .severity-low {
-  background: #4caf50;
+  border-left: 5px solid var(--color-4); /* Deep Navy Blue */
+}
+
+.severity-info {
+  border-left: 5px solid var(--color-5); /* Almost Black */
+}
+
+.severity-debug {
+  border-left: 5px solid var(--color-6); /* Very Dark Grey */
+}
+
+.severity-all {
+  border-left: 5px solid var(--color-7); /* Very Dark Blue-Grey */
+}
+
+/* Analyze Individual Log Button */
+.analyze-individual-btn {
+  margin-top: 10px;
+  width: 100%;
+  background-color: var(--button-bg);
+  transition: background-color 0.3s ease;
+}
+
+.analyze-individual-btn:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.analyze-individual-btn:active {
+  background-color: var(--button-active-bg);
+}
+
+.analyze-individual-btn:disabled {
+  background-color: #555555;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 /* Analysis Section */
 .log-analysis {
-  background: #2e2e38;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
+  background-color: var(--grey-color);
+  padding: 20px;
+  border-radius: 20px; /* Updated Border Radius */
+  box-shadow: var(--card-shadow);
+  margin-bottom: 30px;
+}
+
+.log-analysis h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+  text-shadow: 0 0 5px var(--primary-color);
 }
 
 .analysis-box {
-  background: #1e1e2f;
-  padding: 1rem;
-  border-radius: 5px;
-  color: #fff;
-  font-family: "Courier New", monospace;
+  background-color: var(--color-1); /* Black for high contrast */
+  padding: 15px;
+  border-radius: 4px;
+  color: var(--secondary-color);
   white-space: pre-wrap;
+  font-size: 1rem;
   overflow-x: auto;
+  max-height: 400px;
 }
 
-/* History Section */
+/* Analysis History */
 .log-history {
-  background: #2e2e38;
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin-top: 2rem;
+  background-color: var(--history-bg);
+  padding: 20px;
+  border-radius: 20px; /* Updated Border Radius */
+  box-shadow: var(--card-shadow);
+  margin-bottom: 30px;
+}
+
+.log-history h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+  text-shadow: 0 0 5px var(--primary-color);
+}
+
+.history-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.history-controls button {
+  padding: 8px 16px;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 4px;
+  color: var(--background-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.history-controls button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.history-controls button:active {
+  background-color: var(--button-active-bg);
+}
+
+.history-list {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .history-entry {
-  padding: 1rem;
-  border-bottom: 1px solid #444;
+  background-color: var(--color-18); /* Almost Black for History Entries */
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: var(--card-shadow);
 }
 
-.history-entry:last-child {
-  border-bottom: none;
+.history-entry h4 {
+  margin: 0 0 10px 0;
+  color: var(--primary-color);
+  text-shadow: 0 0 3px var(--primary-color);
 }
 
 .history-entry p {
-  margin-bottom: 0.5rem;
-  color: #fff;
+  margin: 5px 0;
+  font-size: 0.9rem;
 }
 
-.history-entry strong {
-  color: #ff7961;
+/* Export and Reset Buttons */
+.log-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-/* Loading and Empty State Messages */
-.loading-message, .empty-message {
-  text-align: center;
-  font-size: 1.3rem;
-  color: #bbbbbb;
-  margin-top: 2rem;
+.export-btn,
+.reset-btn {
+  padding: 10px 20px;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 4px;
+  color: var(--background-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Media Queries for Responsive Design */
-@media screen and (max-width: 768px) {
-  .log-controls, .log-filter {
+.export-btn:hover,
+.reset-btn:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.export-btn:active,
+.reset-btn:active {
+  background-color: var(--button-active-bg);
+}
+
+.export-btn:disabled,
+.reset-btn:disabled {
+  background-color: #555555;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .log-controls,
+  .log-filter {
     flex-direction: column;
-    align-items: center;
   }
 
-  .log-controls label, 
-  .log-filter label {
+  .control-group,
+  .filter-group {
     margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-
-  .log-controls select, 
-  .log-controls input,
-  .log-filter select, 
-  .log-filter input {
-    width: 100%;
   }
 
   .log-list {
     grid-template-columns: 1fr;
   }
+
+  .history-controls {
+    justify-content: center;
+  }
 }
+
+/* Button Animations */
+.generate-btn,
+.analyze-btn,
+.export-btn,
+.reset-btn,
+.analyze-individual-btn,
+.history-controls button {
+  position: relative;
+  overflow: hidden;
+}
+
+.generate-btn::after,
+.analyze-btn::after,
+.export-btn::after,
+.reset-btn::after,
+.analyze-individual-btn::after,
+.history-controls button::after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: skewX(-45deg);
+  transition: all 0.3s ease;
+}
+
+.generate-btn:hover::after,
+.analyze-btn:hover::after,
+.export-btn:hover::after,
+.reset-btn:hover::after,
+.analyze-individual-btn:hover::after,
+.history-controls button:hover::after {
+  left: 100%;
+}
+
