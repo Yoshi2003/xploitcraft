@@ -1,5 +1,5 @@
 import logging
-from .openai_helper import generate_payload  
+from helpers.openai_helper import generate_payload  
 
 
 logger = logging.getLogger(__name__)
