@@ -1,7 +1,20 @@
+# Python virtual environment folders (used to isolate dependencies)
 venv/
+
+# Compiled Python files (automatically created during runtime)
 *.pyc
+
+#  Python cache directories (stores temporary compiled Python files)
 __pycache__/
+
+# Environment variable files (contains sensitive info like API keys)
 .env
+
+# Node.js dependencies folder (installed by npm or yarn)
 node_modules/
+
+# React build files (generated during production build, not needed in source control)
 my-react-app/build/
-xploitcraft.pem
+
+# AWS EC2 SSH key
+xploitcraft.pem 
