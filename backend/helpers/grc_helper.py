@@ -57,23 +57,17 @@ REQUIREMENTS FOR QUESTION:
 
 4. Explanations:
    - For the correct answer: Provide multiple sentences detailing exactly why it’s correct, clearly tying it back to the question’s scenario or concept. Show how it fulfills the requirements asked in the question as well as why the other answer choices are incorrect/not the correct answer..
-   - For each incorrect answer: Provide multiple sentences detailing why it is NOT correct. 
+   - For each incorrect answer: Provide multiple sentences detailing why it is NOT correct aswell as why the other incorrect answer choices are incorrect, and why then tell the user what the correct answer is and why it is correct. 
      Do not just say it’s incorrect; fully explain what that framework/control/standard/principle primarily addresses and why it falls short. 
      Highlight conceptual differences, limitations, or focus areas that differ from the question’s criteria.
    - All explanations should be in-depth and more than just naming what something is—explain conceptually why it aligns or does not align with the question’s key point.
-   - Regardless of user choice, the generated output must contain full explanations for all answers. The explanations are produced in advance as part of the JSON object. Each explanation should be at least 2 sentences, rich in detail and conceptual clarity.
+   - Regardless of user choice, the generated output must contain full explanations for all answer choices provided. The explanations are produced in advance as part of the JSON object. Each explanation should be at least 3 sentences, rich in detail and conceptual clarity.
 
 5. Include an "exam_tip" field that provides a short, memorable takeaway or mnemonic to help differentiate the correct concept from the others. The exam tip should help the user recall why the correct answer stands out.
 
 6. Return ONLY a JSON object with the fields:
    "question", "options", "correct_answer_index", "explanations", and "exam_tip"
    No extra text, no Markdown, no commentary outside the JSON.
-
-7. The question should be unique and not a duplicate of any previous example. Introduce variety. 
-   For example (this is just an example!!):
-   - If category = "Risk Management" and difficulty = "Medium", consider asking about a framework that best suits quantitative risk analysis (like FAIR) versus another that’s more compliance-driven.
-   - If category = "Regulation" and difficulty = "Easy", ask about a well-known regulation’s primary focus (e.g., GDPR’s emphasis on personal data protection) in a non-trivial way.
-   - If category = "Random", mix elements from different areas (e.g., how ISO 31000 differs from NIST CSF, or what factor differentiates an incident response framework from a data privacy regulation).
 
 8. For each explanation (correct and incorrect):
    - At minimum of 3 sentences for the correct answer.
@@ -83,14 +77,14 @@ REQUIREMENTS FOR QUESTION:
 
 EXAMPLE FORMAT (this is not real content, just structure, make sure to use all topics not just the topic provided in this example):
 {{
-  "question": "Which approach best ensures a robust, organization-wide information security management process?",
+  "question": "The question",
   "options": ["Option A","Option B","Option C","Option D"],
-  "correct_answer_index": 2,
+  "correct_answer_index": C,
   "explanations": {{
-    "0": "Explain thoroughly why option 0 fails. Mention its scope, focus areas, and why that doesn't meet the question criteria.",
-    "1": "Explain thoroughly why option 1 fails or differs from what is asked.",
-    "2": "Explain thoroughly why option 2 is correct, linking its characteristics to the question scenario.",
-    "3": "Explain thoroughly why option 3 doesn't fit the question’s needs, mentioning what it covers and lacks."
+    "A": "Explain thoroughly why option A fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect.",
+    "B": "Explain thoroughly why option B fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect.",
+    "C": "Explain thoroughly why option C is correct, linking its characteristics to the question scenario and why the other answer choices are incorrect",
+    "D": "Explain thoroughly why option D fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect."
   }},
   "exam_tip": "A short, memorable hint or mnemonic that differentiates the correct approach from others."
 }}
