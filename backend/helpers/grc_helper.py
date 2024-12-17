@@ -56,7 +56,7 @@ REQUIREMENTS FOR QUESTION:
 3. Four options (A, B, C, D) total, one correct answer. The incorrect options should be very plausible but not correct, requiring the test-taker to carefully differentiate.
 
 4. Explanations:
-   - For the correct answer: Provide multiple sentences detailing exactly why it’s correct, clearly tying it back to the question’s scenario or concept. Show how it fulfills the requirements asked in the question.
+   - For the correct answer: Provide multiple sentences detailing exactly why it’s correct, clearly tying it back to the question’s scenario or concept. Show how it fulfills the requirements asked in the question as well as why the other answer choices are incorrect/not the correct answer..
    - For each incorrect answer: Provide multiple sentences detailing why it is NOT correct. 
      Do not just say it’s incorrect; fully explain what that framework/control/standard/principle primarily addresses and why it falls short. 
      Highlight conceptual differences, limitations, or focus areas that differ from the question’s criteria.
