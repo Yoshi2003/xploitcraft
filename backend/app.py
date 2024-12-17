@@ -51,7 +51,8 @@ app = Flask(__name__)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-app.config['SECRET_KEY'] = '69420yoshi2003llmp0p1sealingtechSAAS'  # Replace this with a long, secure random value
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+
 
 # Redis configuration for sessions
 app.config['SESSION_TYPE'] = 'redis'
