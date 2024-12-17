@@ -1,4 +1,5 @@
-#global requirements (this txt file is only informational and not needed for the app)
+# This file is not technically required, but I chose to keep it in the project root to provide visibility and clarity
+# for others browsing the directory structure
 
 annotated-types==0.7.0
 anyio==4.6.2.post1
@@ -40,7 +41,6 @@ openai
 ipython
 requests
 socketio-client
-react-syntax-highlighter
 redis
 flask-session
 flask-cors
