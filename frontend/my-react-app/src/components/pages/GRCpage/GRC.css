@@ -1,24 +1,26 @@
 .grc-wizard-page {
-   position: relative;
-    height: 100vh;
-    background-image: url('./GRCbackground.jpg'); /* Ensure backround3.jpg is placed in the correct directory */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    align-items: start;
-    padding: 40px;
+  position: relative;
+  min-height: 100vh;
+  background-image: url('./GRCbackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .grc-wizard-container {
-  max-width: 80%;
+  max-width: 90vw;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem;
   background-color: rgba(0, 0, 0, 0.7);
-  border: 2px solid #b30000;
-  border-radius: 10px;
-  box-shadow: 0 0 5px #fff;
+  border: 0.125rem solid #b30000;
+  border-radius: 0.625rem;
+  box-shadow: 0 0 0.3125rem #fff;
   backdrop-filter: blur(2px);
   position: relative;
   color: #fff;
@@ -29,45 +31,47 @@
   font-size: 3rem;
   color: #b30000;
   text-align: center;
-  text-shadow: 1px 1px .5px #fff;
-  margin-bottom: 10px;
+  text-shadow: 0.0625rem 0.0625rem 0.03125rem #fff;
+  margin-bottom: 0.625rem;
+  word-wrap: break-word;
 }
 
 .grc-subtitle {
   font-size: 1.1rem;
   color: #fff;
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 1.5625rem;
+  word-wrap: break-word;
 }
 
 .grc-wizard-controls {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 30px;
+  gap: 1.25rem;
+  margin-bottom: 1.875rem;
 }
 
 .grc-control {
   flex: 1;
-  min-width: 150px;
+  min-width: 9.375rem;
 }
 
 .grc-label {
   display: block;
   font-size: 1.2rem;
   color: #e60000;
-  margin-bottom: 5px;
+  margin-bottom: 0.3125rem;
   text-transform: uppercase;
 }
 
 .grc-select {
   width: 100%;
-  padding: 10px;
+  padding: 0.625rem;
   background-color: #0d0d0d;
   color: #e60000;
-  border: 2px solid #fff;
-  border-radius: 10px;
+  border: 0.125rem solid #fff;
+  border-radius: 0.625rem;
   font-size: 1rem;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -78,17 +82,17 @@
 }
 
 .grc-select:focus {
-  box-shadow: 0 0 8px #ff0000;
+  box-shadow: 0 0 0.5rem #ff0000;
 }
 
 .grc-generate-btn {
   flex: 1;
-  min-width: 100px;
-  padding: 10px 20px;
+  min-width: 6.25rem;
+  padding: 0.625rem 1.25rem;
   background-color: #0d0d0d;
   color: #fff;
-  border: 2px solid #e60000;
-  border-radius: 20px;
+  border: 0.125rem solid #e60000;
+  border-radius: 1.25rem;
   font-size: 1.1rem;
   text-transform: uppercase;
   cursor: pointer;
@@ -117,33 +121,40 @@
 }
 
 .grc-question-container {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .grc-question {
   font-size: 1.8rem;
   color: #fff;
   text-align: center;
-  text-shadow: 0 2px 4px #b30000;
-  margin-bottom: 15px;
+  text-shadow: 0 0.125rem 0.25rem #b30000;
+  margin-bottom: 0.9375rem;
+  word-wrap: break-word;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .grc-options {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .grc-option-btn {
-  padding: 10px 15px;
+  padding: 0.625rem 0.9375rem;
   background-color: #0d0d0d;
   color: #fff;
-  border: 2px solid #b30000;
-  border-radius: 10px;
+  border: 0.125rem solid #b30000;
+  border-radius: 0.625rem;
   font-size: 1rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  word-wrap: break-word;
 }
 
 .grc-option-btn:hover:not(:disabled) {
@@ -157,36 +168,41 @@
 }
 
 .grc-feedback {
-  padding: 15px;
-  margin-top: 20px;
-  border-radius: 5px;
+  padding: 0.9375rem;
+  margin-top: 1.25rem;
+  border-radius: 0.3125rem;
   font-size: 1.2rem;
   text-align: center;
   position: relative;
   line-height: 1.4;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .grc-feedback.correct {
-  background-color: #808080; /* Dark green */
+  background-color: #808080;
   color: #fff;
-  border: 2px solid #b30000;
+  border: 0.125rem solid #b30000;
 }
 
 .grc-feedback.incorrect {
-  background-color: #808080; /* Dark red */
+  background-color: #808080;
   color: #fff;
-  border: 2px solid #b30000;
+  border: 0.125rem solid #b30000;
 }
 
 .copy-btn {
   position: absolute;
-  top: 1px;
-  right: 1px;
+  top: 0.0625rem;
+  right: 0.0625rem;
   background-color: #696969;
   color: #000;
-  border: 1px solid #000;
-  border-radius: 20px;
-  padding: 1px 1px;
+  border: 0.0625rem solid #000;
+  border-radius: 1.25rem;
+  padding: 0.2rem 0.4rem;
   font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -195,3 +211,4 @@
 .copy-btn:hover {
   background-color: #fff;
 }
+

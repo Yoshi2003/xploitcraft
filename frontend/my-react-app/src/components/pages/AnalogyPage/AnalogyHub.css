@@ -1,134 +1,169 @@
 body {
-  background-color: #0c0c0c; /* Set a dark background color */
-  color: #00ffea; /* Primary text color */
+  background-color: #0c0c0c; 
+  color: #00ffea; 
   font-family: 'Courier New', Courier, monospace;
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  box-sizing: border-box; /* Ensure padding/border included in width calculations */
 }
-
 
 .analogy-hub-container {
-  width: 99%;
+  width: 100vw; /* full width of viewport */
+  max-width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 2rem;
   text-align: center;
   opacity: 0.9;
-  border: 2px solid #ff004d;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px #ff004d;
-  background-image: url('./backround1.jpg'); /* Set background image only for this container */
+  border: 0.125rem solid #ff004d;
+  border-radius: 0.625rem;
+  box-shadow: 0 0 1.25rem #ff004d;
+  background-image: url('./backround1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center; /* Center the background */
+  background-position: center;
   min-height: 100vh;
+  box-sizing: border-box; /* Ensure padding/border included in the element width/height */
+  overflow-x: hidden; /* Just in case */
 }
+
 .analogy-hub-title {
-  font-size: 3.7em;
-  color: #8B0000; /* Neon pink title */
-  text-shadow: 2px 2px #ffffff; /* Shadow effect for better readability */
-  margin-bottom: 20px;
+  font-size: 3.7rem;
+  color: #8B0000;
+  text-shadow: 0.125rem 0.125rem #ffffff;
+  margin-bottom: 1.25rem;
+  word-wrap: break-word;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .analogy-hub-tagline {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #8B0000; /* White for tagline */
-  margin-bottom: 30px;
-  text-shadow: 2.3px 2.3px #000000;
+  color: #8B0000; 
+  margin-bottom: 1.875rem;
+  text-shadow: 0.14375rem 0.14375rem #000000;
+  word-wrap: break-word;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .analogy-hub-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
+  max-width: 90vw;
+  margin: 0 auto;
+  overflow-x: hidden;
 }
 
 .analogy-type-section, .analogy-category-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-.analogy-type-section label,
-.analogy-category-section label {
-  font-size: 1.2em;
-  color: #ff004d; /* Neon pink labels */
-  text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 1.25rem;
 }
 
 .analogy-input-fields {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.9375rem; 
   width: 60%;
+  max-width: 30rem; 
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .analogy-hub-input {
-  padding: 15px;
-  background-color: #222; /* Dark background for inputs */
-  color: #00ffea; /* Neon turquoise text */
-  border: 2px solid #8B0000; /* Neon pink border */
-  border-radius: 8px;
-  font-size: 1em;
+  padding: 0.9375rem;
+  background-color: #222;
+  color: #00ffea;
+  border: 0.125rem solid #8B0000;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .analogy-generate-button {
-  padding: 15px 30px;
+  padding: 0.9375rem 1.875rem;
   background-color: #8B0000;
   color: #000;
-  border-radius: 8px;
-  border: 3px solid #000000;
-  font-size: 1em;
+  border-radius: 0.5rem;
+  border: 0.1875rem solid #000000;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .analogy-generate-button:hover {
-  background-color: #00CED1; /* Change to turquoise when hovered */
+  background-color: #00CED1; 
 }
 
 .button-and-loader {
   display: flex;
   align-items: center;
-  gap: 15px; /* Space between button and loading icon */
+  gap: 0.9375rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
 .loading-icon {
-  width: 50px; /* Size of the loading icon */
-  height: 50px;
-  animation: spin 1s linear infinite; /* Adding rotation animation */
+  width: 3.125rem; 
+  height: 3.125rem;
+  animation: spin 1s linear infinite;
 }
 
-/* Keyframes for rotating animation */
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .analogy-output-container {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: rgba(17, 17, 17, 0.95); /* Fade the background slightly to make it look softer */
-  border: 2px solid #8B0000;
-  border-radius: 10px;
-  max-height: 300px; /* Limit output container height */
+  margin-top: 1.875rem;
+  padding: 1.25rem;
+  background-color: rgba(17, 17, 17, 0.95);
+  border: 0.125rem solid #8B0000;
+  border-radius: 0.625rem;
+  max-height: 18.75rem; 
   overflow-y: auto;
-
-  background-position: center;
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .generated-analogy {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   line-height: 1.5em;
   color: #00ffea;
-  padding: 15px;
+  padding: 0.9375rem;
+  word-wrap: break-word;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.625rem;
+  right: 0.625rem;
+  background-color: #8B0000;
+  color: #000;
+  border: 0.125rem solid #000;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.copy-button:hover {
+  background-color: #00CED1;
 }
 

@@ -37,8 +37,8 @@ def generate_payload(prompt: str, retry_attempts: int = 3) -> str:
             chat_completion = client.chat.completions.create(
                 messages=[{"role": "user", "content": prompt}],
                 model="gpt-4o",
-                max_tokens=500,
-                temperature=1.0
+                max_tokens=800,
+                temperature=0.5
             )
 
             content = chat_completion.choices[0].message.content.strip()

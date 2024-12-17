@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './AnalogyHub.css';
-import backgroundImage from './backround1.jpg'; // Importing the background image
-import loadingImage from './loading2.png'; // Importing the loading image
+import backgroundImage from './backround1.jpg';
+import loadingImage from './loading2.png';
 
 const ENDPOINT = "/api"; 
 
@@ -11,6 +11,8 @@ const AnalogyHub = () => {
   const [analogyCategory, setAnalogyCategory] = useState('real-world');
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedAnalogy, setGeneratedAnalogy] = useState('');
+
+  const analogyRef = useRef(null);
 
   const handleTypeChange = (e) => {
     const type = e.target.value;
@@ -35,41 +37,56 @@ const AnalogyHub = () => {
   };
 
   const handleGenerateClick = () => {
-  setIsGenerating(true);
+    setIsGenerating(true);
 
-  // Prepare data to send to backend
-  const data = {
-    analogy_type: analogyType,
-    category: analogyCategory,
-    concept1: inputValues[0] || '',
-    concept2: inputValues[1] || '',
-    concept3: inputValues[2] || ''
+    // Prepare data to send to backend
+    const data = {
+      analogy_type: analogyType,
+      category: analogyCategory,
+      concept1: inputValues[0] || '',
+      concept2: inputValues[1] || '',
+      concept3: inputValues[2] || ''
+    };
+
+    // Make the request to backend
+    fetch(`${ENDPOINT}/analogy/generate_analogy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          console.error('Backend error:', data.error);
+          setGeneratedAnalogy('An error occurred while generating the analogy.');
+        } else {
+          setGeneratedAnalogy(data.analogy);
+        }
+        setIsGenerating(false);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        setGeneratedAnalogy('An internal error occurred. Please try again later.');
+        setIsGenerating(false);
+      });
   };
 
-  // Make the request to backend
-  fetch(`${ENDPOINT}/analogy/generate_analogy`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.error) {
-        console.error('Backend error:', data.error);
-        setGeneratedAnalogy('An error occurred while generating the analogy.');
-      } else {
-        setGeneratedAnalogy(data.analogy);
-      }
-      setIsGenerating(false);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-      setGeneratedAnalogy('An internal error occurred. Please try again later.');
-      setIsGenerating(false);
-    });
-};
+  const handleCopyClick = () => {
+    if (generatedAnalogy) {
+      // Copy to clipboard
+      navigator.clipboard.writeText(generatedAnalogy)
+        .then(() => {
+          // Optional: you could show a small toast or notification that it's copied
+          console.log('Copied to clipboard');
+        })
+        .catch(err => {
+          console.error('Could not copy text: ', err);
+        });
+    }
+  };
+
   return (
     <div className="analogy-hub-container">
       <h1 className="analogy-hub-title">Analogy Hub</h1>
@@ -103,7 +120,7 @@ const AnalogyHub = () => {
             <option value="video-games">Video Games</option>
             <option value="tv-show">TV Show</option>
             <option value="sports">Sports</option>
-            <option value="fiction">fiction</option>
+            <option value="fiction">Fiction</option>
             <option value="food">Food & Cooking</option>
             <option value="relationships">Relationships</option>
             <option value="music">Music & Instruments</option>
@@ -141,13 +158,15 @@ const AnalogyHub = () => {
         </div>
       </div>
 
-      <div className="analogy-output-container">
-        {generatedAnalogy && <p className="generated-analogy">{generatedAnalogy}</p>}
-      </div>
+      {generatedAnalogy && (
+        <div className="analogy-output-container" ref={analogyRef}>
+          <button className="copy-button" onClick={handleCopyClick}>Copy</button>
+          <p className="generated-analogy">{generatedAnalogy}</p>
+        </div>
+      )}
     </div>
   );
 };
 
 export default AnalogyHub;
-
 

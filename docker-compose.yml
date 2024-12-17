@@ -20,9 +20,12 @@ services:
     container_name: frontend_service
     build:
       context: ./frontend/my-react-app
-      dockerfile: Dockerfile.frontend
+      dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
+    volumes:
+      - ./frontend/my-react-app:/app
+      - /app/node_modules
     networks:
       - xploitcraft_network
     restart: always

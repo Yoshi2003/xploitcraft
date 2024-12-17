@@ -2,13 +2,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 220px;
+  width: 13.75rem; /* Using rem units for a more responsive design */
   height: 100%;
-  background-color: #121212;  /* Keep dark background */
+  background-color: #121212; /* Keep dark background */
   color: #cc0000;
-  padding: 10px;
-  border: 3px solid #ffffff;
-  border-radius: 20px;  /* Adds rounded corners */
+  padding: 1rem;
+  border: 0.1875rem solid #ffffff;
+  border-radius: 1.25rem; /* Rounded corners with rem units */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Align elements properly */
@@ -17,30 +17,31 @@
 .sidebar-title {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.9em;
-  margin-bottom: 28px;
-  color: #cc0000;  /* Change title color to dark green as requested */
+  margin-bottom: 1.75rem;
+  color: #cc0000;
 }
 
 .sidebar-list {
   list-style-type: none;
   padding: 0;
+  margin: 0;
   flex-grow: 1; /* Makes the list take up remaining space */
 }
 
 .sidebar-list li {
-  margin-bottom: 35px;
+  margin-bottom: 2.1875rem; /* About 35px in rem units */
 }
 
 .sidebar-list li a {
-  color: #ffffff; 
+  color: #ffffff;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease, transform 0.1s ease;  
+  transition: color 0.3s ease, transform 0.1s ease;
 }
 
 .sidebar-list li a:hover {
   color: #cc0000;
-  transform: scale(1.03);  
+  transform: scale(1.03);
 }
 
 .sidebar-list li a[href="/redblue"] {
@@ -52,30 +53,31 @@
 }
 
 .sidebar-list li a::before {
-  content: "~";  /* Adds a '~' before each link like a command line interface */
-  margin-right: 5px;
-  color: #cc0000;  /* Bright green for hacker style */
+  content: "~"; /* Adds a '~' before each link like a command line interface */
+  margin-right: 0.3125rem;
+  color: #cc0000;
 }
 
 /* Animation for Sidebar Links */
 .sidebar-list li a:hover::before {
-  content: ">>";  /* Changes '~' to '>>' when hovered for that hacker CLI feel */
+  content: ">>"; /* Changes '~' to '>>' when hovered for CLI feel */
   color: #ffffff;
 }
 
 /* Styles for the logo container at the bottom of the sidebar */
 .sidebar-logo-container {
-  text-align: center;
-  margin-top: -10px;
-  margin-right: 40px;
-  padding-bottom: 85px; /* Add some spacing at the bottom */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding-bottom: 2rem; /* Add spacing at the bottom */
 }
 
 .sidebar-logo {
-  width: 100%;  /* Adjust the size of the logo */
-  max-width: 200px; /* Limit the max size */
-  border-radius: 5px; /* Add slight rounding to the logo */
+  width: 100%;  
+  max-width: 12.5rem; /* About 200px in rem units */
+  border-radius: 0.3125rem; /* Slight rounding */
   filter: brightness(2.2);
 }
-
 

@@ -47,10 +47,20 @@ const GRC = () => {
     const correctIndex = questionData.correct_answer_index;
 
     if (index === correctIndex) {
-      setFeedback(`✅ Correct! ${questionData.explanations[index.toString()]}`);
+      setFeedback(`✅ Correct! ${questionData.explanations[index.toString()]}\nExam Tip: ${questionData.exam_tip}`);
     } else {
-      setFeedback(`❌ Incorrect. ${questionData.explanations[index.toString()]}`);
+      setFeedback(`❌ Incorrect. ${questionData.explanations[index.toString()]}\nExam Tip: ${questionData.exam_tip}`);
     }
+  };
+
+  const handleCopy = () => {
+    if (!questionData || !feedback) return;
+    const textToCopy = `Question: ${questionData.question}\n${feedback}`;
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        console.log("Copied to clipboard");
+      })
+      .catch(err => console.error("Failed to copy:", err));
   };
 
   return (
@@ -125,18 +135,9 @@ const GRC = () => {
         {feedback && (
           <div className={`grc-feedback ${feedback.includes("Correct") ? "correct" : "incorrect"}`}>
             {feedback}
-            {questionData && (
-              <button
-                className="copy-btn"
-                onClick={() =>
-                  navigator.clipboard.writeText(
-                    `Question: ${questionData.question}\nExplanation: ${feedback}`
-                  )
-                }
-              >
-                Copy
-              </button>
-            )}
+            <button className="copy-btn" onClick={handleCopy}>
+              Copy
+            </button>
           </div>
         )}
       </div>
@@ -145,5 +146,4 @@ const GRC = () => {
 };
 
 export default GRC;
-
 
