@@ -1,6 +1,6 @@
 import os
 import logging
-from helpers.openai_helper import client
+from API.AI import client
 
 # Set up logging
 logger = logging.getLogger(__name__)

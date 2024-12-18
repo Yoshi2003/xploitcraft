@@ -1,7 +1,3 @@
-# xploitcraft/backend/scenario_logic/scenario_flow_manager.py
-
-# xploitcraft/backend/scenario_logic/scenario_flow_manager.py
-
 class ScenarioFlowManager:
     """
     Manages user progression through a scenario.
@@ -11,7 +7,7 @@ class ScenarioFlowManager:
         self.scenario_breakdown = scenario_breakdown
         self.steps = ['context', 'actors', 'risks', 'mitigation_steps']
         self.current_step = 0
-        self.step_stack = []  # Track previously visited steps
+        self.step_stack = []  
 
     def get_next_step(self):
         """
@@ -19,7 +15,7 @@ class ScenarioFlowManager:
         """
         if self.current_step < len(self.steps):
             next_step = self.steps[self.current_step]
-            self.step_stack.append(self.current_step)  # Save current step before moving
+            self.step_stack.append(self.current_step)  
             self.current_step += 1
             return {next_step: self.scenario_breakdown[next_step]}
         return None
@@ -29,7 +25,7 @@ class ScenarioFlowManager:
         Provides the previous step in the flow.
         """
         if self.step_stack:
-            self.current_step = self.step_stack.pop()  # Go back to the previous step
+            self.current_step = self.step_stack.pop()  
             step_key = self.steps[self.current_step]
             return {step_key: self.scenario_breakdown[step_key]}
         return None
@@ -38,6 +34,6 @@ class ScenarioFlowManager:
         """
         Saves the user choice for later analysis.
         """
-        # Placeholder for saving user choice
+       
         pass
 

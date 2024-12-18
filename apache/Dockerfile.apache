@@ -1,6 +1,6 @@
 FROM httpd:2.4
 
-COPY xploitcraft.conf /usr/local/apache2/conf/extra/
+COPY apache_server.conf /usr/local/apache2/conf/extra/
 COPY httpd.conf /usr/local/apache2/conf/httpd.conf
 
 RUN sed -i '/#LoadModule unixd_module/s/^#//' /usr/local/apache2/conf/httpd.conf && \

@@ -1,52 +1,55 @@
-/* ScenarioSphere.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.main-content {
+  margin-left: 220px;
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left: 0;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .scenario-body {
   background-image: url('backround5.jpg');
   background-size: cover;
-  background-attachment: fixed;
-  filter: brightness(0.9);
+  background-position: center;
+  background-repeat: no-repeat;
   font-family: 'Roboto', sans-serif;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+  color: #cc0000;
+  box-sizing: border-box;
 }
 
+/* Container now just max-width and center */
 .scenario-container {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 100vh;
-  padding: 5px;
-  color: #cc0000;
-  margin-left: 5px;
-  border: 2px solid #fff;
-  overflow: visible;
-  border-radius: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.scenario-input-section {
-  width: 40%;
-  background-color: rgba(30, 30, 30, 0.85);
-  padding: 20px;
-  border-radius: 12px;
-}
-
+.scenario-input-section,
 .scenario-output-container {
-  width: 60%;
-  border: 2px solid #000;
+  background-color: rgba(30,30,30,0.85);
   border-radius: 12px;
   padding: 20px;
-  min-height: 500px;
-  background-color: rgba(30, 30, 30, 0.85);
-  overflow-y: auto;
-  max-height: 800px;
-  scroll-behavior: auto;
+  flex: 1 1 100%; /* On small screens, stack */
+  box-sizing: border-box;
 }
 
 .scenario-title {
   color: #cc0000;
-  font-size: 2.8em;
+  font-size: 2em;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -70,13 +73,14 @@
   background: #2a2a2a;
   color: #f5f5f5;
   margin-top: 5px;
-  font-size: 1.2em;
+  font-size: 1rem;
 }
 
 .button-and-sphere {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
   margin-top: 30px;
   justify-content: flex-start;
 }
@@ -84,10 +88,10 @@
 .scenario-generate-button {
   background-color: #cc0000;
   color: #fff;
-  padding: 15px 30px;
+  padding: 10px 20px;
   border: none;
   border-radius: 12px;
-  font-size: 1.2em;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -95,11 +99,12 @@
 
 .scenario-generate-button:hover {
   background-color: #00ffcc;
+  color: #000;
 }
 
 .loading-sphere {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 5px solid #008080;
   border-top: 5px solid #fff;
@@ -107,26 +112,25 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
 .scenario-output-box {
-  min-height: 8px;
   padding: 20px;
   background-color: #2a2a2a;
   color: #f5f5f5;
-  line-height: 1.8;
+  line-height: 1.6;
   margin-top: 20px;
   border-radius: 8px;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 1rem;
   white-space: pre-wrap;
+  overflow-y: auto;
+  max-height: 400px;
 }
 
 .scenario-output-title {
   color: #cc0000;
-  font-size: 2em;
+  font-size: 1.5em;
   text-align: left;
   margin-top: 5px;
   font-weight: bold;
@@ -138,7 +142,7 @@
 
 .interactive-questions h3 {
   color: #cc0000;
-  font-size: 1.6em;
+  font-size: 1.3em;
   margin-bottom: 15px;
 }
 
@@ -151,19 +155,21 @@
   font-weight: bold;
   color: #fff;
   margin-bottom: 15px;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 
 .scenario-input-field:focus, .scenario-input-slider:focus, select:focus {
   outline: none;
-  box-shadow: none;
   border-color: #00ffcc;
 }
 
-.scenario-output-box .highlight-cyan,
-.interactive-questions .highlight-cyan {
-  color: #cc0000;
-  font-weight: bold;
+/* Responsive */
+@media (max-width: 768px) {
+  .scenario-container {
+    flex-direction: column;
+  }
+  .scenario-title {
+    font-size: 1.8em;
+  }
 }
-
 

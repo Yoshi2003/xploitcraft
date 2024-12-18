@@ -1,0 +1,67 @@
+# Instructions for SSL/HTTPS Setup and production (For Future Me)
+
+## Before CERT
+
+-Remove -X from file names
+
+-replace old files with prouciton files in ProxyAuthrequired root directory
+
+### Step 1: Prepare the Certbot Directories
+1. Make sure the directories `certbot/conf` and `certbot/www` exist in the root of the project.
+2. If they don't exist, create them manually:
+   ```bash
+   mkdir -p certbot/conf certbot/www
+   ```
+
+### Step 2: Ensure Docker is Running
+- Start Docker if it's not already running:
+  ```bash
+  sudo systemctl start docker
+  ```
+
+### Step 3: Launch Docker Containers (First Time Setup)
+- Bring up the containers to ensure everything runs as expected:
+  ```bash
+  docker-compose up --build -d
+  ```
+
+### Step 4: Obtain the SSL Certificate (One-Time Setup)
+- **Make sure the domain ProxyAuthRequired.com is live and DNS is configured.**
+- Run Certbot manually to issue the SSL certificate:
+  ```bash
+  docker-compose run certbot certonly --webroot --webroot-path=/var/www/certbot -d ProxyAuthRequired.com -d www.ProxyAuthRequired.com
+  ```
+
+### Step 5: Verify SSL Certificate
+- Check the certificate files generated in `certbot/conf/live/ProxyAuthRequired.com/`:
+  - `fullchain.pem` (Public Certificate)
+  - `privkey.pem` (Private Key)
+
+### Step 6: Reload Nginx with SSL Config
+- Reload Nginx to apply SSL:
+  ```bash
+  docker-compose restart nginx
+  ```
+
+### Step 7: Test the Website
+- Visit the website in a browser:
+  - **https://ProxyAuthRequired.com**
+  - Ensure the lock icon appears, meaning SSL works.
+
+### Step 8: Automate SSL Renewal
+- Certbot should be auto-renewing every 12 hours as defined in `docker-compose.yml`.
+- To test renewal manually, run:
+  ```bash
+  docker-compose run certbot renew --dry-run
+  ```
+
+### Troubleshooting Notes
+- If SSL certificates aren't issued, check:
+  - **DNS Records:** Ensure the domain is pointing to the correct server.
+  - **Nginx Logs:** Look at `/var/log/nginx/error.log` for possible issues.
+  - **Certbot Logs:** Look at logs in `certbot/conf/`.
+
+---
+**Note to Future Me:** Don’t skip steps or try to be clever; follow the process. Trust the system you built. 🧠
+
+

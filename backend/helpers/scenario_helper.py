@@ -2,7 +2,7 @@ import os
 import logging
 from helpers.openai_helper import client
 import re
-from openai import OpenAI
+from API.AI import client
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +13,6 @@ def generate_scenario(industry, attack_type, skill_level, threat_intensity):
     Generate a scenario using OpenAI based on the provided inputs.
     """
     try:
-        # Consolidated prompt combining the best features of both versions
         prompt = (
             f"Imagine a cybersecurity incident involving the {industry} industry. "
             f"The attack is of type '{attack_type}', performed by someone with a skill level of '{skill_level}', "
@@ -23,7 +22,7 @@ def generate_scenario(industry, attack_type, skill_level, threat_intensity):
             "Include context, actors, risks involved, and the chronological unfolding of the attack. each thing seperated by single space as paragraph"
         )
 
-        # Modify to use messages format for the OpenAI Chat API
+        
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
             model="gpt-4o",
@@ -31,7 +30,7 @@ def generate_scenario(industry, attack_type, skill_level, threat_intensity):
             temperature=0.7,
         )
 
-        # Extract and return the response content
+        
         return response.choices[0].message.content.strip()
 
     except Exception as e:

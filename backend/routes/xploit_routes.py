@@ -1,18 +1,18 @@
 from flask import Blueprint, request, jsonify
-from helpers.ai_manager import AIManager
+from helpers.xploitcraft_helper import Xploits
 import logging
 
 # Configure logger
 logger = logging.getLogger(__name__)
 
 # Create an AI Manager instance
-ai_manager = AIManager()
+xploit = Xploits()
 
 # Create a blueprint
-payload_bp = Blueprint('payload_bp', __name__)
+xploit_bp = Blueprint('xploit_bp', __name__)
 
 # Route to generate a payload
-@payload_bp.route('/generate_payload', methods=['POST'])
+@xploit_bp.route('/generate_payload', methods=['POST'])
 def generate_payload_endpoint():
     data = request.get_json()
     logger.debug(f"Received data: {data}")
@@ -25,8 +25,7 @@ def generate_payload_endpoint():
     evasion_technique = data.get('evasion_technique')
 
     try:
-        # Generate payload using AIManager
-        payload = ai_manager.generate_exploit_payload(vulnerability, evasion_technique)
+        payload = xploits.generate_exploit_payload(vulnerability, evasion_technique)
         logger.debug(f"Generated payload: {payload}")
         return jsonify({'payload': payload})
     except Exception as e:

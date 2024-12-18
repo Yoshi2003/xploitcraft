@@ -2,7 +2,7 @@ import os
 import json
 import logging
 import re  
-from helpers.openai_helper import client
+from API.AI import client
 
 logger = logging.getLogger(__name__)
 

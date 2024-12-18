@@ -1,154 +1,154 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000; /* Keep the overall page background black */
+body, html {
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+.main-content {
+  margin-left:220px;
+  transition: margin-left 0.3s ease;
+  padding: 20px;
+  box-sizing:border-box;
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left:0;
 }
 
 .page-wrapper {
-    display: flex;
-    min-height: 100vh;
-}
-
-.left-bg,
-.right-bg {
-    width: 30%;
-    background-image: url('./backround7.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.7; /* Fade the background a bit */
+  background-color: #000;
+  min-height:100vh;
 }
 
 .daily-cyberbrief-container {
-    width: 60%;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-    opacity: 0.98;
-    border: 2px solid #ff004d;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
+  width:100%;
+  max-width:600px;
+  margin: 20px auto;
+  padding:20px;
+  text-align:center;
+  opacity:0.98;
+  border:2px solid #ff004d;
+  border-radius:10px;
+  background-color: rgba(0,0,0,0.8);
+  box-sizing:border-box;
 }
 
 .cyberbrief-title {
-    text-align: center;
-    font-size: 2.5em;
-    color: #b30000;
-    border: 2px solid #000; /* Black border for better separation */
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
+  font-size:2rem;
+  color:#b30000;
+  border:2px solid #000;
+  padding:10px;
+  background-color:rgba(0,0,0,0.7);
+  border-radius:5px;
+  margin-bottom:20px;
 }
 
 .cyberbrief-description {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.6); /* Dark background for better contrast */
-    padding: 10px;
-    border-radius: 5px;
+  margin-bottom:20px;
+  color:#ffffff;
+  background-color:rgba(0,0,0,0.6);
+  padding:10px;
+  border-radius:5px;
+  font-size:1rem;
+  line-height:1.4;
 }
 
 .cyberbrief-form label {
-    display: block;
-    margin: 15px auto 5px;
-    color: #fff; /* Lighter red for readability */
-    width: 50%;
-    font-weight: bold;
+  display:block;
+  margin:15px auto 5px;
+  color:#fff;
+  width:100%;
+  max-width:300px;
+  font-weight:bold;
+  text-align:center;
 }
 
 .cyberbrief-input {
-    width: 80%;
-    padding: 10px;
-    margin: 0 auto 10px;
-    border: 1px solid #ff3333; /* Lighter red for visibility */
-    outline: none;
-    border-radius: 5px;
-    background-color: rgba(20, 20, 20, 0.9);
-    color: #00ffff;
+  width:80%;
+  max-width:300px;
+  margin:0 auto 10px;
+  padding:10px;
+  border:1px solid #ff3333;
+  border-radius:5px;
+  background-color:rgba(20,20,20,0.9);
+  color:#00ffff;
+  display:block;
 }
 
 .button-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:20px;
 }
 
-.cyberbrief-submit-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    color: #000;
-    background-color: #cc0000;
-    border: 2px solid #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    min-width: 120px;
-}
-
-.cyberbrief-submit-button:hover {
-    background-color: #006600;
-}
-
+.cyberbrief-submit-button,
 .unsubscribe-button {
-    background-color: #cc0000;
+  padding:10px 20px;
+  font-size:1em;
+  color:#000;
+  background-color:#cc0000;
+  border:2px solid #fff;
+  border-radius:5px;
+  cursor:pointer;
+  min-width:120px;
+  transition:all 0.3s ease;
 }
 
+.cyberbrief-submit-button:hover,
 .unsubscribe-button:hover {
-    background-color: #006600;
+  background-color:#006600;
 }
 
 .cyberbrief-message {
-    text-align: center;
-    margin-top: 20px;
-    color: #00b300;
-    font-weight: bold;
+  text-align:center;
+  margin-top:20px;
+  color:#00b300;
+  font-weight:bold;
 }
 
 .loading-bar-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Spacing between loading bar and percentage */
-    margin-top: 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
 }
 
 .loading-bar {
-    height: 20px;
-    width: 80%;
-    background-color: #333;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
+  height:20px;
+  width:80%;
+  background-color:#333;
+  border:2px solid #fff;
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+  max-width:300px;
 }
 
 .loading-bar-progress {
-    height: 100%;
-    width: 0%; /* Starts at 0% */
-    background: linear-gradient(to right, #ff0000, #41a632);
-    border: 2px solid #000;
-    border-radius: 10px;
-    transition: width 0.5s ease-in-out;
+  height:100%;
+  width:0%;
+  background:linear-gradient(to right, #ff0000, #41a632);
+  border:2px solid #000;
+  border-radius:10px;
+  transition:width 0.5s ease-in-out;
 }
 
 .loading-percentage {
-    font-size: 1em;
-    color: #ffffff;
-    font-weight: bold;
+  font-size:1em;
+  color:#ffffff;
+  font-weight:bold;
 }
 
-
-@keyframes loadingAnimation {
-    0% {
-        width: 0%;
-    }
-    50% {
-        width: 100%;
-    }
-    100% {
-        width: 0%;
-    }
+@media (max-width:480px) {
+  .cyberbrief-title {
+    font-size:1.5rem;
+  }
+  .cyberbrief-input {
+    width:100%;
+  }
 }
 

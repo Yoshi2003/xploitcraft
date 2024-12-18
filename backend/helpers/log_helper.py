@@ -1,13 +1,11 @@
-# helpers/log_helper.py
-
 import logging
 import json
 from datetime import datetime
 import re
 import time
-import random  # For jitter in backoff
+import random  
 from typing import List
-from helpers.openai_helper import client  # Assumes you have an openai_helper.py for API key setup
+from API.AI import client 
 from models.log_models import (
     Log, SecurityLog, FirewallLog, VulnerabilityLog, IntrusionLog, AccessControlLog,
     EventLog, SystemEvent, ApplicationEvent, AuthenticationEvent, NetworkEvent,
@@ -218,7 +216,7 @@ def serialize_log(log: Log) -> dict:
             serialized_dict[k] = serialize_value(v)
         except Exception as e:
             logger.error(f"Error serializing field '{k}': {e}")
-            serialized_dict[k] = str(v)  # Fallback to string representation
+            serialized_dict[k] = str(v)  
 
     return serialized_dict
 
@@ -239,14 +237,14 @@ def analyze_log(log_record: Log) -> str:
     while attempt < MAX_RETRIES:
         try:
             response = client.chat.completions.create(
-                model="gpt-4",  # Adjust model as needed
+                model="gpt-4",  
                 messages=[{"role": "user", "content": formatted_prompt}],
                 max_tokens=1000,
                 temperature=0.7,
             )
             content = response.choices[0].message.content.strip()
 
-            # Optional: Cleanup formatting if needed
+           #formatting
             content = re.sub(r'^```.*\n', '', content)
             content = re.sub(r'\n```$', '', content)
 
@@ -257,12 +255,12 @@ def analyze_log(log_record: Log) -> str:
         except Exception as e:
             error_message = str(e).lower()
             if "rate limit" in error_message:
-                # Handle rate limit error by retrying after backoff
+                # rate limitor
                 attempt += 1
                 wait_time = backoff + (JITTER * random.uniform(0, 1))
                 logger.warning(f"Rate limit exceeded. Retrying in {wait_time:.2f} seconds... (Attempt {attempt}/{MAX_RETRIES})")
                 time.sleep(wait_time)
-                backoff *= BACKOFF_FACTOR  # Exponential increase
+                backoff *= BACKOFF_FACTOR  
             else:
                 # Log other exceptions and do not retry
                 logger.error(f"Error analyzing log: {e}")
@@ -283,7 +281,6 @@ def analyze_logs_bulk(log_records: List[Log], max_workers: int = 5) -> List[dict
     """
     analyzed_logs = []
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Submit all log analysis tasks
         future_to_log = {executor.submit(analyze_log_entry, log): log for log in log_records}
 
         for future in as_completed(future_to_log):
@@ -309,10 +306,10 @@ def analyze_logs_bulk(log_records: List[Log], max_workers: int = 5) -> List[dict
 # ---------------------------------
 
 if __name__ == "__main__":
-    from log_generator import generate_logs  # Ensure this module exists and is correctly implemented
+    from log_generator import generate_logs  
 
-    # Example usage
-    logs = generate_logs("security", 3)  # Generate 3 security logs
+    
+    logs = generate_logs("security", 3)  
     analyzed_logs = analyze_logs_bulk(logs)
 
     for entry in analyzed_logs:

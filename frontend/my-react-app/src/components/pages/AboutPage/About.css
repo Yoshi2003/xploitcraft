@@ -1,75 +1,81 @@
+body, html {
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
 
-/* Page Background */
+.main-content {
+  margin-left:220px;
+  transition: margin-left 0.3s ease;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left:0;
+}
+
 .about-page-container {
   position: relative;
   padding: 20px;
   color: #f5f5f5;
   background: url('./AboutBackground.jpg') center no-repeat;
-  background-size: 100% 100%; /* Stretch the image to fill the page */
-  background-attachment: fixed;
-  border: 2px solid #ff0000; /* Red border */
+  background-size: cover;
+  box-sizing: border-box;
+  min-height: 100vh;
+  border: 2px solid #ff0000;
   border-radius: 20px;
 }
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-/* Main Header */
-.about-main-header {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 20px;
-  font-family: 'Orbitron', sans-serif;
-  color: #C70039;
-  text-shadow: 2px 2px #fff
-}
 .about-header {
   text-align: center;
   z-index: 3;
-  position: relative; 
+  position: relative;
   padding: 20px;
 }
 
 .about-header h1 {
   color: #C70039;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .about-header p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #C70039;
 }
 
-
-/* Section Layout */
 .about-content {
   display: flex;
   flex-direction: column;
   z-index: 3;
   position: relative;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
-/* Intro Section */
 .about-intro {
   text-align: center;
 }
 
 .about-intro h2 {
   color: #ff0000;
-  font-size: 2.9rem;
-  margin-bottom: 40px;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .about-tools {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px; /* Add spacing between columns */
+  gap: 20px;
+  justify-content:center;
 }
 
 .tool-column {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Add spacing between boxes in the same column */
-  width: 30%; /* Ensure columns are evenly spaced */
+  gap: 20px;
+  width:100%;
+  max-width:300px;
 }
 
 .tool-card {
@@ -87,165 +93,125 @@
 
 .tool-card h3 {
   color: #C70039;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  text-shadow: .5px .5px #b3b3b3
+  font-size:1.2rem;
+  margin:10px 0;
 }
 
 .tool-card p {
   color: #f5f5f5;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
-/* Ensure consistency for added h3 elements in the tool cards */
-.tool-card h3 {
-  color: #C70039;
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
-
-.tool-card p {
-  color: #f5f5f5;
-  font-size: 1rem;
-}
-
-/* Certifications */
 .about-certifications {
-  text-align: center; 
+  text-align: center;
+  margin-top:20px;
 }
 
 .certifications-list {
-  display: flex;
-  justify-content: space-around;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
 }
 
 .certifications-list ul {
-  list-style: none;
-  padding: 0;
+  list-style:none;
+  padding:0;
 }
 
 .certifications-list li {
-  background: #1a1a1a;
-  padding: 5px 10px;
-  margin-bottom: 5px;
-  border-left: 4px solid #ff0000;
+  background:#1a1a1a;
+  padding:5px 10px;
+  margin-bottom:5px;
+  border-left:4px solid #ff0000;
 }
 
-/* Links Section Title */
 .links-title {
-  font-size: 2.1rem; /* Slightly larger font size */
-  color: #f5f5f5;
-  text-align: center;
-  text-shadow: 2px 2px 5px #000; /* White text with black shadow */
-  margin-bottom: 20px;
-  text-align: center; /* Align to the right */
-  margin-right: 20px;
-  text-shadow: 1px 1px #fff;
+  font-size:1.8rem;
+  color:#f5f5f5;
+  text-align:center;
+  margin-bottom:20px;
+  text-shadow:1px 1px #fff;
 }
 
-/* GitHub Title */
-.github-title {
-  font-size: 1.2rem;
-  color: #fff; /* Black text */
-  border: 2px solid #1f1d1d;
-  background-color: #1f1d1d;
-  border-radius: 5px
-}
-
-/* LinkedIn Title */
+.github-title,
 .linkedin-title {
-  font-size: 1.2rem;
-  color: #0077b5; /* LinkedIn blue */
-  border: 2px solid #1f1d1d;
-  background-color: #1f1d1d;
-  border-radius: 5px
+  font-size:1.2rem;
+  border:2px solid #1f1d1d;
+  background-color:#1f1d1d;
+  border-radius:5px;
+  display:inline-block;
+  margin:10px;
+  padding:5px 10px;
+  color:#fff;
 }
 
-/* Repository Link */
-.repository-link {
-  color: #0066cc; /* Linkish blue */
-  font-size: 1.1rem;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px;
+.linkedin-title {
+  color:#0077b5;
 }
 
-.repository-link:hover {
-  color: #003399; /* Darker blue on hover */
-}
-
-/* LinkedIn Link */
+.repository-link,
 .linkedin-link {
-  color: #0066cc; /* Linkish blue */
-  font-size: 1.1rem;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px;
+  color:#0066cc;
+  font-size:1.1rem;
+  text-decoration:none;
+  font-weight:bold;
+  padding:10px;
 }
 
+.repository-link:hover,
 .linkedin-link:hover {
-  color: #003399; /* Darker blue on hover */
+  color:#003399;
 }
 
-/* About Carter Section Title */
 .carter-title {
-  font-size: 2rem; /* Slightly larger font size for the title */
-  color: #f5f5f5; /* Default white color */
-  text-shadow: 2px 2px 5px black; /* Black shadow for emphasis */
-  text-align: center; /* Align to the right */
-  margin-right: 20px; /* Add spacing from the text */
-  margin-bottom: 10px; /* Space below the title */
-  text-shadow: 1px 1px #fff
+  font-size:1.5rem;
+  color:#f5f5f5;
+  text-shadow:1px 1px #fff;
+  text-align:center;
+  margin-bottom:10px;
 }
 
-/* About Carter Description Text */
 .carter-description {
-  font-size: 1.2rem; /* Smaller font size for the description */
-  color: #f5f5f5; /* Default white color */
-  text-align: left; /* Align the description to the left */
-  margin-left: 20px; /* Add spacing from the title */
+  font-size:1rem;
+  color:#f5f5f5;
+  text-align:left;
+  margin-left:20px;
 }
 
-
-/* Footer */
 .about-footer {
-  text-align: center;
-  border-top: 3px solid #ff0000;
-  padding: 10px;
-  margin-top: 30px;
-  font-size: 0.9rem;
-  border: 2px solid #1f1d1d;
-  background-color: #1f1d1d
+  text-align:center;
+  border-top:3px solid #ff0000;
+  padding:10px;
+  margin-top:30px;
+  font-size:0.9rem;
+  border:2px solid #1f1d1d;
+  background-color:#1f1d1d;
 }
-
 
 .about-main-header,
 .carter-title,
 .links-title {
-  color: #ff0000; /* Original red color */
-  position: relative;
-  animation: glitch 3s infinite; /* Animation for glitch effect */
+  color:#ff0000;
+  position:relative;
+  animation: glitch 3s infinite;
 }
 
 @keyframes glitch {
-  0%, 90% {
-    color: #C70039; /* Normal state (red) */
-    transform: translate(0, 0); /* No movement */
+  0%,90% {color:#C70039;transform:translate(0,0);}
+  91%,92% {color:#ffffff;transform:translate(-2px,2px);}
+  93%,94% {color:#C70039;transform:translate(2px,-1px);}
+  95%,96% {color:#ffffff;transform:translate(-1px,1px);}
+  97%,100%{color:#ff0000;transform:translate(0,0);}
+}
+
+@media (max-width:768px) {
+  .tool-column {
+    max-width:none;
   }
-  91%, 92% {
-    color: #ffffff; /* Glitch to white */
-    transform: translate(-2px, 2px); /* Slight text shift */
-  }
-  93%, 94% {
-    color: #C70039; /* Corrected hex code for red (fixed extra `#`) */
-    transform: translate(2px, -1px); /* Slight text shift in the opposite direction */
-  }
-  95%, 96% {
-    color: #ffffff; /* Another glitch to white */
-    transform: translate(-1px, 1px); /* Slight random movement */
-  }
-  97%, 100% {
-    color: #ff0000; /* Back to normal state (red) */
-    transform: translate(0, 0); /* Reset */
+  .carter-description {
+    margin-left:0;
+    text-align:center;
   }
 }
+

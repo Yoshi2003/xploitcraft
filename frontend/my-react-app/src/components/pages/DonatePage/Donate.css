@@ -1,94 +1,113 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+body, html {
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+.main-content {
+  margin-left:220px;
+  transition: margin-left 0.3s ease;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+.sidebar.collapsed ~ .main-content {
+  margin-left:0;
+}
 
 .donate-container {
-    position: relative;
-    height: 100vh;
-    background-image: url('./backround3.jpg'); /* Ensure backround3.jpg is placed in the correct directory */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    padding-top: -50px; /* Padding to bring the content towards the top */
-    border: 2px solid #fff;
-    border-radius: 20px;
+  position: relative;
+  min-height: 100vh;
+  background-image: url('./backround3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat:no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:20px;
+  box-sizing:border-box;
 }
 
 .donate-box {
-    background-color: rgba(0, 0, 0, 0.85); /* Darken background for better contrast */
-    padding: 30px;
-    max-width: 1030px;
-    text-align: center;
-    position: relative;
-    top: 1px;
-    opacity: .95;
+  background-color: rgba(0,0,0,0.85);
+  padding: 20px;
+  width:100%;
+  max-width:600px;
+  text-align:center;
+  border:2px solid #fff;
+  border-radius:20px;
+  opacity:0.95;
 }
 
 .donate-title {
-    font-family: 'Orbitron', sans-serif;
-    color: #ff0000;
-    font-size: 2.6em;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px #00FFFF;
+  font-family:'Orbitron', sans-serif;
+  color:#ff0000;
+  font-size:2rem;
+  margin-bottom:20px;
+  text-shadow:2px 2px #00FFFF;
 }
 
 .donate-description {
-    font-family: 'Arial', sans-serif;
-    font-size: 1em;
-    color: #ffffff;
-    margin-bottom: 30px;
-    line-height: 1.6;
+  font-family:'Arial', sans-serif;
+  font-size:1rem;
+  color:#ffffff;
+  margin-bottom:30px;
+  line-height:1.4;
 }
 
 .bitcoin-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:20px;
 }
 
 #bitcoinAddress {
-    width: 70%;
-    padding: 10px;
-    border: 2px solid #ff004d;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.9);
-    color: #00FFFF;
-    font-family: 'Courier New', monospace;
-    text-align: center;
+  width:70%;
+  max-width:300px;
+  padding:10px;
+  border:2px solid #ff004d;
+  border-radius:5px;
+  background-color:rgba(0,0,0,0.9);
+  color:#00FFFF;
+  font-family:'Courier New', monospace;
+  text-align:center;
 }
 
 .copy-button {
-    padding: 10px 15px;
-    background-color: #ff004d;
-    color: #000000;
-    font-weight: bold;
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  padding:10px 15px;
+  background-color:#ff004d;
+  color:#000000;
+  font-weight:bold;
+  border:2px solid #ffffff;
+  border-radius:5px;
+  cursor:pointer;
+  transition:all 0.3s ease-in-out;
 }
 
-
 .copy-button:hover {
-    background-color: #00ff00;
-    color: #000000;
+  background-color:#00ff00;
+  color:#000000;
 }
 
 .thanks-message {
-    position: absolute;
-    bottom: 125px; /* Add a small margin from the bottom */
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    color: #ff0000;
-    font-weight: bold;
-    font-size: 3em;
-    text-shadow: 2px 2px #00FFFF;
-    
+  text-align:center;
+  font-family:'Orbitron', sans-serif;
+  color:#ff0000;
+  font-weight:bold;
+  font-size:1.8rem;
+  text-shadow:2px 2px #00FFFF;
+  margin-top:20px;
 }
 
-
+@media (max-width:480px) {
+  .donate-title {
+    font-size:1.5rem;
+  }
+  #bitcoinAddress {
+    width:100%;
+  }
+}
 
