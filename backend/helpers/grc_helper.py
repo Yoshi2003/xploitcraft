@@ -13,7 +13,7 @@ def generate_grc_question(category, difficulty):
       question (string)
       options (array of 4 strings)
       correct_answer_index (int)
-      explanations (dict of strings for "0","1","2","3")
+      explanations (dict of strings for "A","B","C","D")
       exam_tip (string)
     """
 
