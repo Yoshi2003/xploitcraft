@@ -25,7 +25,7 @@ def generate_payload_endpoint():
     evasion_technique = data.get('evasion_technique')
 
     try:
-        payload = xploits.generate_exploit_payload(vulnerability, evasion_technique)
+        payload = xploit.generate_exploit_payload(vulnerability, evasion_technique)
         logger.debug(f"Generated payload: {payload}")
         return jsonify({'payload': payload})
     except Exception as e:
