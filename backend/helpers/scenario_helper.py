@@ -1,6 +1,5 @@
 import os
 import logging
-from helpers.openai_helper import client
 import re
 from API.AI import client
 
