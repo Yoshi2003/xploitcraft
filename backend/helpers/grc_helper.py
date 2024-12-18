@@ -13,7 +13,7 @@ def generate_grc_question(category, difficulty):
       question (string)
       options (array of 4 strings)
       correct_answer_index (int)
-      explanations (dict of strings for "A","B","C","D")
+      explanations (dict of strings for "0","1",2","3")
       exam_tip (string)
     """
 
@@ -97,13 +97,13 @@ REQUIREMENTS FOR QUESTION:
 EXAMPLE FORMAT (this is not real content, just structure, make sure to use all topics not just the topic provided in this example):
 {{
   "question": "The question",
-  "options": ["Option A","Option B","Option C","Option D"],
+  "options": ["Option 0","Option 1","Option 2","Option 3"],
   "correct_answer_index": C,
   "explanations": {{
-    "A": "Explain thoroughly why option A fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect.",
-    "B": "Explain thoroughly why option B fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect.",
-    "C": "Explain thoroughly why option C is correct, linking its characteristics to the question scenario and why the other answer choices are incorrect",
-    "D": "Explain thoroughly why option D fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect."
+    "0": "Explain thoroughly why option A fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect.",
+    "1": "Explain thoroughly why option B fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect.",
+    "2": "Explain thoroughly why option C is correct, linking its characteristics to the question scenario and why the other answer choices are incorrect",
+    "3": "Explain thoroughly why option D fails. Mention its scope, focus areas, and why that doesn't meet the question criteria and then explain what the correct answer is and why it is correct aswell as why the other answer choices are incorrect."
   }},
   "exam_tip": "A short, memorable hint or mnemonic that differentiates the correct approach from others."
 }}
@@ -115,7 +115,7 @@ Now generate the JSON object following these instructions.
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4",  
+            model="gpt-4o",  
             messages=[{"role": "user", "content": prompt}],
             max_tokens=800,
             temperature=0.6,
