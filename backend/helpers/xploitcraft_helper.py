@@ -38,7 +38,7 @@ class Xploits:
                 "produce exactly and only code samples followed by explanation"
                 "First, show three separate example code examples that demonstrate the chosen vulnerabilty or demonstration combined with the chosen evasion technique. "
                 "Each should be meaningful code. After listing these vulnerabilities provide a thorough explanation. "
-                "All final output lines must follow the previously stated format rules. Do not mention formatting instructions in the final output."
+                "All final output lines must follow the previously stated format rules which are :for the explanations- break to a new line and continue with the explantion if the word count exceeds 15 words, but no less than 10 words per line. Do not mention formatting instructions in the final output."
             )
 
          
