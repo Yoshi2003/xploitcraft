@@ -5,13 +5,13 @@ import logging
 # Configure logger
 logger = logging.getLogger(__name__)
 
-# Create an AI Manager instance
+
 xploit = Xploits()
 
-# Create a blueprint
+
 xploit_bp = Blueprint('xploit_bp', __name__)
 
-# Route to generate a payload
+
 @xploit_bp.route('/generate_payload', methods=['POST'])
 def generate_payload_endpoint():
     data = request.get_json()
