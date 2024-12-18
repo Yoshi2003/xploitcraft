@@ -15,7 +15,7 @@ class Xploits:
         """
         logger.info("Initializing  Xploits")
 
-    def generate_payload(self, vulnerability: str, evasion_technique: str) -> str:
+    def generate_xploit_payload(self, vulnerability: str, evasion_technique: str) -> str:
         """
         Generate a payload for a given vulnerability and evasion technique.
 
