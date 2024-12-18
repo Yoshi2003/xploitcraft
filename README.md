@@ -194,22 +194,125 @@ By offering an integrated ecosystem of cybersecurity tools, AI-powered analytics
 The project follows a modular structure, with clear separation of concerns:
 
 ```
-project-root/
-|-- app/                  # Backend Flask Application
-|   |-- routes/           # API Routes for features
-|   |-- helpers/          # Helper scripts (e.g., OpenAI integration)
-|   |-- models/           # Data models for logs, GRC questions, etc.
-|   |-- app.py            # Main application entry point
-|-- frontend/             # React Frontend Application
-|   |-- src/
-|       |-- components/   # React Components
-|       |-- pages/        # React Pages (e.g., Log Analysis, Resources Hub)
-|       |-- App.js        # React Entry Point
-|       |-- styles/       # CSS/SCSS files for styling
-|-- docker/               # Docker Configuration
-|-- .env                  # Environment Variables (not committed to Git)
-|-- docker-compose.yml    # Docker Compose for full-stack setup
-|-- README.md             # Documentation (this file)
+├── README.md
+├── apache
+│   ├── Dockerfile.apache
+│   ├── apache_server.conf
+│   └── httpd.conf
+├── backend
+│   ├── API
+│   │   └── AI.py
+│   ├── Dockerfile.backend
+│   ├── app.py
+│   ├── database
+│   │   └── models.py
+│   ├── helpers
+│   │   ├── analogy_helper.py
+│   │   ├── email_helper.py
+│   │   ├── emailopenai_helper.py
+│   │   ├── grc_helper.py
+│   │   ├── log_generator.py
+│   │   ├── log_helper.py
+│   │   ├── openai_helper.py
+│   │   ├── scenario_helper.py
+│   │   ├── schedule_tasks.py
+│   │   ├── scheduler_helper.py
+│   │   └── xploitcraft_helper.py
+│   ├── models
+│   │   ├── log_history.py
+│   │   ├── log_models.py
+│   │   └── user_subscription.py
+│   ├── requirements.txt
+│   ├── routes
+│   │   ├── analogy_routes.py
+│   │   ├── daily_brief_routes.py
+│   │   ├── email_routes.py
+│   │   ├── grc_routes.py
+│   │   ├── log_routes.py
+│   │   ├── scenario_routes.py
+│   │   ├── subscribe_routes.py
+│   │   ├── unsubscribe_routes.py
+│   │   ├── update_routes.py
+│   │   └── xploit_routes.py
+│   └── scenario_logic
+│       ├── interactive_logic.py
+│       └── scenario_flow_manager.py
+├── database
+│   └── models.py
+├── docker-compose.yml
+├── env_EXAMPLE
+├── frontend
+│   └── my-react-app
+│       ├── Dockerfile.dev
+│       ├── Dockerfile.frontend
+│       ├── package-lock.json
+│       ├── package.json
+│       ├── public
+│       │   ├── favicon.ico
+│       │   ├── index.html
+│       │   ├── logo2.png
+│       │   ├── manifest.json
+│       │   └── robots.txt
+│       └── src
+│           ├── App.js
+│           ├── App.test.js
+│           ├── components
+│           │   ├── Sidebar
+│           │   │   ├── Sidebar.css
+│           │   │   ├── Sidebar.js
+│           │   │   └── sidebarlogo.png
+│           │   └── pages
+│           │       ├── AboutPage
+│           │       │   ├── About.css
+│           │       │   ├── About.js
+│           │       │   └── AboutBackground.jpg
+│           │       ├── AnalogyPage
+│           │       │   ├── AnalogyHub.css
+│           │       │   ├── AnalogyHub.js
+│           │       │   ├── backround1.jpg
+│           │       │   └── loading2.png
+│           │       ├── DailyPage
+│           │       │   ├── DailyCyberBrief.css
+│           │       │   ├── DailyCyberBrief.js
+│           │       │   └── backround7.jpg
+│           │       ├── DonatePage
+│           │       │   ├── Donate.css
+│           │       │   ├── Donate.js
+│           │       │   └── backround3.jpg
+│           │       ├── GRCpage
+│           │       │   ├── GRC.css
+│           │       │   ├── GRC.js
+│           │       │   └── GRCbackground.jpg
+│           │       ├── LogPage
+│           │       │   ├── Log.js
+│           │       │   ├── Logbackground1.jpg
+│           │       │   └── log.css
+│           │       ├── ResourcesPage
+│           │       │   ├── Resourcebackground.jpg
+│           │       │   ├── Resources.css
+│           │       │   └── Resources.js
+│           │       ├── ScenarioPage
+│           │       │   ├── ScenarioSphere.css
+│           │       │   ├── ScenarioSphere.js
+│           │       │   └── backround5.jpg
+│           │       └── XploitcraftPage
+│           │           ├── App.css
+│           │           ├── Xploitcraft.js
+│           │           ├── backround2.jpg
+│           │           ├── loading3.png
+│           │           └── logo5.png
+│           ├── index.css
+│           ├── index.js
+│           ├── reportWebVitals.js
+│           └── setupTests.js
+├── nginx
+│   ├── nginx.conf
+│   └── sites-enabled
+│       └── reverse_proxy.conf
+├── redis
+│   └── redis.conf
+└── requirements.txt
+
 ```
 
 ---
