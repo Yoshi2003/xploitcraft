@@ -69,7 +69,7 @@ REQUIREMENTS FOR QUESTION:
    and more, ensuring variety and complexity.
 
 2. Difficulty:
-   - "Easy" should still require conceptual understanding (e.g., understanding what GDPR focuses on or how ISO 27001 differs from a simple best-practice guide).
+   - "Easy" should still require conceptual understanding.
    - "Medium" and "Hard" can involve subtle distinctions, comparing and contrasting frameworks, regulations, or methodologies, or focusing on specific control differences, more nuanced risk treatments, or scenario-based questions that require deeper thought.
 
 3. Four options (A, B, C, D) total, one correct answer. The incorrect options should be very plausible but not correct, requiring the test-taker to carefully differentiate.
