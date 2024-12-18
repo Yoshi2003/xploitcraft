@@ -62,6 +62,6 @@
   - **Certbot Logs:** Look at logs in `certbot/conf/`.
 
 ---
-**Note to Future Me:** Don’t skip steps or try to be clever; follow the process. Trust the system you built. 🧠
+
 
 
