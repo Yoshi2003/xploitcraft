@@ -46,13 +46,15 @@ I applied the CORS-With-Preflight response headers policy. This adds the necessa
 
 ### Web Application Firewall (WAF)
 I’ve enabled AWS WAF for my distribution to protect against common vulnerabilities and malicious traffic. This includes:
-
 Defending against bots and other malicious actors.
-Limiting request rates.
-Rate Limiting
-I’ve set a rate limit of 300 requests per IP per 5-minute period. This helps prevent API request abuse and DDOS attacks while ensuring regular users don’t face any restrictions.
+ensuring 
+Ensures that my app isn’t vulnerable to malicious scripts being injected.
+Rate limiting and IP blocking help protect against high volumes of requests that could overwhelm my app.
 
 I did not enable SQL injection protection because I use Mongodb as my database-- not SQL.
+
+#### Rate Limiting
+I’ve set a rate limit of 300 requests per IP per 5-minute period. This helps prevent API request abuse and DDOS attacks while ensuring regular users don’t face any restrictions.
 
 ## Alternate Domain Name (CNAME) and SSL
 
@@ -60,7 +62,7 @@ I did not enable SQL injection protection because I use Mongodb as my database--
 I configured the alternate domain name as proxyauthrequired.com. This allows my custom domain to be served through CloudFront.
 
 ### Custom SSL Certificate
-I’m using an SSL certificate issued by AWS Certificate Manager (ACM). Once validated, this ensures secure communication between my users and CloudFront using HTTPS.
+I’m using an SSL certificate issued by AWS Certificate Manager (ACM). This ensures secure communication between my users and CloudFront using HTTPS.
 
 ## Performance Settings
 
@@ -78,6 +80,7 @@ HTTP/3 is even faster, especially for users on unreliable networks, as it uses t
 I enabled IPv6 to ensure my application is accessible on modern networks that use IPv6 addresses. This makes my app future-proof and accessible to more users worldwide.
 
 ## DNS Configuration
+
 ### To route traffic through CloudFront, I configured the following DNS records in my domain provider:
 
 CNAME Record:
@@ -87,7 +90,7 @@ This setup ensures that requests to my custom domain are routed through CloudFro
 
 ### Why This Setup Works for Me
 
-This configuration gives me:
+#### This configuration gives me:
 
 Global Availability: Content is served from CloudFront edge locations for low latency.
 Secure Communication: Both viewer-to-CloudFront and CloudFront-to-origin communication use HTTPS.
