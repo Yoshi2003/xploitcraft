@@ -2,7 +2,7 @@
 
 # ProxyAuthRequired.com
 
-## Comprehensive README for Cybersecurity Web Application (In Progress)
+## Comprehensive README for my Cybersecurity Web Application (In Progress)
 
 ---
 
