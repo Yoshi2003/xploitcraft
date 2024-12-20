@@ -3,6 +3,16 @@
 
 ## This README explains how I set up my Amazon CloudFront distribution for my application. Below, I'll walk you through the key configurations I've chosen, why I made those decisions, and what they do for my setup.
 
+## What is a CDN?
+A Content Delivery Network (CDN) is a globally distributed network of servers designed to deliver content to users quickly and reliably. By caching content at edge locations near users, a CDN reduces latency, speeds up load times, and decreases the load on your origin server. CDNs are especially useful for delivering static assets (like images, CSS, and JavaScript) and dynamic content to users across the world.
+
+
+## Why I chose AWS CloudFront
+
+I chose Amazon CloudFront as my CDN because it integrates seamlessly with other AWS services I’m already using, like Amazon EC2 to host my web app. It works great with AWS Certificate Manager (ACM) for SSL/TLS certificates and AWS WAF for security, along with services like S3 and Route 53. This integration makes it easy to set up, manage, and secure my distribution without relying on alot of external tools.
+
+With a massive global network of edge locations, CloudFront ensures low-latency delivery and high availability for users anywhere in the world. It supports modern protocols like HTTP/2 and HTTP/3, automatic object compression, and caching tailored for both static and dynamic content. Plus, its competitive, pay-as-you-go pricing makes it a great fit for my mdedium/small sized project..
+
 ## Origin Settings
 
 ### Origin Domain Name
