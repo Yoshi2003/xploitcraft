@@ -266,9 +266,6 @@ The project follows a modular structure, with clear separation of concerns:
 
 ```
 
-
-## Technologies Used
-
 ## Technologies Used
 
 ProxyAuthRequired.com leverages a robust and modern technology stack to deliver a secure, efficient, and scalable cybersecurity web application. Below is an in-depth overview of the technologies and tools employed in both the backend and frontend, along with their specific roles within the project.
@@ -342,21 +339,62 @@ The backend infrastructure is built using Python and the Flask framework, ensuri
 
 ### Frontend
 
-The frontend is developed using modern JavaScript frameworks and libraries, ensuring a responsive and dynamic user interface that complements the backend functionalities.
+The frontend is developed using modern JavaScript frameworks and libraries, ensuring a responsive and dynamic user interface that complements the backend functionalities. Below is a detailed overview of the frontend technologies and dependencies utilized in ProxyAuthRequired.com.
 
-- **React.js**: A powerful JavaScript library for building user interfaces, enabling the creation of reusable UI components and efficient state management.
+- **React.js (18.0.0)**: A powerful JavaScript library for building user interfaces, enabling the creation of reusable UI components and efficient state management. React's component-based architecture allows for scalable and maintainable codebases.
 
-- **React-Toastify**: Provides elegant and customizable toast notifications, ensuring users receive timely and unobtrusive alerts and updates.
+- **React-Toastify (10.0.6)**: Provides elegant and customizable toast notifications, ensuring users receive timely and unobtrusive alerts and updates. This enhances user experience by delivering feedback and important information without disrupting workflow.
 
-- **Redux**: Manages the application state in a predictable manner, facilitating seamless data flow between components.
+- **Redux**: Manages the application state in a predictable manner, facilitating seamless data flow between components. Redux ensures that state changes are handled efficiently, making the application more reliable and easier to debug.
 
-- **Webpack**: A module bundler that compiles and optimizes frontend assets, ensuring efficient loading and performance.
+- **React Router DOM (7.0.1)**: Implements declarative routing for React applications, enabling the creation of single-page applications with multiple views. It allows for dynamic navigation and deep linking, enhancing the overall user experience.
+
+- **React-Syntax-Highlighter (15.5.0)**: Enables the display of syntax-highlighted code snippets within the application, facilitating better readability and understanding of code-related content.
+
+- **React-Window (1.8.10)**: Optimizes the rendering of large lists and tables by virtualizing DOM elements, significantly improving performance and reducing memory consumption.
+
+- **Socket.IO Client (4.4.0)**: Facilitates real-time, bidirectional communication between the client and server, enabling features such as live updates and interactive notifications.
+
+- **Three.js (0.170.0)**: A 3D JavaScript library that enables the creation of complex and interactive 3D graphics within the browser. This is utilized for dynamic visualizations and simulations within the application.
+
+- **Web-Vitals (1.0.1)**: Measures essential performance metrics of the web application, ensuring optimal user experience by monitoring factors such as load time, interactivity, and visual stability.
+
+- **@babel/plugin-proposal-private-property-in-object (7.21.4)**: Allows the use of private properties within JavaScript classes, enhancing encapsulation and code organization.
+
+- **@csstools/normalize.css (12.1.1)**: Provides a modern, HTML5-ready alternative to CSS resets, ensuring consistent styling across different browsers and devices.
+
+- **@react-three/drei (9.117.3)** and **@react-three/fiber (8.17.10)**: Integrate Three.js with React, enabling the creation of complex 3D scenes and animations within React components.
+
+- **Axios (1.7.8)**: A promise-based HTTP client for making API requests, simplifying the process of fetching and managing data from the backend.
+
+- **React Scripts (5.0.1)**: Includes scripts and configuration used by Create React App, streamlining the development and build processes.
+
+- **Webpack Dev Server (5.1.0)**: Provides a development server with live reloading capabilities, enhancing the development workflow by allowing real-time previews of changes.
 
 - **Sass**: A CSS preprocessor that extends CSS with variables, nested rules, and mixins, enabling more maintainable and scalable styling.
 
-- **Modern UI Libraries:**
-  - **Material-UI**: Implements Google's Material Design principles, offering a consistent and aesthetically pleasing set of UI components.
-  - **Framer Motion**: Adds advanced animations and transitions, enhancing the overall user experience with smooth and interactive visual effects.
+- **@material-ui/core**: Implements Google's Material Design principles, offering a consistent and aesthetically pleasing set of UI components.
+
+- **Framer Motion**: Adds advanced animations and transitions, enhancing the overall user experience with smooth and interactive visual effects.
+
+- **Additional Frontend Dependencies:**
+  - **@babel/plugin-proposal-private-property-in-object**: Enables the use of private properties in JavaScript objects, enhancing code encapsulation and security.
+  - **@csstools/normalize.css**: Ensures consistent styling across different browsers by providing a modern CSS reset.
+  - **@react-three/drei** and **@react-three/fiber**: Facilitate the integration of Three.js with React, allowing for the creation of sophisticated 3D graphics and animations.
+  - **Socket.IO Client**: Enables real-time communication between the client and server, essential for interactive features like live notifications and updates.
+
+- **Scripts:**
+  - **start**: `react-scripts start` - Launches the development server with live reloading.
+  - **build**: `react-scripts build` - Compiles the application for production, optimizing assets for performance.
+  - **test**: `react-scripts test` - Runs the test suite to ensure code reliability and functionality.
+  - **eject**: `react-scripts eject` - Exposes the underlying configuration files for customization, providing greater control over the build process.
+
+- **Linting and Formatting:**
+  - **ESLint**: Integrates with the development environment to identify and fix code quality issues, enforcing coding standards and best practices.
+  - **Prettier**: Automatically formats code to ensure consistency and readability across the codebase.
+
+- **Browser Compatibility:**
+  - **Browserslist**: Configures supported browsers for both production and development environments, ensuring that the application functions correctly across a wide range of user agents.
 
 ### DevOps and Deployment
 
@@ -364,85 +402,295 @@ Ensuring seamless deployment, scalability, and maintainability through a compreh
 
 - **Docker**: Containerizes the application, ensuring consistent environments across development, testing, and production stages.
 
-- **Kubernetes**: Orchestrates containerized applications, enabling automatic scaling, self-healing, and efficient resource management.
-
-- **GitHub Actions**: Automates the CI/CD pipeline, facilitating continuous integration, testing, and deployment processes.
+- **GitHub Actions**: Automates the CI/CD pipeline, facilitating continuous integration, testing, and deployment processes to my Amazon AWS EC2 server.
 
 - **Nginx**: Serves as a reverse proxy and load balancer, managing incoming traffic and distributing it efficiently across backend services.
 
-- **Prometheus & Grafana**: Monitors application performance and health, providing real-time metrics and visualizations to ensure optimal operation.
+- **Amazon AWS**:  Amazon AWS serves as the backbone of my application’s infrastructure, providing reliable hosting through Amazon EC2 and secure, low-latency content delivery with Amazon CloudFront. Its seamless integration with services like AWS Certificate Manager (ACM) and AWS WAF ensures my application is secure, scalable, and optimized for global performance.
 
-### Testing and Quality Assurance
-
-Maintaining high code quality and reliability through rigorous testing frameworks and tools.
-
-- **PyTest**: Conducts unit and integration tests for the backend, ensuring code robustness and functionality.
-
-- **Jest**: Performs testing for the frontend components, validating user interface interactions and behaviors.
-
-- **ESLint & Prettier**: Enforces coding standards and formatting rules, maintaining code consistency and readability across the project.
-
-### Additional Tools and Libraries
-
-- **Simple WebSocket**: Facilitates real-time communication between clients and the server, enhancing interactive features like live updates and notifications.
-
-- **Gevent**: Enables concurrent network operations, improving the application's ability to handle multiple simultaneous connections efficiently.
-
-- **Faker**: Generates realistic fake data for testing and development purposes, ensuring comprehensive test coverage without compromising data privacy.
-
----
-
-*The combination of these technologies and tools ensures that ProxyAuthRequired.com is not only feature-rich and secure but also performant and scalable, capable of meeting the dynamic needs of its diverse user base.*
-
-### Frontend
-- **React.js**: Builds the dynamic and responsive user interface.
-- **Axios**: Handles API requests.
-- **CSS3/SCSS**: Provides modern styling.
-- ....more
-
-### DevOps
-- **Docker**: Containerizes the application for consistent development and deployment.
-- **Nginx**: Reverse proxy for serving static files and API endpoints.
-- ....more
+**Apache**:  Apache acts as the core web server in my setup, handling requests from  Nginx and Amazon CloudFront and routing them to the appropriate backend services.
 
 ---
 
 ## Setup Instructions
 
+Follow these comprehensive steps to set up and run **ProxyAuthRequired.com** locally on your Linux machine. This guide ensures that you can effortlessly clone the repository, configure the necessary environment variables, install dependencies, and launch the application using Docker.
+
 ### Prerequisites
-Ensure you have the following installed on your system:
-- Docker and Docker Compose
-- Node.js (v20 or higher)
-- Python (v3.9 or higher)
-- ....more
 
-### Installation Steps
+Before you begin, ensure that your system meets the following requirements:
 
-#### 1. Clone the Repository
+- **Operating System:** Linux (Ubuntu/Debian recommended)
+- **Installed Software:**
+  - Git
+  - Docker
+  - Docker Compose
+  - A text editor (e.g., nano, vim, gedit)
+
+### Step 1: Open a Terminal
+
+Start by opening your preferred terminal application.
+
+### Step 2: Navigate to Your Desired Directory
+
+Choose the directory where you want to clone the project repository. For example, to navigate to the `Projects` directory in your home folder:
+
 ```bash
+cd ~/Projects
+Step 3: Clone the Repository
+Clone the ProxyAuthRequired repository using HTTPS for simplicity.
+
+bash
+Copy code
 git clone https://github.com/CarterPerez-dev/ProxyAuthRequired.git
+Step 4: Navigate into the Application Directory
+Change your current directory to the cloned repository.
+
+bash
+Copy code
 cd ProxyAuthRequired
-```
+Step 5: Create and Configure the .env File
+The application requires specific environment variables to function correctly. Follow these steps to set them up:
 
-#### 2. Setup Environment Variables
-- Create a `.env` file in the root directory.
-- Add the following variables:
-  ```env
-  OPENAI_API_KEY=<your-openai-api-key>
-  MONGO_URI=mongodb://localhost:27017/cybersecurity
-  ```
+Create the .env File:
 
-#### 3. Build and Start Docker Containers
-```bash
+You can use any text editor (nano, vim, or gedit) to create and edit the .env file. Here, we'll use nano as an example.
+
+bash
+Copy code
+nano .env
+Populate the .env File:
+
+Copy the contents from the provided ENV_example file into your .env file. Replace the placeholder values with your actual API keys and configuration settings.
+
+bash
+Copy code
+cp ENV_example .env
+nano .env
+Example .env Configuration:
+
+env
+Copy code
+# .env
+
+# Backend Configuration
+FLASK_ENV=production
+FLASK_APP=app.py
+SECRET_KEY=your_secret_key
+DATABASE_URI=mongodb://mongodb:27017/proxyauthrequired
+
+# OpenAI API Key
+OPENAI_API_KEY=your_openai_api_key
+
+# Redis Configuration
+REDIS_HOST=redis
+REDIS_PORT=6379
+
+# SendGrid API Key
+SENDGRID_API_KEY=your_sendgrid_api_key
+Save and Exit:
+
+In nano, press CTRL + O to write the changes, then CTRL + X to exit.
+In vim, press ESC, type :wq, and press ENTER.
+In gedit, save the file and close the editor.
+Step 6: Update and Upgrade System Packages
+Ensure your system packages are up to date to prevent any compatibility issues.
+
+bash
+Copy code
+sudo apt update && sudo apt upgrade -y
+Step 7: Install Docker
+If Docker is not already installed on your system, install it using the following commands:
+
+Install Docker:
+
+bash
+Copy code
+sudo apt install -y docker.io
+Start and Enable Docker Service:
+
+bash
+Copy code
+sudo systemctl start docker
+sudo systemctl enable docker
+Verify Docker Installation:
+
+bash
+Copy code
+docker --version
+Expected Output:
+
+Copy code
+Docker version 23.xx.x, build xxxxxxx
+Step 8: Install Docker Compose
+If Docker Compose is not installed, install it using these commands:
+
+bash
+Copy code
+sudo apt install -y docker-compose
+Verify the installation:
+
+bash
+Copy code
+docker-compose --version
+Expected Output:
+
+Copy code
+docker-compose version 1.29.2, build 5becea4c
+Step 9: Add Your User to the Docker Group
+To run Docker commands without sudo, add your user to the Docker group:
+
+bash
+Copy code
+sudo usermod -aG docker $USER
+Important: Log out and log back in for the group changes to take effect. Alternatively, you can run:
+
+bash
+Copy code
+newgrp docker
+Step 10: Build and Run the Application with Docker Compose
+Use Docker Compose to build and launch all the necessary containers.
+
+bash
+Copy code
 docker-compose up --build
-```
+Explanation:
 
-#### 4. Access the Application
-- Open your browser and navigate to: `http://localhost:3000` (Frontend)
-- Backend API: `http://localhost:5000`
+docker-compose up: Starts the containers as defined in the docker-compose.yml file.
+--build: Forces a rebuild of the Docker images, ensuring that the latest changes are incorporated.
+Accessing the Application:
 
---- (....more instrcutions)
+Once the containers are up and running, open your web browser and navigate to:
 
+arduino
+Copy code
+http://localhost
+You should see the ProxyAuthRequired.com application running.
+
+Development and Editing Instructions
+To develop and edit the application, follow these additional steps to configure your development environment.
+
+Step 1: Modify docker-compose.yml for Development
+Open the docker-compose.yml file in your preferred text editor.
+
+bash
+Copy code
+nano docker-compose.yml
+Make the following modifications to set up a development-friendly environment:
+
+Add node_modules Volume:
+
+This ensures that node_modules are managed correctly within the Docker container.
+
+yaml
+Copy code
+frontend:
+  container_name: frontend_service
+  build:
+    context: ./frontend/my-react-app
+    dockerfile: Dockerfile.dev 
+  ports:
+    - "3000:3000"
+  volumes: 
+    - ./frontend/my-react-app:/app
+    - /app/node_modules
+  networks:
+    - xploitcraft_network
+  restart: always
+Update Build Context and Dockerfile:
+
+Ensure that the frontend service uses Dockerfile.dev instead of Dockerfile.frontend.
+
+yaml
+Copy code
+frontend:
+  build:
+    context: ./frontend/my-react-app
+    dockerfile: Dockerfile.dev
+Save and Exit:
+
+In nano, press CTRL + O, then CTRL + X.
+In vim, press ESC, type :wq, and press ENTER.
+In gedit, save and close the file.
+Step 2: Rebuild and Restart the Containers
+After making changes to the docker-compose.yml file, rebuild and restart the containers to apply the updates.
+
+bash
+Copy code
+docker-compose down
+docker-compose up --build
+Step 3: Edit Docker Compose Configuration (Optional)
+If you need to make further changes to the docker-compose.yml file, such as adding new services or modifying existing ones, you can do so using your preferred text editor.
+
+bash
+Copy code
+nano docker-compose.yml
+Step 4: Accessing the Development Environment
+With the development configuration in place, you can edit the frontend and backend code. Changes will be reflected in real-time thanks to Docker's volume mounting.
+
+Frontend: Located in ./frontend/my-react-app
+Backend: Located in ./backend
+Additional Configuration Tips
+Environment Variables:
+
+Ensure all necessary environment variables are correctly set in the .env file. Refer to the ENV_example for guidance.
+
+Managing Docker Permissions:
+
+If you encounter permission issues with Docker, verify that your user is part of the Docker group:
+
+bash
+Copy code
+groups $USER
+If docker is not listed, re-add your user to the group:
+
+bash
+Copy code
+sudo usermod -aG docker $USER
+newgrp docker
+Stopping the Application:
+
+To stop all running containers, press CTRL + C in the terminal where docker-compose is running, then execute:
+
+bash
+Copy code
+docker-compose down
+Viewing Logs:
+
+To view logs from all services, use:
+
+bash
+Copy code
+docker-compose logs -f
+Troubleshooting
+Docker Daemon Not Running:
+
+Ensure the Docker service is active.
+
+bash
+Copy code
+sudo systemctl status docker
+If it's not running, start it:
+
+bash
+Copy code
+sudo systemctl start docker
+Port Conflicts:
+
+Ensure that the ports 80, 3000, 5000, 8080, 27018, and 6380 are not in use by other applications. You can check which processes are using these ports:
+
+bash
+Copy code
+sudo lsof -i -P -n | grep LISTEN
+Rebuilding Containers:
+
+If you encounter issues after making changes, force a rebuild of the Docker images:
+
+bash
+Copy code
+docker-compose build --no-cache
+docker-compose up --build
+By following these detailed setup instructions, you can successfully run ProxyAuthRequired.com locally, enabling you to develop, test, and enhance the application with ease.
 ## Environment Variables
 
 | Variable          | Description                                    |
