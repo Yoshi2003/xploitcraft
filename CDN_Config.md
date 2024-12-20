@@ -61,8 +61,6 @@ ensuring
 Ensures that my app isn’t vulnerable to malicious scripts being injected.
 Rate limiting and IP blocking help protect against high volumes of requests that could overwhelm my app.
 
-I did not enable SQL injection protection because I use Mongodb as my database-- not SQL.
-
 #### Rate Limiting
 I’ve set a rate limit of 300 requests per IP per 5-minute period. This helps prevent API request abuse and DDOS attacks while ensuring regular users don’t face any restrictions.
 
