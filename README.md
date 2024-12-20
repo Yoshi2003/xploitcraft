@@ -412,65 +412,68 @@ Ensuring seamless deployment, scalability, and maintainability through a compreh
 
 ---
 
-## Setup Instructions
+# ProxyAuthRequired Setup Guide
 
-Follow these comprehensive steps to set up and run **ProxyAuthRequired.com** locally on your Linux machine. This guide ensures that you can effortlessly clone the repository, configure the necessary environment variables, install dependencies, and launch the application using Docker.
-
-### Prerequisites
+## Prerequisites
 
 Before you begin, ensure that your system meets the following requirements:
 
-- **Operating System:** Linux (Ubuntu/Debian recommended)
-- **Installed Software:**
-  - Git
-  - Docker
-  - Docker Compose
-  - A text editor (e.g., nano, vim, gedit)
+### Operating System
+- Linux (Ubuntu/Debian recommended)
+
+### Installed Software
+- Git
+- Docker
+- Docker Compose
+- A text editor (e.g., nano, vim, gedit)
+
+## Installation Steps
 
 ### Step 1: Open a Terminal
-
 Start by opening your preferred terminal application.
 
 ### Step 2: Navigate to Your Desired Directory
-
 Choose the directory where you want to clone the project repository. For example, to navigate to the `Projects` directory in your home folder:
 
 ```bash
 cd ~/Projects
-Step 3: Clone the Repository
-Clone the ProxyAuthRequired repository using HTTPS for simplicity.
+```
 
-bash
-Copy code
+### Step 3: Clone the Repository
+Clone the ProxyAuthRequired repository using HTTPS for simplicity:
+
+```bash
 git clone https://github.com/CarterPerez-dev/ProxyAuthRequired.git
-Step 4: Navigate into the Application Directory
-Change your current directory to the cloned repository.
+```
 
-bash
-Copy code
+### Step 4: Navigate into the Application Directory
+Change your current directory to the cloned repository:
+
+```bash
 cd ProxyAuthRequired
-Step 5: Create and Configure the .env File
-The application requires specific environment variables to function correctly. Follow these steps to set them up:
+```
 
-Create the .env File:
+### Step 5: Create and Configure the `.env` File
+The application requires specific environment variables to function correctly.
 
-You can use any text editor (nano, vim, or gedit) to create and edit the .env file. Here, we'll use nano as an example.
+#### Create the `.env` File:
+Use any text editor (nano, vim, or gedit). Example with `nano`:
 
-bash
-Copy code
+```bash
 nano .env
-Populate the .env File:
+```
 
-Copy the contents from the provided ENV_example file into your .env file. Replace the placeholder values with your actual API keys and configuration settings.
+#### Populate the `.env` File:
+Copy the contents from the provided `ENV_example` file into your `.env` file:
 
-bash
-Copy code
+```bash
 cp ENV_example .env
 nano .env
-Example .env Configuration:
+```
 
-env
-Copy code
+#### Example `.env` Configuration:
+
+```env
 # .env
 
 # Backend Configuration
@@ -488,209 +491,219 @@ REDIS_PORT=6379
 
 # SendGrid API Key
 SENDGRID_API_KEY=your_sendgrid_api_key
-Save and Exit:
+```
 
-In nano, press CTRL + O to write the changes, then CTRL + X to exit.
-In vim, press ESC, type :wq, and press ENTER.
-In gedit, save the file and close the editor.
-Step 6: Update and Upgrade System Packages
-Ensure your system packages are up to date to prevent any compatibility issues.
+#### Save and Exit:
+- In `nano`, press `CTRL + O` to write changes, then `CTRL + X` to exit.
+- In `vim`, press `ESC`, type `:wq`, and press `ENTER`.
+- In `gedit`, save and close the file.
 
-bash
-Copy code
+### Step 6: Update and Upgrade System Packages
+
+```bash
 sudo apt update && sudo apt upgrade -y
-Step 7: Install Docker
-If Docker is not already installed on your system, install it using the following commands:
+```
 
-Install Docker:
+### Step 7: Install Docker
 
-bash
-Copy code
+#### Install Docker:
+
+```bash
 sudo apt install -y docker.io
-Start and Enable Docker Service:
+```
 
-bash
-Copy code
+#### Start and Enable Docker Service:
+
+```bash
 sudo systemctl start docker
 sudo systemctl enable docker
-Verify Docker Installation:
+```
 
-bash
-Copy code
+#### Verify Docker Installation:
+
+```bash
 docker --version
-Expected Output:
+```
 
-Copy code
+Expected Output:
+```plaintext
 Docker version 23.xx.x, build xxxxxxx
-Step 8: Install Docker Compose
-If Docker Compose is not installed, install it using these commands:
+```
 
-bash
-Copy code
+### Step 8: Install Docker Compose
+
+```bash
 sudo apt install -y docker-compose
-Verify the installation:
+```
 
-bash
-Copy code
+#### Verify Installation:
+
+```bash
 docker-compose --version
+```
+
 Expected Output:
-
-Copy code
+```plaintext
 docker-compose version 1.29.2, build 5becea4c
-Step 9: Add Your User to the Docker Group
-To run Docker commands without sudo, add your user to the Docker group:
+```
 
-bash
-Copy code
+### Step 9: Add Your User to the Docker Group
+To run Docker commands without `sudo`:
+
+```bash
 sudo usermod -aG docker $USER
-Important: Log out and log back in for the group changes to take effect. Alternatively, you can run:
+```
 
-bash
-Copy code
+**Important:** Log out and log back in or run:
+
+```bash
 newgrp docker
-Step 10: Build and Run the Application with Docker Compose
-Use Docker Compose to build and launch all the necessary containers.
+```
 
-bash
-Copy code
+### Step 10: Build and Run the Application with Docker Compose
+
+```bash
 docker-compose up --build
-Explanation:
+```
 
-docker-compose up: Starts the containers as defined in the docker-compose.yml file.
---build: Forces a rebuild of the Docker images, ensuring that the latest changes are incorporated.
-Accessing the Application:
+#### Explanation:
+- `docker-compose up`: Starts the containers.
+- `--build`: Rebuilds Docker images to incorporate the latest changes.
 
-Once the containers are up and running, open your web browser and navigate to:
+#### Accessing the Application:
 
-arduino
-Copy code
+Open your web browser and navigate to:
+
+```plaintext
 http://localhost
+```
+
 You should see the ProxyAuthRequired.com application running.
 
-Development and Editing Instructions
-To develop and edit the application, follow these additional steps to configure your development environment.
+---
 
-Step 1: Modify docker-compose.yml for Development
-Open the docker-compose.yml file in your preferred text editor.
+## Development and Editing Instructions
 
-bash
-Copy code
+### Step 1: Modify `docker-compose.yml` for Development
+
+```bash
 nano docker-compose.yml
-Make the following modifications to set up a development-friendly environment:
+```
 
-Add node_modules Volume:
+#### Add `node_modules` Volume:
 
-This ensures that node_modules are managed correctly within the Docker container.
-
-yaml
-Copy code
+```yaml
 frontend:
   container_name: frontend_service
   build:
     context: ./frontend/my-react-app
-    dockerfile: Dockerfile.dev 
+    dockerfile: Dockerfile.dev
   ports:
     - "3000:3000"
-  volumes: 
+  volumes:
     - ./frontend/my-react-app:/app
     - /app/node_modules
   networks:
     - xploitcraft_network
   restart: always
-Update Build Context and Dockerfile:
+```
 
-Ensure that the frontend service uses Dockerfile.dev instead of Dockerfile.frontend.
+#### Update Build Context and Dockerfile:
 
-yaml
-Copy code
+```yaml
 frontend:
   build:
     context: ./frontend/my-react-app
     dockerfile: Dockerfile.dev
-Save and Exit:
+```
 
-In nano, press CTRL + O, then CTRL + X.
-In vim, press ESC, type :wq, and press ENTER.
-In gedit, save and close the file.
-Step 2: Rebuild and Restart the Containers
-After making changes to the docker-compose.yml file, rebuild and restart the containers to apply the updates.
+#### Save and Exit:
+- In `nano`, press `CTRL + O`, then `CTRL + X`.
+- In `vim`, press `ESC`, type `:wq`, and press `ENTER`.
+- In `gedit`, save and close the file.
 
-bash
-Copy code
+### Step 2: Rebuild and Restart the Containers
+
+```bash
 docker-compose down
 docker-compose up --build
-Step 3: Edit Docker Compose Configuration (Optional)
-If you need to make further changes to the docker-compose.yml file, such as adding new services or modifying existing ones, you can do so using your preferred text editor.
+```
 
-bash
-Copy code
+### Step 3: Edit Docker Compose Configuration (Optional)
+
+```bash
 nano docker-compose.yml
-Step 4: Accessing the Development Environment
-With the development configuration in place, you can edit the frontend and backend code. Changes will be reflected in real-time thanks to Docker's volume mounting.
+```
 
-Frontend: Located in ./frontend/my-react-app
-Backend: Located in ./backend
-Additional Configuration Tips
-Environment Variables:
+### Step 4: Accessing the Development Environment
 
-Ensure all necessary environment variables are correctly set in the .env file. Refer to the ENV_example for guidance.
+- **Frontend:** Located in `./frontend/my-react-app`
+- **Backend:** Located in `./backend`
 
-Managing Docker Permissions:
+---
 
-If you encounter permission issues with Docker, verify that your user is part of the Docker group:
+## Additional Configuration Tips
 
-bash
-Copy code
+### Environment Variables
+Ensure all necessary environment variables are correctly set in the `.env` file. Refer to `ENV_example` for guidance.
+
+### Managing Docker Permissions
+
+```bash
 groups $USER
-If docker is not listed, re-add your user to the group:
+```
 
-bash
-Copy code
+If `docker` is not listed, re-add your user:
+
+```bash
 sudo usermod -aG docker $USER
 newgrp docker
-Stopping the Application:
+```
 
-To stop all running containers, press CTRL + C in the terminal where docker-compose is running, then execute:
+### Stopping the Application
 
-bash
-Copy code
+```bash
 docker-compose down
-Viewing Logs:
+```
 
-To view logs from all services, use:
+### Viewing Logs
 
-bash
-Copy code
+```bash
 docker-compose logs -f
-Troubleshooting
-Docker Daemon Not Running:
+```
 
-Ensure the Docker service is active.
+---
 
-bash
-Copy code
+## Troubleshooting
+
+### Docker Daemon Not Running
+
+```bash
 sudo systemctl status docker
-If it's not running, start it:
+```
 
-bash
-Copy code
+If it’s not running:
+
+```bash
 sudo systemctl start docker
-Port Conflicts:
+```
 
-Ensure that the ports 80, 3000, 5000, 8080, 27018, and 6380 are not in use by other applications. You can check which processes are using these ports:
+### Port Conflicts
 
-bash
-Copy code
+```bash
 sudo lsof -i -P -n | grep LISTEN
-Rebuilding Containers:
+```
 
-If you encounter issues after making changes, force a rebuild of the Docker images:
+### Rebuilding Containers
 
-bash
-Copy code
+```bash
 docker-compose build --no-cache
 docker-compose up --build
-By following these detailed setup instructions, you can successfully run ProxyAuthRequired.com locally, enabling you to develop, test, and enhance the application with ease.
+```
+
+By following these detailed setup instructions, you can successfully run ProxyAuthRequired.com locally, enabling you to develop, test, and deploy the application effectively.
+
+
 ## Environment Variables
 
 | Variable          | Description                                    |
