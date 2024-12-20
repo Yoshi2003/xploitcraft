@@ -118,7 +118,7 @@ Now generate the JSON object following these instructions.
             model="gpt-4o",  
             messages=[{"role": "user", "content": prompt}],
             max_tokens=800,
-            temperature=0.6,
+            temperature=0.7,
         )
 
         content = response.choices[0].message.content.strip()
