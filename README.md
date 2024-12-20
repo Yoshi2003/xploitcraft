@@ -414,7 +414,7 @@ Ensuring seamless deployment, scalability, and maintainability through a compreh
 
 # Setup Instructions
 
-### To run locally and or Devlope further
+### To run locally and or Devlop further
 
 ## Prerequisites
 
