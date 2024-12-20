@@ -18,3 +18,5 @@ my-react-app/build/
 
 # AWS EC2 SSH key
 xploitcraft.pem 
+
+README.md
