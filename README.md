@@ -704,56 +704,30 @@ docker-compose up --build
 By following these detailed setup instructions, you can successfully run ProxyAuthRequired.com locally, enabling you to develop, test, and deploy the application effectively.
 
 
-## Environment Variables
+# Environment Variables
 
-| Variable          | Description                                    |
-|-------------------|-----------------------------------------------|
-| `OPENAI_API_KEY`  | API key for OpenAI integration.               |
-| `MONGO_URI`       | MongoDB URI for database connection.          |
-| `NODE_ENV`        | Environment mode (`development` or `production`). |
-...more
+This application uses the following environment variables for configuration. Ensure that the `.env` file is kept private and included in `.gitignore`.
+
+| Variable              | Description                                |
+|----------------------|--------------------------------------------|
+| `OPENAI_API_KEY`     | API key for OpenAI integration.           |
+| `SMTP_SERVER`        | SMTP server for sending emails.           |
+| `SMTP_PORT`          | Port used for SMTP communication.         |
+| `SMTP_USER`          | Username for SMTP authentication.         |
+| `SMTP_PASSWORD`      | Password or API key for SMTP service.     |
+| `EMAIL_FROM`         | Default email sender address.             |
+| `SENDGRID_API_KEY`   | API key for SendGrid email service.       |
+| `SECRET_KEY`         | A long, complex secret key for app security. |
+| `MONGO_URI`          | MongoDB connection URI.                   |
+
+## Note
+Keep the `.env` file secure and add it to `.gitignore` to avoid exposing sensitive information.
 
 ---
 
 ## Architecture Overview
 
-1. **Frontend**:
-   - Built with React.js.
-   - Interacts with backend APIs using Axios.
 
-2. **Backend**:
-   - Flask application exposes APIs for frontend interaction.
-   - Utilizes Pydantic for input validation.
-
-3. **Database**:
-   - MongoDB for storing logs, questions, and analysis results.
-
-4. **AI Integration**:
-   - OpenAI API generates GRC questions and explains logs dynamically.
-...more
----
-
-## Components and Pages
-
-### GRC Wizard
-- **Purpose**: Quiz users on GRC topics.
-- **Features**:
-  - Dynamic question generation.
-  - Real-time answer feedback.
-
-### Log Analysis
-- **Purpose**: Analyze security, event, error, and debug logs.
-- **Features**:
-  - Log generation by category.
-  - AI-powered log explanations.
-
-### Resources Hub
-- **Purpose**: Provide curated cybersecurity resources.
-- **Features**:
-  - Category-based search.
-  - Random resource suggestion.
-...more
----
 
 ## API Documentation
 
@@ -786,41 +760,25 @@ By following these detailed setup instructions, you can successfully run ProxyAu
 
 ## Styling and Theming
 
-- The design is built around a **dark mode theme**.
-- Custom fonts: **Courier New** for a tech-centric aesthetic.
-- Primary colors:
-  - Background: **#121212**
-  - Accent: **#f54b64**
-...more
+
 ---
 
 ## Debugging and Logs
 
+
+
 ### Backend Logs
-- All logs are saved to `logs/app.log`.
-- Includes info, warnings, and error messages.
-...more
+
+
+
 ### Common Errors
-1. **OpenAI Rate Limit**:
-   - Ensure your API key has sufficient quota.
-2. **MongoDB Connection Failed**:
-   - Verify `MONGO_URI` in `.env`.
-...more
----
+
 
 ## Frequently Asked Questions (FAQ)
 
-1. **Why is the background not showing?**
-   - Ensure the image file path is correct and accessible.
-
-2. **How can I reset the database?**
-   - Run `docker-compose down && docker volume prune`.
-...more
----
+\
 
 ## Future Enhancements
 
-1. **User Authentication**:
-   - Add role
-...more
+
 
