@@ -18,16 +18,12 @@
     - [Installation Steps](#installation-steps)
 8. [Environment Variables](#environment-variables)
 9. [Architecture Overview](#architecture-overview)
-10. [Components and Pages](#components-and-pages)
-    - [GRC Wizard](#grc-wizard)
-    - [Log Analysis](#log-analysis)
-    - [Resources Hub](#resources-hub)
-    - [Daily CyberBrief](#daily-cyberbrief)
-11. [API Documentation](#api-documentation)
-12. [Styling and Theming](#styling-and-theming)
-13. [Debugging and Logs](#debugging-and-logs)
-14. [Frequently Asked Questions (FAQ)](#faq)
-15. [Future Enhancements](#future-enhancements)
+10. [API Documentation](#api-documentation)
+11. [Styling and Theming](#styling-and-theming)
+12. [Debugging and Logs](#debugging-and-logs)
+13. [Frequently Asked Questions (FAQ)](#faq)
+14. [Future Enhancements](#future-enhancements)
+15. [Contact Me](#contact-me).
 
 ---
 
