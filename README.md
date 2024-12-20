@@ -408,11 +408,13 @@ Ensuring seamless deployment, scalability, and maintainability through a compreh
 
 - **Amazon AWS**:  Amazon AWS serves as the backbone of my application’s infrastructure, providing reliable hosting through Amazon EC2 and secure, low-latency content delivery with Amazon CloudFront. Its seamless integration with services like AWS Certificate Manager (ACM) and AWS WAF ensures my application is secure, scalable, and optimized for global performance.
 
-**Apache**:  Apache acts as the core web server in my setup, handling requests from  Nginx and Amazon CloudFront and routing them to the appropriate backend services.
+-  **Apache**:  Apache acts as the core web server in my setup, handling requests from  Nginx and Amazon CloudFront and routing them to the appropriate backend services.
 
 ---
 
-# ProxyAuthRequired Setup Guide
+# Setup Instructions
+
+### To run locally and or Devlope further
 
 ## Prerequisites
 
